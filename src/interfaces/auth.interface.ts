@@ -1,5 +1,13 @@
 import { IUser } from "@/interfaces/user.interface"
 
+export interface IAthData {
+    user: {
+        id: number
+        email: string
+    } | null
+    accesToken: string
+}
+
 export interface IUserState {
     email: string
     isAdmin: boolean

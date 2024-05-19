@@ -1,9 +1,19 @@
-import Image from "next/image";
+import { FC } from "react";
+import Catalog from "./components/catalog";
+import { ISong } from "@/interfaces/song.interface";
 
-export default function Home() {
-  return (
-    <main className="">
-      gggsfdfsfstgetgvbcbdrfyr
-    </main>
-  );
+export interface IHome {
+  randomSong: ISong
+  topsong: ISong
+  newSongs: ISong[]
 }
+
+const Home: FC = () => {
+  return (
+    <div>
+      <Catalog />
+    </div>
+  )    
+}
+
+export default Home

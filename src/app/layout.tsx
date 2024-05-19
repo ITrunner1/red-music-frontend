@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import { Ubuntu } from "next/font/google";
 import "../styles/globals.css";
 import { cn } from "@/lib/utils";
+import Sidebar from "@/components/sidebar/sidebar";
+import Header from "@/components/header";
+
 
 const ubuntuFont = Ubuntu({ 
   subsets: ["latin"], 
@@ -22,7 +25,15 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={cn("dark", ubuntuFont.variable)}>
-        {children}
+        <main className="flex flex-wrap">
+          <Sidebar />
+          <section className="w-4/5">
+            <Header />
+            <div className="pl-6 pr-6">
+              {children}
+            </div>
+          </section>
+        </main>        
       </body>
     </html>
   );

@@ -78,7 +78,7 @@
   }
   }
 
-.redux-toastr {
+/* .redux-toastr {
   .toastr {
     @apply shadow:
     background-color: #372532;
@@ -99,6 +99,6 @@
       background-color: #e94d4d;
     }
   }
-}
+} */
 
 
