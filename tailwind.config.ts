@@ -30,7 +30,7 @@ const config = {
       colors: {
         transparent: twColors.transparent,
         black: twColors.black,
-        white: '#f2efe2', 
+        white: '#FFFFFF', 
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
