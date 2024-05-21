@@ -1,6 +1,8 @@
+'use client'
+
 import { getContentType } from "@/api/api.helper"
 import axios from "axios"
-import { cookies } from "next/headers"
+import Cookies from "js-cookie"
 import { saveToStorage } from "./auth.helper"
 import { instance } from "@/api/api.interceptor"
 import { IAuthResponse, IEmailPassword } from "@/interfaces/auth.interface"
@@ -8,7 +10,7 @@ import { IAuthResponse, IEmailPassword } from "@/interfaces/auth.interface"
 export const AuthService = {
     async main(type: 'login' | 'register', data: IEmailPassword) {
         const response = await instance<IAuthResponse>({
-            url: `/auth${type}`,
+            url: `/auth/${type}`,
             method: 'POST',
             data
         })
@@ -19,10 +21,10 @@ export const AuthService = {
     },
 
     async getNewTokens() {
-        const refreshToken = cookies().get('refresh-token')
+        const refreshToken = Cookies.get('refreshToken')
 
         const response = await axios.post<string, { data: IAuthResponse }>(
-            process.env.SERVER_URL + 'auth/login/accesstoken',
+            "http://localhost:4200/api" + '/auth/login/access-token',
             { refreshToken },
             {
                 headers: getContentType()

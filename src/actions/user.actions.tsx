@@ -1,14 +1,16 @@
+import { errorCatch } from '@/api/api.helper'
 import { IAuthResponse, IEmailPassword } from '@/interfaces/auth.interface'
 import { removeFromStorage } from '@/services/auth/auth.helper'
 import { AuthService } from '@/services/auth/auth.service'
 import { createAsyncThunk } from '@reduxjs/toolkit'
+import { toastr } from 'react-redux-toastr'
 
-// register
 export const register = createAsyncThunk<IAuthResponse, IEmailPassword>(
     'auth/register',
     async (data, thunkApi) => {
         try {
             const response = await AuthService.main('register', data)
+            toastr.success('Успешно', 'Вход выполнен')
             return response
         } catch (error) {
             return thunkApi.rejectWithValue(error)
@@ -16,7 +18,6 @@ export const register = createAsyncThunk<IAuthResponse, IEmailPassword>(
     }
 )
 
-// login
 export const login = createAsyncThunk<IAuthResponse, IEmailPassword>(
     'auth/login',
     async (data, thunkApi) => {
@@ -34,13 +35,16 @@ export const logout = createAsyncThunk('auth/logout', async () => {
 })
 
 // Check authentication
-export const checkAuth = createAsyncThunk<IAuthResponse, IEmailPassword>(
+export const checkAuth = createAsyncThunk<IAuthResponse>(
     'auth/check-auth',
     async (_, thunkApi) => {
         try {
             const response = await AuthService.getNewTokens()
             return response.data
         } catch (error) {
+            if (errorCatch(error) === 'jwt expired') {
+                thunkApi.dispatch
+            }
             return thunkApi.rejectWithValue(error)
         }
     }

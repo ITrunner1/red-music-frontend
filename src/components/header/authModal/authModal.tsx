@@ -1,4 +1,5 @@
 'use client';
+
 import { FC, useState } from "react";
 import { FaUserCircle } from "react-icons/fa"
 import { Button } from "@/components/ui/button"
@@ -12,12 +13,15 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog"
 import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { useAuth } from "@/hooks/UseAuth";
+import { useAuth } from "@/store/hooks/UseAuth";
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod"
 import { z } from "zod"
+import { useActions } from "@/store/hooks/useActions";
+import { register } from "@/actions/user.actions";
+import { IEmailPassword } from "@/interfaces/auth.interface";
+import { useAuthRedirect } from "./useAuthRedirect";
 
 const formSchema = z.object({
   email: z.string().email({
@@ -25,39 +29,32 @@ const formSchema = z.object({
   }),
   password: z.string().min(5).max(15, {
     message: "Password must be at least 5 characters and maximum 15.",      
-  }),
-  passwordConfirm: z.string()
-}).refine((data) => {
-  return data.password === data.passwordConfirm
-},{
-  message: "Password do not match",
-  path: ["passwordConfirm"]
-}) 
+  }),  
+})
 
 const authModal: FC = () => { 
-   const [type, setType] = useState<'login' | 'register'>('login')
-   
-  //  const [isLoading] = useAuth()
+  useAuthRedirect()
 
-  // const {register, formState: {errors}, handleSubmit} = useForm<IAuthFields>({
-  //   mode: 'onChange',  
-  // })  
+  const [type, setType] = useState<'login' | 'register'>('login')
+   
+  const { isLoading } = useAuth()
+
+  const { login, register } = useActions()
   
   const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
+    resolver: zodResolver(formSchema),    
     defaultValues: {
       email: "",
-      password: "",
-      passwordConfirm: "",
+      password: "",   
     },
-  });
-  
+  });  
 
-  const onSubmit = () => {
-    console.log("SUCCESS")
-  }  
-
-  
+  const onSubmit: SubmitHandler<IEmailPassword> = data => {
+    if (type === 'login')
+      login(data) 
+    else 
+      register(data)    
+  }
 
    return (     
       <Dialog>
@@ -68,7 +65,7 @@ const authModal: FC = () => {
         </DialogTrigger>
         <DialogContent className="sm:max-w-[425px]">
           <DialogHeader>
-            <DialogTitle>Логин</DialogTitle>
+            <DialogTitle>{type === 'login' ? 'Логин' : 'Регистрация'}</DialogTitle>
             <DialogDescription>
             Войдите в свою учетную запись. 
             </DialogDescription>
@@ -76,7 +73,7 @@ const authModal: FC = () => {
 
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-              <FormField
+              <FormField                
                 control={form.control}
                 name="email"
                 render={({ field }) => (
@@ -90,8 +87,9 @@ const authModal: FC = () => {
                     </FormDescription>
                     <FormMessage />
                   </FormItem>                  
-                )}                
+                )}             
               />
+              
               <FormField
                 control={form.control}
                 name="password"
@@ -108,30 +106,23 @@ const authModal: FC = () => {
                   </FormItem>                  
                 )}                
               />
-              <FormField
-                control={form.control}
-                name="passwordConfirm"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Confirm password</FormLabel>
-                    <FormControl>
-                      <Input placeholder="name" {...field} />                      
-                    </FormControl>                 
-                    <FormDescription>  
-                      Confirm your pasword                   
-                    </FormDescription>
-                    <FormMessage />
-                  </FormItem>                  
-                )}                
-              />
-
-              <DialogFooter>
-              Если у вас нет учетной записи, то вам следует зарегистрироваться
-                <Button type="submit">Save changes</Button>
-              </DialogFooter>
+              <DialogFooter>    
+                             
+                <Button 
+                    type="submit" variant="outline"                                     
+                    > 
+                      {type === 'login' ? 'Логин' : 'Регистрация2'}
+                </Button>                           
+              </DialogFooter>                            
             </form>
-          </Form>
-
+          </Form> 
+          <Button 
+                    type="button"
+                    variant="outline"
+                    onClick={() => setType(type === 'login' ? 'register' : 'login')}                 
+                    >
+                      {type === 'register' ? 'Логин' : 'Регистрация'}
+                </Button>                                         
         </DialogContent>
       </Dialog>
    )

@@ -10,7 +10,7 @@ export interface IAthData {
 
 export interface IUserState {
     email: string
-    isAdmin: boolean
+    // isAdmin: boolean
 }
 
 export interface ITokens {

@@ -1,23 +1,25 @@
+'use client'
+
 import { IAuthResponse, ITokens } from "@/interfaces/auth.interface"
-import { cookies } from "next/headers"
+import Cookies from "js-cookie"
 
 export const saveTokensStorage = (data: ITokens) => {
-    cookies().set('accessToken', data.accessToken)
-    cookies().set('refreshToken', data.accessToken)
+    Cookies.set('accessToken', data.accessToken)
+    Cookies.set('refreshToken', data.refreshToken)
 }
 
-export const getAccessToken = async () => {
-    const accessToken = cookies().get('accessToken')
+export const getAccessToken = () => {
+    const accessToken = Cookies.get('accessToken')
     return accessToken || null
 }
 
-export const getUserFromStorage= async () => {
+export const getUserFromStorage= () => {
     return JSON.parse(localStorage.getItem('user') || '{}')
 }
 
 export const removeFromStorage = () => {
-    cookies().delete('accessToken')
-    cookies().delete('refreshToken')
+    Cookies.remove('accessToken')
+    Cookies.remove('refreshToken')
     localStorage.removeItem('user')
 }
 

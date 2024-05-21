@@ -7,7 +7,7 @@ import { FC, useMemo } from "react"
 import { IconType } from "react-icons"
 import { HiChartBar, HiCollection, HiHome, HiStar } from "react-icons/hi"
 import { cn } from "@/lib/utils"
-import { useAuth } from "@/hooks/UseAuth"
+import { useAuth } from "@/store/hooks/UseAuth"
 import { BsMusicNote } from "react-icons/bs"
 import { MdLibraryMusic } from "react-icons/md"
 import { motion } from 'framer-motion';
