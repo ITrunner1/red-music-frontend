@@ -6,7 +6,7 @@ import { useAuth } from "@/store/hooks/UseAuth";
 import { useActions } from "@/store/hooks/useActions";
 import { usePathname, useRouter } from "next/navigation";
 import { PropsWithChildren, useEffect } from "react";
-import { protectedRoutes } from "@/components/header/authModal/protected-routes.data";
+import { protectedRoutes } from "@/interfaces/protected-routes.data";
 
 const AuthProvider: React.FC<PropsWithChildren<unknown>> = ({
     children
@@ -30,7 +30,11 @@ const AuthProvider: React.FC<PropsWithChildren<unknown>> = ({
         if (!refreshToken && user) logout()
     }, [pathname])
 
-    if (!isProtectedRoute) return <>{children}</>   
+    if (!isProtectedRoute) return <>{children}</> 
+
+    if (user && isProtectedRoute) return <>{children}</>     
+
+    if (!user && user) return <>{children}</>   
 
     pathname !== '/' && router.replace('/')
 
