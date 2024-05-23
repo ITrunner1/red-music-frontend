@@ -46,7 +46,7 @@ const Menu: FC<IMenu> = ({items, title}) => {
    
     return (
         <nav className = 'my-8'>
-            <h3 className="text-gray-600 mb-7">
+            <h3 className="text-gray-200 mb-7">
                 {title}
             </h3>
             <ul className="list-none">

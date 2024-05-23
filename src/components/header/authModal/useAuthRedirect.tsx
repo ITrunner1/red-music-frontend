@@ -1,4 +1,4 @@
-import { useAuth } from "@/store/hooks/UseAuth"
+import { useAuth } from "@/hooks/UseAuth"
 import { useRouter } from "next/navigation"
 import { useEffect } from "react"
 

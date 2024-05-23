@@ -9,6 +9,7 @@ export interface IAthData {
 }
 
 export interface IUserState {
+    id: number
     email: string
     // isAdmin: boolean
 }
@@ -18,7 +19,7 @@ export interface ITokens {
     refreshToken: string
 }
 
-export interface IInitialState {
+export interface IInitialState {    
     user: IUserState | null
     isLoading: boolean
 }

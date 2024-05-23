@@ -1,10 +1,10 @@
 'use client'
 
-import { getContentType } from "@/api/api.helper"
+import { getContentType } from "@/store/api/api.helper"
 import axios from "axios"
 import Cookies from "js-cookie"
 import { saveToStorage } from "./auth.helper"
-import { instance } from "@/api/api.interceptor"
+import { instance } from "@/store/api/api.interceptor"
 import { IAuthResponse, IEmailPassword } from "@/interfaces/auth.interface"
 
 export const AuthService = {

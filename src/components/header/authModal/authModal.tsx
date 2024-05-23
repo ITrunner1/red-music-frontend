@@ -13,15 +13,15 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog"
 import { Input } from "@/components/ui/input"
-import { useAuth } from "@/store/hooks/UseAuth";
+import { useAuth } from "@/hooks/UseAuth";
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod"
 import { z } from "zod"
-import { useActions } from "@/store/hooks/useActions";
-import { register } from "@/actions/user.actions";
+import { register } from "@/store/actions/user.actions";
 import { IEmailPassword } from "@/interfaces/auth.interface";
 import { useAuthRedirect } from "./useAuthRedirect";
+import { useActions } from "@/hooks/useActions";
 
 const formSchema = z.object({
   email: z.string().email({
@@ -70,7 +70,6 @@ const authModal: FC = () => {
             Войдите в свою учетную запись. 
             </DialogDescription>
           </DialogHeader> 
-
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
               <FormField                
@@ -88,8 +87,7 @@ const authModal: FC = () => {
                     <FormMessage />
                   </FormItem>                  
                 )}             
-              />
-              
+              />              
               <FormField
                 control={form.control}
                 name="password"
@@ -106,8 +104,7 @@ const authModal: FC = () => {
                   </FormItem>                  
                 )}                
               />
-              <DialogFooter>    
-                             
+              <DialogFooter>      
                 <Button 
                     type="submit" variant="outline"                                     
                     > 
@@ -117,12 +114,12 @@ const authModal: FC = () => {
             </form>
           </Form> 
           <Button 
-                    type="button"
-                    variant="outline"
-                    onClick={() => setType(type === 'login' ? 'register' : 'login')}                 
-                    >
-                      {type === 'register' ? 'Логин' : 'Регистрация'}
-                </Button>                                         
+            type="button"
+            variant="outline"
+            onClick={() => setType(type === 'login' ? 'register' : 'login')}                 
+            >
+              {type === 'register' ? 'Логин' : 'Регистрация'}
+          </Button>                                         
         </DialogContent>
       </Dialog>
    )

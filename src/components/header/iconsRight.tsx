@@ -1,11 +1,10 @@
 'use client'
 
-import { useAuth } from "@/store/hooks/UseAuth";
 import { FC } from "react";
-import { Button } from "@/components/ui/button"
-import ProfileMenu from "./profile-menu";
-import UploadSong from "./upload-song";
+import ProfileModal from "./profileModal";
+import UploadSongModal from "./uploadSongModal";
 import AuthModal from "./authModal/authModal";
+import { useAuth } from "@/hooks/UseAuth";
 
 const iconsRight: FC = () => {
    const { user } = useAuth()
@@ -14,9 +13,9 @@ const iconsRight: FC = () => {
       <div className="relative flex items-center">
          {user ? (
              <>
-             <ProfileMenu />
-             <UploadSong />
-            </> 
+               <UploadSongModal />
+               <ProfileModal />
+             </>             
          ) : (            
             <AuthModal />
            

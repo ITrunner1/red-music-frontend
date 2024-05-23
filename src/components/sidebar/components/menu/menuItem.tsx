@@ -7,7 +7,7 @@ import { FC, useMemo } from "react"
 import { IconType } from "react-icons"
 import { HiChartBar, HiCollection, HiHome, HiStar } from "react-icons/hi"
 import { cn } from "@/lib/utils"
-import { useAuth } from "@/store/hooks/UseAuth"
+import { useAuth } from "@/hooks/UseAuth"
 import { BsMusicNote } from "react-icons/bs"
 import { MdLibraryMusic } from "react-icons/md"
 import { motion } from 'framer-motion';
@@ -59,15 +59,11 @@ const MenuItem: FC<{item: IMenuItemProps}> = ({item}) => {
         <motion.li whileHover={{ scale: 1.2 }} whileTap={{ scale: 0.8 }}  className='block mb-10 last:mb-0'>
             <Link href={item.link}
                 className={cn(`flex items-center text-gray-500 font-medium relative`,
-                            item.active && "text-white"
+                            item.active && "text-primary-foreground bg-primary rounded-md"
                             )}>
-                <span className={cn(item.image ? '' : 'mr-4 p-2 rounded-xl bg-primary')}>
-                    {item.icon && <item.icon />}
-                        {item.image && (
-                            <Image className='overflow-hidden p-0 shadow flex items-center justify-center'
-                            src={item.image} width={40} height={40} alt={item.title} />
-                        )}
-                    </span>
+                <span className={cn(item.image ? '' : 'mr-2 p-2 rounded-xl')}>
+                    {item.icon && <item.icon className="h-[25px] w-[25px]" />}                        
+                </span>
                 <b className="font-normal">{item.title}</b>            
             </Link>            
         </motion.li>

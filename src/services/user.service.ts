@@ -1,7 +1,7 @@
-import { instance } from "@/api/api.interceptor"
+import { instance } from "@/store/api/api.interceptor"
 import { IUser } from "@/interfaces/user.interface"
 
-const USERS = 'users'
+export const USERS = 'users'
 
 export const UserService = {
     async getAll(){

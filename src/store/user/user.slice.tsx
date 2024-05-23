@@ -1,6 +1,6 @@
 'use client'
 
-import { checkAuth, login, logout, register } from "@/actions/user.actions";
+import { checkAuth, login, logout, register } from "@/store/actions/user.actions";
 import { IInitialState } from "@/interfaces/auth.interface";
 import { getStoreLocal } from "@/lib/utils";
 import { createSlice } from "@reduxjs/toolkit";

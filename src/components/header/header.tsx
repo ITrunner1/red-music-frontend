@@ -1,6 +1,6 @@
 import { FC } from "react";
 import Search from "./search";
-import IconsRight from "./icons-right";
+import IconsRight from "./iconsRight";
 
 const Header: FC = () => {
    return (

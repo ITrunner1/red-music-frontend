@@ -13,6 +13,11 @@ export const getAccessToken = () => {
     return accessToken || null
 }
 
+export const getRefreshToken = () => {
+    const refreshToken = Cookies.get('refreshToken')
+    return refreshToken || null
+}
+
 export const getUserFromStorage= () => {
     return JSON.parse(localStorage.getItem('user') || '{}')
 }

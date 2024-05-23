@@ -1,6 +1,6 @@
 'use client'
 
-import * as userActions from '../../actions/user.actions'
+import * as userActions from '../store/actions/user.actions'
 import { bindActionCreators } from "@reduxjs/toolkit"
 import { useMemo } from "react"
 import { useDispatch } from 'react-redux'

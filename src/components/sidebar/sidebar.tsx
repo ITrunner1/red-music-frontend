@@ -11,7 +11,7 @@ const Sidebar: FC = () => {
          </Link>
 
          <Menu title='Меню' items={menu} />
-         <div className='text-gray-600 text-opacity-60 text-xs'>
+         <div className='text-gray-400 text-opacity-60 text-xs'>
             ©️ 2024 RED-MUSIC By ITrunner 
          </div>
       </aside>

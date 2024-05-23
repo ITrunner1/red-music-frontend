@@ -1,7 +1,7 @@
-import { instance } from "@/api/api.interceptor"
+import { instance } from "@/store/api/api.interceptor"
 import { ISong } from "@/interfaces/song.interface"
 
-const SONGS = 'songs'
+export const SONGS = 'songs'
 
 export const SongService = {
     async getAll(){

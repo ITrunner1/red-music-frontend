@@ -1,12 +1,12 @@
 'use client';
 
 import Cookies from "js-cookie";
-import { getAccessToken } from "@/services/auth/auth.helper";
-import { useAuth } from "@/store/hooks/UseAuth";
-import { useActions } from "@/store/hooks/useActions";
+import { useAuth } from "@/hooks/UseAuth";
 import { usePathname, useRouter } from "next/navigation";
 import { PropsWithChildren, useEffect } from "react";
 import { protectedRoutes } from "@/interfaces/protected-routes.data";
+import { getAccessToken } from "@/services/auth/auth.helper";
+import { useActions } from "@/hooks/useActions";
 
 const AuthProvider: React.FC<PropsWithChildren<unknown>> = ({
     children
