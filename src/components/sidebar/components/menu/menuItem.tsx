@@ -22,7 +22,7 @@ export interface IMenuItemProps{
 const MenuItem: FC<{item: IMenuItemProps}> = ({item}) => {       
     const { user } = useAuth()  
 
-    if(item.link === '/my-music')
+    if(item.link === '/my-subscriptions')
         if(!user) return null
         else item.link = `/c/${user?.id}`
 

@@ -13,7 +13,7 @@ interface IMenu{
     title: string    
 }
 
-const Menu: FC<IMenu> = ({ title}) => {         
+const Menu: FC<IMenu> = ({ title }) => {         
     const pathname = usePathname();
     const { user } = useAuth()  
 

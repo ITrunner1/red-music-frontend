@@ -4,7 +4,7 @@ import IconsRight from "./iconsRight";
 
 const Header: FC = () => {
    return (
-      <header className="w-[1680px] relative pt-6 pl-6 border-b-stone-500 flex flex-wrap justify-between items-center">
+      <header className="w-[1680px] relative pl-6 border-b-stone-500 flex flex-wrap justify-between items-center">
          <Search />
          <IconsRight />
       </header>

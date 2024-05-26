@@ -67,10 +67,10 @@ const SongItem: FC<ISongItem> = ({ isSmall, isUpdateLink, removeHandler, item })
                 <div>
                     {isSmall && <div>{item.user?.name}</div>}
                     <Link href={`/v/${item.id}`}>{item.name}</Link>
-                        {/* <SongStatistics 
+                        <SongStatistics 
                             listens={item.listens}
                             createdAt={isSmall ? item.createdAt : ''}
-                        /> */}
+                        />
                 </div>
 
             </CardContent>

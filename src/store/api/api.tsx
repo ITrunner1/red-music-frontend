@@ -24,7 +24,7 @@ export const api = createApi({
         }),
         subscribeToArtist: builder.mutation<boolean, number>({
             query: (artistId) => ({
-                url: `${USERS}/subscribe/:${artistId}`,
+                url: `${USERS}/subscribe/${artistId}`,
                 method: 'PATCH'
             }),
             invalidatesTags: () => [{ type: 'Profile' }]

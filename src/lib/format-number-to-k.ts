@@ -15,3 +15,5 @@ function formatNumberToK(num: number) {
     
     return num;
 }
+
+export default formatNumberToK

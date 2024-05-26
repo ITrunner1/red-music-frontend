@@ -14,10 +14,10 @@ const Discover: FC<IDiscover> = ({ topSong, randomSong }) => {
   return (
     <div className="flex gap-8 my-10">
       <div className="w-2/3">    
-      <LargeSongItem song={topSong} />
+        <LargeSongItem song={topSong} />
       </div>
       <div className="w-1/3">         
-      <LargeSongItem song={randomSong} />
+        <LargeSongItem song={randomSong} />
       </div>
     </div>
   )    

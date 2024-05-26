@@ -34,7 +34,7 @@ export default function RootLayout({
           <StoreProvider>
             <PersistProvider> 
               <AuthProvider>             
-                <main className="flex flex-wrap">                 
+                <main className="flex flex-wrap mt-6">                 
                     <Sidebar />
                     <section className="w-4/5">            
                       <Header />

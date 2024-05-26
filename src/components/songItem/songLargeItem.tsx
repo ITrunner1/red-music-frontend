@@ -47,10 +47,10 @@ const LargeSongItem: FC<{song: ISong}> = ({ song }) => {
                         <AvatarFallback>CN</AvatarFallback>
                     </Avatar>}
                 <div>{song?.user?.name}</div>
-                {/* <SongStatistics 
+                <SongStatistics 
                     listens={song?.listens}
                     createdAt={song?.createdAt}
-                /> */}
+                />
             </div>
         </CardContent>
         <CardFooter className="flex justify-between">            

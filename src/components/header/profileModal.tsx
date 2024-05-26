@@ -1,23 +1,32 @@
 'use client'
 
 import { api } from "@/store/api/api";
-import { FC } from "react";
+import { FC, useEffect } from "react";
 import { Button} from "../ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "../ui/dropdown-menu";
 import Link from "next/link";
 import { useAuth } from "@/hooks/UseAuth";
 import { useActions } from "@/hooks/useActions";
+import { useRouter } from "next/navigation";
 
-const profileModal: FC = () => {
-   const { user } = useAuth()
+const profileModal: FC = () => {   
+   const router = useRouter();
+
+   useEffect(() => {
+      if (user) {
+         router.refresh
+      }
+   }, [router])
+
+     const { user } = useAuth()
 
    const { data, isLoading } = api.useGetProfileQuery(null, {
       skip: !user
    })
 
    const { logout } = useActions()
-
+   
    if (isLoading) return null
 
    return (
@@ -47,9 +56,9 @@ const profileModal: FC = () => {
             <Button 
                type="button"
                variant="ghost"
-               onClick={logout}                 
+               onClick={logout}    
                >
-                  Выйти
+                  Выйти    
             </Button>
          </DropdownMenuItem>                                                   
         </DropdownMenuContent>
