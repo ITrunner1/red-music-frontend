@@ -2,15 +2,14 @@
 
 import Link from "next/link"
 import { useRouter } from "next/navigation"
-import Image from "next/image"
-import { FC, useMemo } from "react"
+import { FC } from "react"
 import { IconType } from "react-icons"
 import { HiChartBar, HiCollection, HiHome, HiStar } from "react-icons/hi"
 import { cn } from "@/lib/utils"
-import { useAuth } from "@/hooks/UseAuth"
 import { BsMusicNote } from "react-icons/bs"
 import { MdLibraryMusic } from "react-icons/md"
 import { motion } from 'framer-motion';
+import { useAuth } from "@/hooks/UseAuth"
 
 export interface IMenuItemProps{ 
     link: string
@@ -20,35 +19,7 @@ export interface IMenuItemProps{
     active: boolean
 }
 
-export const menu:IMenuItemProps[] = [
-    {
-        icon: BsMusicNote,
-        title: 'Музыка',
-        active: true,     
-        link: '/',            
-    },
-    {
-        icon: MdLibraryMusic,
-        title: 'Моя музыка', 
-        active: false,        
-        link: '/my-music',
-    }, 
-    {
-        icon: HiCollection,
-        title: 'Мои подписки',
-        active: false,         
-        link: '/search',
-    },    
-    {
-        icon: HiChartBar,
-        title: 'Тренды',  
-        active: false,     
-        link: '/liked',
-    },
-]
-
-const MenuItem: FC<{item: IMenuItemProps}> = ({item}) => {   
-    const router = useRouter()
+const MenuItem: FC<{item: IMenuItemProps}> = ({item}) => {       
     const { user } = useAuth()  
 
     if(item.link === '/my-music')

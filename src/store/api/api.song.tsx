@@ -5,9 +5,9 @@ import { SONGS } from "@/services/song.service";
 export const songApi = api.injectEndpoints({
     endpoints: builder => ({
        getSongsBySearchTerm: builder.query<ISong[], string>({
-        query: searchTerm => ({ url: `/${SONGS}`, param: { searchTerm }})
+        query: searchTerm => ({ url: `/${SONGS}?searchTerm=${searchTerm}` })
        }),
-
+       
        getSongById: builder.query<ISong, number>({
         query: id => `/${SONGS}/${id}`,
         providesTags: (result, error, id) => [{ type: 'Song', id}]

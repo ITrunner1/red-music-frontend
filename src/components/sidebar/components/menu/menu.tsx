@@ -7,15 +7,15 @@ import { usePathname, useRouter } from "next/navigation";
 import { BsMusicNote } from "react-icons/bs";
 import { MdLibraryMusic } from "react-icons/md";
 import { HiChartBar, HiCollection } from "react-icons/hi";
+import { useAuth } from "@/hooks/UseAuth";
 
 interface IMenu{
-    title: string
-    items: IMenuItemProps[]
+    title: string    
 }
 
-const Menu: FC<IMenu> = ({items, title}) => {    
-    const router = useRouter();            
+const Menu: FC<IMenu> = ({ title}) => {         
     const pathname = usePathname();
+    const { user } = useAuth()  
 
     const routes = useMemo(() => [
         {
@@ -27,14 +27,14 @@ const Menu: FC<IMenu> = ({items, title}) => {
         {
             icon: MdLibraryMusic,
             title: 'Моя музыка',  
-            active: pathname === '/my-music',      
-            link: '/my-music',
+            active: pathname === `/c/${user?.id}`,      
+            link: `/c/${user?.id}`,
         }, 
         {
             icon: HiCollection,
             title: 'Мои подписки',  
-            active: pathname === '/subcriptions',       
-            link: '/subcriptions',
+            active: pathname === '/my-subscriptions',       
+            link: '/my-subscriptions',
         },    
         {
             icon: HiChartBar,

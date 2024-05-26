@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { FC } from "react";
 import Menu from "./components/menu/menu";
-import { menu } from "./components/menu/menuItem";
 
 const Sidebar: FC = () => {
    return (
@@ -10,7 +9,7 @@ const Sidebar: FC = () => {
             Red Music           
          </Link>
 
-         <Menu title='Меню' items={menu} />
+         <Menu title='Меню'/>
          <div className='text-gray-400 text-opacity-60 text-xs'>
             ©️ 2024 RED-MUSIC By ITrunner 
          </div>

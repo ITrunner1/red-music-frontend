@@ -8,8 +8,8 @@ export interface ISong extends IBase {
     audioPath: string,
     lyrics: string, 
     likes?: number,
-    listens?: number,
-    duration?: number,
+    listens: number,
+    duration: number,
     isPublic?: boolean,  
     user?: IUser     
     comments?: IComment[],     

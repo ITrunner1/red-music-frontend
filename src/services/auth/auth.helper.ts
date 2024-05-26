@@ -1,5 +1,3 @@
-'use client'
-
 import { IAuthResponse, ITokens } from "@/interfaces/auth.interface"
 import Cookies from "js-cookie"
 
@@ -33,3 +31,4 @@ export const saveToStorage = (data: IAuthResponse) => {
     localStorage.setItem('user', JSON.stringify(data.user))
 }
 
+export default getAccessToken

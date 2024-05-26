@@ -1,6 +1,6 @@
 import axios from "axios";
 import { errorCatch, getContentType } from "./api.helper";
-import { getAccessToken } from "@/services/auth/auth.helper";
+import getAccessToken from "@/services/auth/auth.helper";
 import { AuthService } from "@/services/auth/auth.service";
 import { removeFromStorage } from "@/services/auth/auth.helper";
 
@@ -14,7 +14,7 @@ instance.interceptors.request.use(async config => {
 
     if(config.headers && accessToken) {
         config.headers.Authorization = `Bearer ${accessToken}`
-    }
+    }    
 
     return config
 })
@@ -45,3 +45,4 @@ instance.interceptors.request.use(config =>  config, async error => {
     throw error
 })
 
+export default instance

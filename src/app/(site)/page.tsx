@@ -1,19 +1,19 @@
 import { FC } from "react";
-import Catalog from "./components/catalog";
+import { IHome } from "@/interfaces/home.interfaces";
+
+import Home from "@/components/home/home"
+import { SongService } from "@/services/song.service";
+import shuffle from "lodash/shuffle";
 import { ISong } from "@/interfaces/song.interface";
+import getStaticProps from "@/components/home/getSongs";
+import getSongs from "@/components/home/getSongs";
 
-export interface IHome {
-  randomSong: ISong
-  topsong: ISong
-  newSongs: ISong[]
-}
+async function MainPage() {
+  const data = await getSongs()
 
-const Home: FC = () => {
   return (
-    <div>
-      <Catalog />
-    </div>
+    <Home newSongs={data.newSongs} randomSong={data.randomSong} topSong={data.topSong} />
   )    
 }
 
-export default Home
+export default MainPage

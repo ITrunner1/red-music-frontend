@@ -5,7 +5,7 @@ import { ChangeEvent, FC, useState } from "react";
 import { songApi } from '@/store/api/api.song';
 
 export const useSearch = () => {
-   const [ searchTerm, setSearchTerm ] = useState('')
+   const [ searchTerm, setSearchTerm ] = useState<string>('')
    const [ debounceSearch ] = useDebounce(searchTerm, 500)
 
    const handleSearch = (e: ChangeEvent<HTMLInputElement>) => {

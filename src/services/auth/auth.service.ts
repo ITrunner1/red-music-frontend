@@ -1,5 +1,3 @@
-'use client'
-
 import { getContentType } from "@/store/api/api.helper"
 import axios from "axios"
 import Cookies from "js-cookie"
