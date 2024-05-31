@@ -1,11 +1,10 @@
 import { FC } from "react";
+import StudioMain from "./components/studioMain";
 
-const NotFound: FC = () => {
+const StudioPage: FC = () => {
   return (
-    <div>
-      Studio
-    </div>
+    <StudioMain />
   )    
 }
 
-export default NotFound
+export default StudioPage

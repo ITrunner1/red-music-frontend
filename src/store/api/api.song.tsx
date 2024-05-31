@@ -28,13 +28,13 @@ export const songApi = api.injectEndpoints({
 
        updateSong: builder.mutation<ISong, ISongDto>({
         query: ({ id, ...body }) => ({
-            url: `/${SONGS}`,
+            url: `/${SONGS}/${id}`,
             method: 'PUT',
             body
         }),
         invalidatesTags: (result, error, { id }) => [
-            { type: 'Song', id},
-            { type: 'Profile'}
+            { type: 'Song', id },
+            { type: 'Profile' }
         ]
        }),
 

@@ -5,7 +5,7 @@ import { IUser } from "./user.interface";
 export interface IComment extends IBase {
     user: IUser,    
     song: ISong,
-    text: true,    
+    text: string,    
 }
 
 export interface ICommentDto extends Pick<IComment, 'text'> {

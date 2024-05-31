@@ -21,10 +21,10 @@ export interface IMenuItemProps{
 
 const MenuItem: FC<{item: IMenuItemProps}> = ({item}) => {       
     const { user } = useAuth()  
-
+    
     if(item.link === '/my-subscriptions')
         if(!user) return null
-        else item.link = `/c/${user?.id}`
+    else item.link = `/my-subscriptions`
 
     return (
         <motion.li whileHover={{ scale: 1.2 }} whileTap={{ scale: 0.8 }}  className='block mb-10 last:mb-0'>

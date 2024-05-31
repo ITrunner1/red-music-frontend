@@ -7,7 +7,7 @@ export interface ISong extends IBase {
     thumbnailPath: string,
     audioPath: string,
     lyrics: string, 
-    likes?: number,
+    likes: number,
     listens: number,
     duration: number,
     isPublic?: boolean,  
@@ -20,3 +20,7 @@ export interface ISongDto
     ISong,
     'id' | 'thumbnailPath' | 'lyrics' | 'name' | 'audioPath' | 'isPublic'
 > {}
+
+export interface ISongPage {
+    song: ISong
+}

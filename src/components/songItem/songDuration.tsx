@@ -5,7 +5,7 @@ const SongDuration: FC<{ duration: number; isBottom?: boolean }> = ({
     isBottom
 }) => {
     return (
-        <time className={isBottom ? '' : ''}></time>
+        <time className={isBottom ? 'text-white' : ''}>{duration} мин.</time>
     )
 }
 

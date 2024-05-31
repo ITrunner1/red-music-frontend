@@ -2,8 +2,8 @@
 
 import { ISong } from "@/interfaces/song.interface"
 import { FC } from "react"
-import LargeSongItem from "../songItem/songLargeItem"
 import Heading from "./heading"
+import LargeSongItem from "@/components/songItem/songLargeItem"
 
 interface IDiscover {
   topSong: ISong,
@@ -16,7 +16,7 @@ const Discover: FC<IDiscover> = ({ topSong, randomSong }) => {
       <div className="w-2/3">    
         <LargeSongItem song={topSong} />
       </div>
-      <div className="w-1/3">         
+      <div className="w-1/2">         
         <LargeSongItem song={randomSong} />
       </div>
     </div>

@@ -1,14 +1,23 @@
-import { FC } from "react";
-import { IHome } from "@/interfaces/home.interfaces";
-
-import Home from "@/components/home/home"
 import { SongService } from "@/services/song.service";
-import shuffle from "lodash/shuffle";
 import { ISong } from "@/interfaces/song.interface";
-import getStaticProps from "@/components/home/getSongs";
-import getSongs from "@/components/home/getSongs";
 
-async function MainPage() {
+import shuffle from "lodash/shuffle";
+import Home from "./components/home";
+
+async function getSongs() {
+
+  const { data: topSongs } = await SongService.getMostPopular()      
+  const { data: newSongs } = await SongService.getAll()
+
+  return {
+      newSongs,   
+      topSong: topSongs[0],        
+      randomSong: 
+        shuffle(newSongs.filter(v => v.id !== topSongs[0].id))[0] || ({} as ISong)
+    }      
+}   
+
+async function MainPage() {  
   const data = await getSongs()
 
   return (

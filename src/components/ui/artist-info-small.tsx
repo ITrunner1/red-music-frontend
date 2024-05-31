@@ -19,7 +19,7 @@ const ArtistInfoShort: FC<{ artist: IUser; message?: string}> = ({
                     {artist.name}
                 </div>
                 <div>
-                    {message || formatNumberToK(artist.subscribersCount) + ' subscribers'} 
+                    {message || formatNumberToK(artist.subscribersCount) + ' подписчиков'} 
                 </div>
             </div>
         </div>

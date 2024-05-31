@@ -13,9 +13,10 @@ const persistConfig = {
     whitelist: ['user']
 }
 
+
 const rootReducer = combineReducers({   
     [api.reducerPath]: api.reducer, 
-    user: userSlice.reducer
+    user: userSlice.reducer,
 })
 
 const persistedReducer = persistReducer(persistConfig, rootReducer)

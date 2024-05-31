@@ -1,14 +1,7 @@
+'use client'
+
+import { MdOpenInFull } from "react-icons/md";
 import { Button } from "@/components/ui/button"
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
 import { ISongItem } from "@/interfaces/songItem.interface"
 import Image from "next/image"
 import { useRouter } from "next/navigation"
@@ -17,66 +10,74 @@ import SongDuration from "./songDuration"
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar"
 import Link from "next/link"
 import SongStatistics from "./songStatistics"
+import { motion } from "framer-motion";
  
 const SongItem: FC<ISongItem> = ({ isSmall, isUpdateLink, removeHandler, item }) => {
     const { push } = useRouter()
     
-    return (
-        <Card className="w-[350px]">
-            <CardHeader>                      
-            </CardHeader>
-            <CardContent>            
-                {!!removeHandler && (
-                <Button
-                    className={'absolute bottom-3 right-3 z-10'}
-                    onClick={() => removeHandler(item.id)}
-                >
-                    REMOVE
-                </Button>
+    return (        
+        <div className="w-[240px] mt-6 flex flex-col items-center border-white border-2 rounded-xl">
+            <div className="mt-2 w-[210px] h-[210px]">                           
+                <Image                    
+                    className="rounded-xl"
+                    src={item.thumbnailPath}
+                    alt={item.name}
+                    width={210}
+                    height={210}  
+                    priority   
+                />                                                       
+            </div>  
+            <motion.div 
+                className="absolute ml-36 mt-56"
+                whileHover={{ scale: 1.2 }} whileTap={{ scale: 0.8 }}>
+                {item?.user?.avatarPath && (                    
+                    <Avatar>                        
+                        <Link href={`/c/${item.user.id}`}>
+                            <AvatarImage src={item.user.avatarPath}/>
+                        </Link>
+                        <AvatarFallback>{item.user.name}</AvatarFallback>
+                    </Avatar>                   
                 )}
-
-                {isUpdateLink && (
-                <Button
-                    className={'absolute bottom-3 right-3 z-10'}
-                    onClick={() => push(`song/edit/${item.id}`)}
-                >
-                    EDIT
-                </Button>
-                )}
-                <div>
-                    {item.thumbnailPath && (
-                        <Image 
-                            src={item.thumbnailPath}
-                            alt={item.name}
-                            width={185}
-                            height={103}
-                            layout="responsive"
-                        />
-                    )}
-                    <SongDuration duration={item.duration} />
-                    {item?.user?.avatarPath && (
-                        <div>
-                            <Avatar>
-                                <AvatarImage src={item.user.avatarPath}/>
-                                <AvatarFallback>CN</AvatarFallback>
-                            </Avatar>
-                        </div>
-                    )}
-                </div>
-
-                <div>
+            </motion.div>  
+             
+            <motion.div
+                className="absolute ml-44 mt-72"
+                whileHover={{ scale: 1.2 }} whileTap={{ scale: 0.8 }}
+            >
+                <Link href={`/v/${item.id}`}>                                
+                    <MdOpenInFull className="" size={26}/>                
+                </Link> 
+            </motion.div>         
+            <div className="my-4">  
+                <div>                    
                     {isSmall && <div>{item.user?.name}</div>}
-                    <Link href={`/v/${item.id}`}>{item.name}</Link>
+                    <div>{item.name}</div>
                         <SongStatistics 
                             listens={item.listens}
                             createdAt={isSmall ? item.createdAt : ''}
                         />
-                </div>
-
-            </CardContent>
-            <CardFooter className="flex justify-between">         
-            </CardFooter>
-        </Card>
+                </div>   
+                <SongDuration duration={item.duration} />             
+                <div className="mt-2">                    
+                {!!removeHandler && (
+                    <Button
+                        className={'bg-black z-10'}
+                        onClick={() => removeHandler(item.id)}
+                    >
+                        REMOVE
+                    </Button>
+                    )}
+                    {isUpdateLink && (
+                    <Button
+                        className={'bg-black z-10'}
+                        onClick={() => push(`song/edit/${item.id}`)}
+                    >
+                        EDIT
+                    </Button>
+                    )}                     
+                </div>                              
+            </div>            
+        </div>   
     )
 }
 

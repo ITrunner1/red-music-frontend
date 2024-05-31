@@ -18,15 +18,12 @@ const SongStatistics: FC<ISongStatistics> = ({ listens, createdAt }) => {
 
     return (
         <div className="">
-            <div>
+            <div className="">
                 {formatNumberToK(listens)} прослушиваний
             </div>
-            <>
-                <div className="mx2"></div>
-                <div className="">
-                    {dayjs(new Date(createdAt)).fromNow()}
-                </div>
-            </>
+            <div className="">
+                {dayjs(new Date(createdAt)).fromNow()}
+            </div>
         </div>
     )
 }

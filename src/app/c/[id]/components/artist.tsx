@@ -2,9 +2,9 @@
 
 import { FC } from "react";
 import { IArtist } from "@/interfaces/artist.interface";
-import Catalog from "@/components/home/catalog";
 import ArtistInfoShort from "@/components/ui/artist-info-small";
 import SubscribeButton from "@/components/ui/subscribedButton";
+import Catalog from "@/components/catalog";
 
 const ArtistMain: FC<IArtist> = ({ artist }) => {
   return (
