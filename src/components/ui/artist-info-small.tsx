@@ -1,26 +1,36 @@
 import { FC } from "react";
 import { IUser } from "@/interfaces/user.interface";
-import { Avatar, AvatarImage, AvatarFallback } from "./avatar";
 import formatNumberToK from "@/lib/format-number-to-k";
+import Link from "next/link";
+import { Avatar } from "@nextui-org/react";
 
-const ArtistInfoShort: FC<{ artist: IUser; message?: string}> = ({
+const ArtistInfoShort: FC<{ artist: IUser; message?: string }> = ({
     artist,
     message
 }) => {
     return (
         <div>
-            {artist.avatarPath && 
-            <Avatar>
-                <AvatarImage src={artist.avatarPath} alt={artist.avatarPath} />
-                <AvatarFallback>{artist.avatarPath} </AvatarFallback>
-            </Avatar>}
-            <div>
+            <div className="inline-flex items-center">
                 <div>
+                    {artist.avatarPath &&
+                        <Link href={`/user/${artist.id}`}>
+                            <Avatar
+                                color="primary"
+                                isBordered
+                                size="md"
+                                src={artist.avatarPath}
+                                alt={artist.avatarPath}
+                                className="cursor-pointer">
+                            </Avatar>
+                        </Link>
+                    }
+                </div>
+                <div className="ml-4 border-b-2 border-white">
                     {artist.name}
                 </div>
-                <div>
-                    {message || formatNumberToK(artist.subscribersCount) + ' подписчиков'} 
-                </div>
+            </div>
+            <div>
+                {message || formatNumberToK(artist.subscribersCount) + ' слушателей'}
             </div>
         </div>
     )

@@ -4,7 +4,7 @@ import ArtistInfoShort from "@/components/ui/artist-info-small";
 
 const CommentItem: FC<{ comment: IComment }> = ({ comment }) => {
     return (
-        <div className="mt-7 first:text-xs last:text-base">
+        <div className="pt-6 border rounded-lg p-4 mb-4">
             <ArtistInfoShort artist={comment.user} message={comment.text} />
         </div>
     )

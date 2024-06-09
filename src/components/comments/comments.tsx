@@ -2,9 +2,7 @@
 
 import { FC } from "react";
 import CommentItem from "./commentItem";
-import { IComment, ICommentDto } from "@/interfaces/comment.interface";
-import { SubmitHandler, useForm } from "react-hook-form";
-import { commentApi } from "@/store/api/api.comment";
+import { IComment } from "@/interfaces/comment.interface";
 import { useAuth } from "@/hooks/UseAuth";
 import AddCommentForm from "./addComment";
 
@@ -15,19 +13,20 @@ const Comments: FC<{ comments: IComment[], songId: number }> = ({
     const user = useAuth()
 
     return (
-        <div className="rounded-xl p-5 relative">
-            <h2>Комментарии</h2>
-            <div className="w-full h-0.5 my-4" />                
-            
+        <div className="rounded-xl p-6 relative border">
+            <div className="text-3xl font-semibold ">Комментарии</div>
+            <div className="w-full h-0.5 my-4" />              
+                <div className="rounded-xl bg-gray-800/5 p-6">
                 {comments?.length ? (
-                    <div>
+                    <div className="">
                         {comments.map(comment => (
                             <CommentItem comment={comment} key={comment.id} />  
                         ))}
                     </div>
                 ): (
-                    <p>Комментари не найдены</p>
+                    <p>Комментарии не найдены</p>
                 )}
+                </div>
             <div className="mt-10">
                 {user && <AddCommentForm songId={songId} />}
             </div>                              

@@ -3,10 +3,23 @@ import axios from "axios"
 import Cookies from "js-cookie"
 import { saveToStorage } from "./auth.helper"
 import { instance } from "@/store/api/api.interceptor"
-import { IAuthResponse, IEmailPassword } from "@/interfaces/auth.interface"
+import { IAuthData, IAuthResponse, IRegisterData } from "@/interfaces/auth.interface"
 
 export const AuthService = {
-    async main(type: 'login' | 'register', data: IEmailPassword) {
+
+    async register(type: 'register', data: IRegisterData) {
+        const response = await instance<IAuthResponse>({
+            url: `/auth/${type}`,
+            method: 'POST',
+            data
+        })
+
+        if (response.data.accessToken) saveToStorage(response.data)
+        
+        return response.data
+    },
+
+    async login(type: 'login', data: IAuthData) {
         const response = await instance<IAuthResponse>({
             url: `/auth/${type}`,
             method: 'POST',

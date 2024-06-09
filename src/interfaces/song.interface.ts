@@ -1,5 +1,6 @@
 import { IBase } from "./base.iterface";
 import { IComment } from "./comment.interface";
+import { IPlaylist } from "./playlist.interface";
 import { IUser } from "./user.interface";
 
 export interface ISong extends IBase {  
@@ -13,14 +14,11 @@ export interface ISong extends IBase {
     isPublic?: boolean,  
     user?: IUser     
     comments?: IComment[],     
+    playlist: IPlaylist,
 }
 
 export interface ISongDto
  extends Pick<
     ISong,
-    'id' | 'thumbnailPath' | 'lyrics' | 'name' | 'audioPath' | 'isPublic'
+    'id' | 'thumbnailPath' | 'lyrics' | 'name' | 'audioPath' | 'isPublic' | 'playlist'
 > {}
-
-export interface ISongPage {
-    song: ISong
-}

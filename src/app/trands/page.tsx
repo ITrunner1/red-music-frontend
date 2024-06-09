@@ -1,11 +1,5 @@
-import Catalog from "@/components/home/catalog";
 import TrandsMain from "./components/trands";
-import { FC } from "react";
-import { IHome } from "@/interfaces/home.interfaces"
-import { ISong } from "@/interfaces/song.interface"
 import { SongService } from "@/services/song.service"
-
-import shuffle from "lodash/shuffle"
 
 async function getTopSongs() {
 
@@ -17,7 +11,7 @@ async function getTopSongs() {
 async function Trands() {
   const data = await getTopSongs()
 
-  return (
+  return (      
       <TrandsMain topSongs={data.topSongs} />
   )    
 }

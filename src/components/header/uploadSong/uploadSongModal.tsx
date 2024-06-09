@@ -1,12 +1,12 @@
 import { Button } from "@/components/ui/button";
-import { Dialog, DialogContent, DialogFooter, DialogTrigger } from "@/components/ui/dialog";
+import { Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTrigger } from "@/components/ui/dialog";
 import { songApi } from "@/store/api/api.song";
 import { FC, useState } from "react";
 import { HiUpload } from 'react-icons/hi'
 import useUploadSongForm from "./useUploadSongForm";
 import FooterUploadSong from "./footerUploadSong";
 import { Controller } from "react-hook-form";
-import UploadField from "./uploadField";
+import UploadField from "../../ui/uploadField";
 import UploadSongInformation from "./uploadSongInformation";
 import { Switch } from "@/components/ui/switch";
 import { Textarea } from "@/components/ui/textarea";
@@ -18,12 +18,12 @@ const uploadSongModal: FC = () => {
     const [createSong, { isLoading }] = songApi.useCreateSongMutation()
     const { form, status, file } = useUploadSongForm({ songId })
 
-
     return (
         <Dialog>
-            <DialogTrigger>
+            <DialogTrigger asChild>
                 <Button
-                    className=''
+                    size='icon'
+                    variant="ghost"
                     disabled={isLoading}
                     onClick={() => {
                         !createSong().unwrap().then(id => {
@@ -31,17 +31,22 @@ const uploadSongModal: FC = () => {
                         })
                     }}
                 >
-                    <HiUpload />
+                    <HiUpload size={28} />
                 </Button>
             </DialogTrigger>
-            {status.isSuccess && "Успешно!"}
             {status.isChosen ? (
-                <DialogContent>
+                <DialogContent className="max-w-[700px]">
+                    <DialogHeader>
+                        Ввод данных
+                    </DialogHeader>
+                    <DialogDescription>
+                        Введите информацию о песни и загрузите её превью
+                    </DialogDescription>
                     <form
                         onSubmit={form.handleSubmit(form.onSubmit)}
-                        className="flex flex-wrap"
+                        className="flex flex-wrap gap-x-20"
                     >
-                        <div className="m-7/12 pr-6 pt-3">
+                        <div className="flex flex-col gap-y-4 w-1/2">
                             <Input
                                 {...form.register('name', {
                                     required: 'Название обязательно!'
@@ -54,6 +59,27 @@ const uploadSongModal: FC = () => {
                                 })}
                                 placeholder="Слова"
                             />
+                            <div className="flex mt-4">
+                                <div className="">Видео публичное?</div>
+                                <Controller
+                                    control={form.control}
+                                    name='isPublic'
+                                    render={({ field: { onChange, value } }) => (
+                                        <Switch
+                                            className="ml-6"
+                                            onClick={() => { onChange(!value) }}
+                                        />
+                                    )}
+                                />
+                            </div>
+                        </div>
+                        <div className="w-1/3 flex flex-col gap-y-4">
+                            <div>
+                                <UploadSongInformation
+                                    thumbnailPath={file.thumbnailPath}
+                                    isUploaded={status.isUploaded}
+                                />
+                            </div>
                             <div className="mt-8">
                                 <Controller
                                     control={form.control}
@@ -68,48 +94,41 @@ const uploadSongModal: FC = () => {
                                     )}
                                 />
                             </div>
-                            <Controller
-                                control={form.control}
-                                name='isPublic'
-                                render={({ field: { onChange, value } }) => (
-                                    <Switch
-                                        onClick={() => { onChange(!value) }}
-                                    />
-                                )}
-                            />
                         </div>
-                        <div className="">
-                            <UploadSongInformation
-                                songId={songId}
-                                thumbnailPath={file.thumbnailPath}
-                                fileName={file.songFileName}
-                                isUploaded={status.isUploaded}
-                            />
-                        </div>
-                        <DialogFooter>
+                        <DialogFooter className="w-full mt-8">
                             <FooterUploadSong percent={status.percent} isUploaded={status.isUploaded} />
+                            {status.isSuccess &&
+                                <DialogClose>
+                                    <div className="pl-2 pt-2">
+                                        Успешно!
+                                    </div>
+                                </DialogClose>
+                            }
                         </DialogFooter>
                     </form>
-
+                </DialogContent>
+            ) : (
+                <DialogContent className="w-[350px]">
+                    <DialogHeader>
+                        Загрузка аудио файла
+                    </DialogHeader>
+                    <DialogDescription>
+                        Добавьте аудио файл
+                    </DialogDescription>
+                    <Controller
+                        control={form.control}
+                        name='audioPath'
+                        render={() => (
+                            <UploadField
+                                folder="songs"
+                                onChange={file.handleUploadSong}
+                                setValue={status.setProgressPercentage}
+                                setIsChosen={status.setIsChosen}
+                            />
+                        )}
+                    />
                 </DialogContent>
             )
-                : (
-                    <DialogContent>
-                        <Controller
-                            control={form.control}
-                            name='audioPath'
-                            render={() => (
-                                <UploadField
-                                    title='Сначала, загрузи песню'
-                                    folder="songs"
-                                    onChange={file.handleUploadSong}
-                                    setValue={status.setProgressPercentage}
-                                    setIsChosen={status.setIsChosen}
-                                />
-                            )}
-                        />
-                    </DialogContent>
-                )
             }
         </Dialog>
     )

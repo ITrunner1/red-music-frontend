@@ -21,12 +21,12 @@ const SubscribeButton: FC<{
     if ( user?.id === artistIdForSubscribe) return null
 
     const isSubscribed = profile?.subscriptions?.some(
-        sub => sub.toArtist.id === artistIdForSubscribe
+        sub => sub.toArtist.id === artistIdForSubscribe        
     ) || !!data
 
     return (
         <Button
-            className={cn('text-red-600', {'text-white': isSubscribed})}
+            className={cn('bg-white text-black', {'text-white bg-primary': isSubscribed})}
             onClick={() => subscribe(artistIdForSubscribe).unwrap()}
             disabled={ isLoading }
         >

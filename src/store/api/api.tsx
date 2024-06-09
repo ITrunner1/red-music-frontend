@@ -1,11 +1,11 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
-import { IUser } from '@/interfaces/user.interface'
+import { IUser, IUserDto } from '@/interfaces/user.interface'
 import { USERS } from '../../services/user.service'
 import Cookies from "js-cookie"
 
 export const api = createApi({
     reducerPath: 'api',
-    tagTypes: ['Song', 'Profile'],
+    tagTypes: ['Song', 'Profile', 'Playlist'],
     baseQuery: fetchBaseQuery({
         baseUrl: "http://localhost:4200/api/",
         prepareHeaders: (headers) => {
@@ -22,13 +22,23 @@ export const api = createApi({
             query: () => `${USERS}/user/profile`,
             providesTags: () => [{ type: 'Profile' }]
         }),
+        updateProfile: builder.mutation<IUser, IUserDto>({
+            query: ({ id, ...body }) => ({
+                url: `/${USERS}/${id}`,
+                method: 'PUT',
+                body
+            }),
+            invalidatesTags: (result, error, { id }) => [
+                { type: 'Profile' },
+            ]
+           }),
         subscribeToArtist: builder.mutation<boolean, number>({
             query: (artistId) => ({
                 url: `${USERS}/subscribe/${artistId}`,
-                method: 'PATCH'
+                method: 'PUT'
             }),
             invalidatesTags: () => [{ type: 'Profile' }]
-        })
+        })        
     })
 })
 

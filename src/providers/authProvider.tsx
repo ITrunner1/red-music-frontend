@@ -36,7 +36,7 @@ const AuthProvider: React.FC<PropsWithChildren<unknown>> = ({
 
     if (!user && user) return <>{children}</>   
 
-    pathname !== '/' && router.replace('/')
+    pathname !== '/home' && router.replace('/home')
 
     return null
 }

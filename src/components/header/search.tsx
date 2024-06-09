@@ -9,29 +9,25 @@ const Search: FC = () => {
    const { data, handleSearch, searchTerm, isSuccess } = useSearch()
 
    return (
-      <div className="">   
-         <label htmlFor="">        
-            <Input 
-               className="w-[1000px] focus-visible:outline-0 focus-visible:ring-0 focus-visible:ring-ring focus-visible:ring-offset-0" 
+      <div className="">
+            <Input
+               className="max-sm:w-[140px] max-md:w-[240px] max-lg:w-[340px] max-xl:w-[540px] w-[1200px] focus-visible:outline-0 focus-visible:ring-0 focus-visible:ring-ring focus-visible:ring-offset-0"
                type="text"
                placeholder='Поиск...'
                value={searchTerm}
                onChange={handleSearch}
-            />
-            </label> 
+            />        
          {isSuccess && (
-            <div className="">
-               <div className="mr-4 last:mr-8">
-                  {data?.length ? (                     
-                     data.map(song => <SongItem isSmall item={song} key={song.id } />)
+               <div className="flex justify-between gap-x-6 p-6 border-b-stone-500 bg-background shadow backdrop-blur dark:shadow-secondary">
+                  {data?.length ? (
+                     data.map(song => <SongItem isSmall item={song} key={song.id} />)
                   ) : (
                      <div className="">
                         Музыка не найдена!
                      </div>
                   )}
                </div>
-            </div>
-         )}                 
+         )}
       </div>
    )
 }

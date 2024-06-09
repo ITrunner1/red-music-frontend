@@ -1,4 +1,5 @@
 import { IBase } from "./base.iterface"
+import { IPlaylist } from "./playlist.interface"
 import { ISong } from "./song.interface"
 import { ISubscription } from "./subscription.interface"
 
@@ -12,6 +13,13 @@ export interface IUser extends IBase {
     isVerified: boolean,
     songs: ISong[],
     subscriptions: ISubscription[]
+    playlists: IPlaylist[]
 }
+
+export interface IUserDto
+ extends Pick<
+    IUser,
+    'id' | 'avatarPath' | 'description' | 'name' |'isVerified' | 'email' | 'password'
+> {}
 
 

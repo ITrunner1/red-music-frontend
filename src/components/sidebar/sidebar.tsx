@@ -1,39 +1,52 @@
 'use client'
 
 import Link from "next/link";
-import { FC } from "react";
-import Menu from "./components/menu/menu";
+import { cn } from "@/lib/utils";
+import useStore from "../../hooks/use-store";
+import { SidebarToggle } from "./sidebar-toggle";
+import { Button } from "../ui/button";
+import { useSidebarToggle } from "../../hooks/use-sidebar-toggle";
+import { Menu } from "./menu";
+import { SiMusicbrainz } from "react-icons/si";
 
-const Sidebar: FC = () => {
-   // const { user } = useAuth()
+export function Sidebar() {
+  const sidebar = useStore(useSidebarToggle, (state) => state);
 
-   // const { data } = api.useGetProfileQuery(null, {
-   //    skip: !user
-   // })
+  if(!sidebar) return null;
 
-   return (
-      <aside className='px-7'>
-         <Link className='text-2xl font-semibold' href='/'>            
-            Red Music           
-         </Link>    
-
-         <Menu title='Меню'/>
-
-         {/* { user && <Menu title='Мои подписки' items={
-            data?.subscriptions.map(({toArtist}) => ({
-               image: toArtist.avatarPath,
-               title: toArtist.name,
-               link: '/c/' + toArtist.id
-            })) || []
-            }
-            />
-         } */}
-
-         <div className='text-gray-400 text-opacity-60 text-xs'>
-            ©️ 2024 RED-MUSIC By ITrunner 
-         </div>
-      </aside>
-   )
+  return (
+    <aside
+      className={cn(
+        "fixed top-0 left-0 z-20 h-screen -translate-x-full lg:translate-x-0 transition-[width] ease-in-out duration-300 bg-background",
+        sidebar?.isOpen === false ? "w-[90px]" : "w-72"
+      )}
+    >
+      <SidebarToggle isOpen={sidebar?.isOpen} setIsOpen={sidebar?.setIsOpen} />
+      <div className="relative h-full flex flex-col px-3 pt-5 overflow-y-auto shadow-md dark:shadow-zinc-800">
+        <Button
+          className={cn(
+            "transition-transform ease-in-out duration-300 mb-1",
+            sidebar?.isOpen === false ? "translate-x-1" : "translate-x-0"
+          )}
+          variant="link"
+          asChild
+        >
+          <Link href="/" className="flex items-center gap-2">
+            <SiMusicbrainz size={36} className="mr-1" />
+            <h1
+              className={cn(
+                "font-bold text-lg whitespace-nowrap transition-[transform,opacity,display] ease-in-out duration-300",
+                sidebar?.isOpen === false
+                  ? "-translate-x-96 opacity-0 hidden"
+                  : "translate-x-0 opacity-100"
+              )}
+            >
+              Red Music
+            </h1>
+          </Link>
+        </Button>
+        <Menu isOpen={sidebar?.isOpen} />
+      </div>
+    </aside>
+  );
 }
-
-export default Sidebar;

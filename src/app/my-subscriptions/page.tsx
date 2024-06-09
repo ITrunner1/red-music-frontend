@@ -1,15 +1,12 @@
 import { api } from "@/store/api/api";
 import { FC } from "react";
+import Subscriptions from "./components/subscriptions";
 
 const MySubscriptions: FC = () => {
-  // const { data } = api.useGetProfileQuery(null)
 
   return (
-    <div>
-      My Subscriptions
-      <div></div>
-    </div>
-  )    
+    <Subscriptions />
+  )
 }
 
 export default MySubscriptions

@@ -1,28 +1,26 @@
 'use client'
 
-import { FC, useState } from "react";
-import ProfileModal from "./profileModal";
+import { FC } from "react";
+import ProfileModal from "./profile/profileDropdown";
 import AuthModal from "./authModal/authModal";
 import { useAuth } from "@/hooks/UseAuth";
 import UploadSongModal from "./uploadSong/uploadSongModal";
-import UploadSongForm from "./uploadSong/UploadSongForm";
-import DialogButton from "./uploadSong/dialogButton";
-import { songApi } from "@/store/api/api.song";
+import CreatePlaylistModal from "./createPlaylist/createPlaylistModal";
 
 const iconsRight: FC = () => {
    const { user } = useAuth()
-   
-   return (      
-      <div className="relative flex items-center">
+
+   return (
+      <div className="flex items-start gap-2">
          {user ? (
-             <>               
-               <UploadSongModal /> 
+            <>
+               <CreatePlaylistModal />
+               <UploadSongModal />
                <ProfileModal />
-             </>             
-         ) : (            
+            </>
+         ) : (
             <AuthModal />
-           
-         )}                       
+         )}
       </div>
    )
 }

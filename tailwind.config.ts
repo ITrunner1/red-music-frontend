@@ -2,7 +2,7 @@ import type { Config } from "tailwindcss"
 
 const twColors = require('tailwindcss/colors')
 
-const colors = {
+const colors = { 
    
 }
 
@@ -13,6 +13,7 @@ const config = {
     './components/**/*.{ts,tsx}',
     './app/**/*.{ts,tsx}',
     './src/**/*.{ts,tsx}',
+    "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}"
 	],
   prefix: "",
   theme: {
@@ -86,7 +87,6 @@ const config = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
-} satisfies Config
+}
 
 export default config

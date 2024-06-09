@@ -19,12 +19,18 @@ export interface ITokens {
     refreshToken: string
 }
 
-export interface IInitialState {    
+export interface IInitialState {  
     user: IUserState | null
     isLoading: boolean
 }
 
-export interface IEmailPassword { 
+export interface IRegisterData { 
+    email: string
+    password: string
+    name: string
+}
+
+export interface IAuthData { 
     email: string
     password: string
 }

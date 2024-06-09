@@ -12,49 +12,52 @@ import { MdSend } from "react-icons/md";
 
 const formSchema = z.object({
     text: z.string().min(2).max(500, {
-      message: "Message should be at least 2 characters",
-    }),    
-  })
+        message: "Message should be at least 2 characters",
+    }),
+})
 
-const AddCommentForm: FC<{ songId: number }> = ({ songId }) => {    
+const AddCommentForm: FC<{ songId: number }> = ({ songId }) => {
 
     const form = useForm<ICommentDto>({
-        resolver: zodResolver(formSchema),    
+        resolver: zodResolver(formSchema),
         defaultValues: {
-          text: "",   
+            text: "",
         },
-      });  
+    });
 
-    const [writeComment, {isLoading}] = commentApi.useCreateCommentMutation()
+    const [writeComment, { isLoading }] = commentApi.useCreateCommentMutation()
 
     const onSubmit: SubmitHandler<ICommentDto> = async data => {
         writeComment({ ...data, songId })
             .unwrap()
-            
+
     }
-    
+
     return (
         <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)}>
-                <FormField                
+            <form onSubmit={form.handleSubmit(onSubmit)} className="">
+                <FormField
                     control={form.control}
                     name="text"
                     render={({ field }) => (
-                    <FormItem>                       
-                        <FormControl>
-                        <Input placeholder="name" {...field} />                      
-                        </FormControl>
-                        <FormMessage />
-                    </FormItem>                  
-                    )}             
-                />       
+                        <FormItem>
+                            <FormControl>
+                                <Input placeholder="Напишите комментарий" {...field} />
+                            </FormControl>
+                            <FormMessage />
+                        </FormItem>
+                    )}
+                />
+                <div className="flex justify-end">
+                    <Button
+                        className="mt-4 w-10 h-10"
+                        size='icon'
+                        disabled={isLoading}
+                    >
+                        <MdSend size={28} />
+                    </Button>
+                </div>
             </form>
-            <Button
-                className={'mt-4'}
-                disabled={ isLoading }
-            >
-                <MdSend />
-            </Button>
         </Form>
     )
 }

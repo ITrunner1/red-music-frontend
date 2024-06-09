@@ -7,7 +7,6 @@ import {
   Dialog,
   DialogContent,
   DialogDescription,
-  DialogFooter,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
@@ -19,110 +18,118 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod"
 import { z } from "zod"
 import { register } from "@/store/actions/user.actions";
-import { IEmailPassword } from "@/interfaces/auth.interface";
 import { useAuthRedirect } from "./useAuthRedirect";
 import { useActions } from "@/hooks/useActions";
+import { Label } from "@/components/ui/label";
+import { IAuthData, IRegisterData } from "@/interfaces/auth.interface";
+import RegistrationForm from "./registrationForm";
 
-const formSchema = z.object({
+const formSchemaAuth = z.object({
   email: z.string().email({
     message: "Invalid email address",
   }),
   password: z.string().min(5).max(15, {
-    message: "Password must be at least 5 characters and maximum 15.",      
-  }),  
+    message: "Password must be at least 5 characters and maximum 15.",
+  }),
 })
 
-const authModal: FC = () => { 
+const authModal: FC = () => {
   useAuthRedirect()
 
-  const [type, setType] = useState<'login' | 'register'>('login')
-   
+  const [type, setType] = useState('login')
+
   const { isLoading } = useAuth()
 
-  const { login, register } = useActions()
-  
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),    
+  const { login } = useActions()
+
+  const form = useForm<z.infer<typeof formSchemaAuth>>({
+    resolver: zodResolver(formSchemaAuth),
     defaultValues: {
       email: "",
-      password: "",   
+      password: "",
     },
-  });  
+  });
 
-  const onSubmit: SubmitHandler<IEmailPassword> = data => {
-    if (type === 'login')
-      login(data) 
-    else 
-      register(data)    
+  const onSubmitAuth: SubmitHandler<IAuthData> = data => {
+    login(data)
   }
 
-   return (     
-      <Dialog>
-        <DialogTrigger asChild>
-        <Button size="icon" variant="link" className="mx-2 text-3xl opacity-75 hover:opacity-100">          
+  return (
+    <Dialog>
+      <DialogTrigger asChild>
+        <Button size="icon" variant="link" className="mx-2 text-3xl opacity-75 hover:opacity-100">
           <FaUserCircle fill='#FFFFFF' />
         </Button>
-        </DialogTrigger>
-        <DialogContent className="sm:max-w-[425px]">
-          <DialogHeader>
-            <DialogTitle>{type === 'login' ? 'Логин' : 'Регистрация'}</DialogTitle>
-            <DialogDescription>
-            Войдите в свою учетную запись. 
-            </DialogDescription>
-          </DialogHeader> 
+      </DialogTrigger>
+      <DialogContent className="sm:max-w-[425px]">
+        <DialogHeader>
+          <DialogTitle>Логин</DialogTitle>
+          <DialogDescription>
+            Войдите в свою учетную запись.
+          </DialogDescription>
+        </DialogHeader>
+        {type === 'login' ? (
           <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-              <FormField                
+            <form onSubmit={form.handleSubmit(onSubmitAuth)} className="space-y-8">
+              <FormField
                 control={form.control}
                 name="email"
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>Email</FormLabel>
                     <FormControl>
-                      <Input placeholder="name" {...field} />                      
-                    </FormControl>                 
-                    <FormDescription>  
-                      Write your email                    
+                      <Input placeholder="test@test.com" {...field} />
+                    </FormControl>
+                    <FormDescription>
+                      Введите ваш email
                     </FormDescription>
                     <FormMessage />
-                  </FormItem>                  
-                )}             
-              />              
+                  </FormItem>
+                )}
+              />
               <FormField
                 control={form.control}
                 name="password"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Password</FormLabel>
+                    <FormLabel>Пароль</FormLabel>
                     <FormControl>
-                      <Input placeholder="name" {...field} />                      
-                    </FormControl>                 
-                    <FormDescription>  
-                      Write your password                   
+                      <Input placeholder="password" {...field} />
+                    </FormControl>
+                    <FormDescription>
+                      Введите ваш пароль
                     </FormDescription>
                     <FormMessage />
-                  </FormItem>                  
-                )}                
+                  </FormItem>
+                )}
               />
-              <DialogFooter>      
-                <Button 
-                    type="submit" variant="outline"                                     
-                    > 
-                      {type === 'login' ? 'Логин' : 'Регистрация2'}
-                </Button>                           
-              </DialogFooter>                            
+              <div>
+                <Button
+                  className="w-full"
+                  type="submit" variant="outline"
+                >
+                    Логин
+                </Button>
+              </div>
             </form>
-          </Form> 
-          <Button 
-            type="button"
-            variant="outline"
-            onClick={() => setType(type === 'login' ? 'register' : 'login')}                 
-            >
-              {type === 'register' ? 'Логин' : 'Регистрация'}
-          </Button>                                         
-        </DialogContent>
-      </Dialog>
-   )
+          </Form>
+        ) : (
+          <RegistrationForm />
+        )}
+        <Label>
+          {type === 'login' ? 'Нет учетной записи? Зарегистрируйтесь!' : 'Есть учетная запись? Войдите!'}
+        </Label>
+        <Button
+          className="w-full"
+          type="button"
+          variant="outline"
+          onClick={() => setType(type === 'login' ? 'register' : 'login')}
+        >
+          {type === 'login' ? 'Регистрация' : 'Логин'}
+        </Button>
+      </DialogContent>
+    </Dialog>
+  )
 }
 
 export default authModal;
