@@ -13,7 +13,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { IFileResponse } from "@/interfaces/file.interface";
 import { Input } from "@/components/ui/input";
 
-const uploadSongModal: FC = () => {
+const UploadSongModal: FC = () => {
     const [songId, setSongId] = useState<number>(0)
     const [createSong, { isLoading }] = songApi.useCreateSongMutation()
     const { form, status, file } = useUploadSongForm({ songId })
@@ -134,4 +134,4 @@ const uploadSongModal: FC = () => {
     )
 }
 
-export default uploadSongModal;
+export default UploadSongModal;

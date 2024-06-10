@@ -10,10 +10,10 @@ import { useRouter } from "next/navigation";
 import { IUser, IUserDto } from "@/interfaces/user.interface";
 import { Dialog, DialogContent, DialogDescription, DialogHeader } from "@/components/ui/dialog";
 import { DialogTrigger } from "@radix-ui/react-dialog";
-import { useAuth } from "@/hooks/UseAuth";
+import { useAuth } from "@/hooks/useAuth";
 import EditUserInformation from "./editUserInformation";
 
-const editUserModal: FC = () => {
+const EditUserModal: FC = () => {
     const user = useAuth()
     const userId = Number(user.user?.id)
 
@@ -129,4 +129,4 @@ const editUserModal: FC = () => {
     )
 }
 
-export default editUserModal;
+export default EditUserModal;

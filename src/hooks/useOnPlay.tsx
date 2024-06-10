@@ -1,6 +1,6 @@
 import { useStore } from "zustand";
 import { usePlayerToggle } from "./usePlayer";
-import { useAuth } from "./UseAuth";
+import { useAuth } from "./useAuth";
 import { ISong } from "@/interfaces/song.interface";
 
 const useOnPlay = (songs: ISong[]) => {

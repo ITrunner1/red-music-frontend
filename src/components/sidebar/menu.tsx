@@ -15,7 +15,7 @@ import {
   TooltipContent,
   TooltipProvider
 } from "@/components/ui/tooltip";
-import { getMenuList } from "@/lib/menu-list";
+import { GetMenuList } from "@/lib/menu-list";
 
 interface MenuProps {
   isOpen: boolean | undefined;
@@ -23,7 +23,7 @@ interface MenuProps {
 
 export function Menu({ isOpen }: MenuProps) {
   const pathname = usePathname();
-  const menuList = getMenuList(pathname);
+  const menuList = GetMenuList(pathname);
 
   return (
     <ScrollArea className="[&>div>div[style]]:!block">

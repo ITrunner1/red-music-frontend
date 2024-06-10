@@ -5,14 +5,11 @@ import { api } from "@/store/api/api";
 import { FC } from "react";
 import { Button } from "../../ui/button";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "../../ui/dropdown-menu";
-import { useAuth } from "@/hooks/UseAuth";
+import { useAuth } from "@/hooks/useAuth";
 import { useActions } from "@/hooks/useActions";
-import { useRouter } from "next/navigation";
 import { Avatar } from "@nextui-org/react";
 
-const profileModal: FC = () => {
-   const router = useRouter();
-
+const ProfileModal: FC = () => {
    const { user } = useAuth()
 
    const { data, isLoading } = api.useGetProfileQuery(null, {
@@ -61,4 +58,4 @@ const profileModal: FC = () => {
    )
 }
 
-export default profileModal;
+export default ProfileModal;

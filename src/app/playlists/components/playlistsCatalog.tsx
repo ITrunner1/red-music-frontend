@@ -3,17 +3,17 @@
 import {
   Carousel,
   CarouselContent,
-  CarouselItem,
   CarouselNext,
   CarouselPrevious,
+  CarouselItem,
 } from "@/components/ui/carousel"
 import { FC } from "react"
 import { IPlaylist } from "@/interfaces/playlist.interface"
-import PlaylistItem from "./playlistItem"
 import Heading from "@/components/heading"
+import PlaylistItem from "./playlistItem"
 
 const PlaylistsCatalog: FC<{
-  newPlaylists: IPlaylist[]
+  newPlaylists?: IPlaylist[]
   removeHadler?: (playlistId: number) => void
   isUpdateLink?: boolean
 }> = ({ newPlaylists, removeHadler, isUpdateLink }) => {
@@ -29,11 +29,11 @@ const PlaylistsCatalog: FC<{
         className="w-full"
       >
         <CarouselContent>
-          {newPlaylists?.map(item => (
-            <CarouselItem key={item.id} className="lg:basis-1/6 md:basis-1/2">
+          {newPlaylists?.map(playlist => (
+            <CarouselItem key={playlist.id} className="lg:basis-1/6 md:basis-1/2">
               <PlaylistItem
-                item={item}
-                key={item.id}
+                item={playlist}
+                key={playlist.id}
                 removeHandler={removeHadler}
                 isUpdateLink={isUpdateLink}
               />

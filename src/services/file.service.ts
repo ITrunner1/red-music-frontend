@@ -8,7 +8,7 @@ export const FileService = {
             headers: { 'Content-Type': 'multipart/form-data' },
             onUploadProgress: progressEvent => {
                 if(setValue){
-                    const progress = (progressEvent.loaded / progressEvent.total ) * 100
+                    const progress = (progressEvent?.loaded / progressEvent.total! ) * 100
                     setValue(Math.ceil(progress))
                 }
             }

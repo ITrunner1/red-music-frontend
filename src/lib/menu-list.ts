@@ -1,3 +1,5 @@
+'use client'
+
 import { 
   MdLibraryMusic,
   MdMusicNote,
@@ -6,8 +8,7 @@ import {
 import { AiOutlineRise } from "react-icons/ai";
 import { PlaylistIcon } from '@vidstack/react/icons';
 import { FaUser } from "react-icons/fa";
-import { useAuth } from "@/hooks/UseAuth";
-import { Item } from "@radix-ui/react-dropdown-menu";
+import { useAuth } from "@/hooks/useAuth";
 
 type Submenu = {
   href: string;
@@ -28,7 +29,7 @@ type Group = {
   menus: Menu[];
 };
 
-export function getMenuList(pathname: string): Group[] {
+export function GetMenuList(pathname: string): Group[] {
   const user = useAuth()  
  
   if(!user) return [

@@ -17,7 +17,7 @@ const SubscriptionsItem: FC<IArtist> = ({ artist }) => {
             className="flex gap-x-3 cursor-pointer p-2 outline-none">
             <Link className="text-white" href={`/user/${artist?.id}`}>
                 <div className="relative min-h-[48px] min-w-[48px]">
-                    {artist?.avatarPath &&
+                    {artist &&
                         <Avatar
                             src={artist?.avatarPath}
                             alt={artist?.avatarPath}

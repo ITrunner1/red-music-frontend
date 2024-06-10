@@ -4,7 +4,7 @@ import SubscriptionsItem from "./subscriptionsItem";
 import { motion } from "framer-motion";
 import { api } from "@/store/api/api";
 import { FC } from "react";
-import { useAuth } from "@/hooks/UseAuth";
+import { useAuth } from "@/hooks/useAuth";
 
 const Subscriptions: FC = () => {
     const user = useAuth()
@@ -24,13 +24,11 @@ const Subscriptions: FC = () => {
             </div>
             <div className="flex flex-col gap-y-2 mt-4 px-3 overflow-hidden">
                 {data?.subscriptions?.map((artist) => (
-                    <div className="flex items-center">
-                        <div className="flex-1">
-                            <SubscriptionsItem
-                                key={artist.id}
-                                artist={artist.toArtist}
-                            />
-                        </div>                        
+                    <div className="flex items-center" key={artist.id}>
+                        <SubscriptionsItem
+                            key={artist.id}
+                            artist={artist.toArtist}
+                        />
                     </div>
                 ))}
             </div>

@@ -66,7 +66,7 @@ const MusicPlayerContent = () => {
     <MediaPlayer
       className={cn("fixed flex justify-between gap-8 h-[100px] px-10 z-20 bottom-0 bg-background overflow-y-auto dark:shadow-zinc-100 shadow-md transition-[width] ease-in-out duration-300",
         player?.isOpen === true ? "w-full" : "hidden")}
-      src={{ src: song?.audioPath, type: 'audio/flac' }}>
+      src={{ src: song!?.audioPath, type: 'audio/flac' }}>
       <MediaProvider />
 
       <PlayButton className="group ring-primary relative inline-flex h-4 w-4 cursor-pointer items-center justify-center rounded-md outline-none ring-inset hover:bg-white/20 data-[focus]:ring-4">

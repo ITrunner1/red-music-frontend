@@ -1,7 +1,7 @@
 'use client';
 
 import Cookies from "js-cookie";
-import { useAuth } from "@/hooks/UseAuth";
+import { useAuth } from "@/hooks/useAuth";
 import { usePathname, useRouter } from "next/navigation";
 import { PropsWithChildren, useEffect } from "react";
 import { protectedRoutes } from "@/interfaces/protected-routes.data";

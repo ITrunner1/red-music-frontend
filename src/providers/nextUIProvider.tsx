@@ -1,8 +1,9 @@
 'use client';
+
 import { NextUIProvider } from "@nextui-org/react";
 import React from "react";
 
-interface ReactQueryProps { 
+interface ReactQueryProps {
     children: React.ReactNode;
 };
 

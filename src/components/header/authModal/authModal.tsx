@@ -31,7 +31,7 @@ const formSchemaAuth = z.object({
   }),
 })
 
-const authModal: FC = () => {
+const AuthModal: FC = () => {
   useAuthRedirect()
 
   const [type, setType] = useState('login')  
@@ -128,4 +128,4 @@ const authModal: FC = () => {
   )
 }
 
-export default authModal;
+export default AuthModal;

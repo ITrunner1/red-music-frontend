@@ -1,5 +1,5 @@
 import { IUser } from "./user.interface";
 
-export interface IArtist {
+export interface IArtist {    
     artist: IUser
 }

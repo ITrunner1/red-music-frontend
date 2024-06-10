@@ -15,7 +15,7 @@ import { FC, useEffect } from "react";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import { Select, SelectItem } from "@nextui-org/react";
 import { api } from "@/store/api/api";
-import { useAuth } from "@/hooks/UseAuth";
+import { useAuth } from "@/hooks/useAuth";
 
 const SongEditMain: FC = () => {
   const auth = useAuth()

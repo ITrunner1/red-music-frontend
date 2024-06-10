@@ -3,11 +3,11 @@
 import { FC } from "react";
 import ProfileModal from "./profile/profileDropdown";
 import AuthModal from "./authModal/authModal";
-import { useAuth } from "@/hooks/UseAuth";
+import { useAuth } from "@/hooks/useAuth";
 import UploadSongModal from "./uploadSong/uploadSongModal";
 import CreatePlaylistModal from "./createPlaylist/createPlaylistModal";
 
-const iconsRight: FC = () => {
+const IconsRight: FC = () => {
    const { user } = useAuth()
 
    return (
@@ -25,4 +25,4 @@ const iconsRight: FC = () => {
    )
 }
 
-export default iconsRight
+export default IconsRight

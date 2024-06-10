@@ -2,7 +2,7 @@ import { FC } from "react"
 import { Button } from "./button"
 import { cn } from "@/lib/utils"
 import { BsPersonPlusFill } from "react-icons/bs"
-import { useAuth } from "@/hooks/UseAuth"
+import { useAuth } from "@/hooks/useAuth"
 import { api } from "@/store/api/api"
 
 

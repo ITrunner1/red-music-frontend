@@ -2,7 +2,7 @@
 
 import { FC } from "react";
 import { IComment } from "@/interfaces/comment.interface";
-import { useAuth } from "@/hooks/UseAuth";
+import { useAuth } from "@/hooks/useAuth";
 import CommentItem from "./commentItem";
 import AddCommentForm from "./addComment";
 

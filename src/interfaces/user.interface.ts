@@ -12,7 +12,7 @@ export interface IUser extends IBase {
     subscribersCount: number,        
     isVerified: boolean,
     songs: ISong[],
-    subscriptions: ISubscription[]
+    subscriptions: ISubscription[],
     playlists: IPlaylist[]
 }
 

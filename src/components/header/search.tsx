@@ -20,7 +20,7 @@ const Search: FC = () => {
          {isSuccess && (
                <div className="flex justify-between gap-x-6 p-6 border-b-stone-500 bg-background shadow backdrop-blur dark:shadow-secondary">
                   {data?.length ? (
-                     data.map(song => <SongItem isSmall item={song} key={song.id} />)
+                     data.map(song => <SongItem isSmall item={song} key={song.id} isOpen={false} />)
                   ) : (
                      <div className="">
                         Музыка не найдена!
