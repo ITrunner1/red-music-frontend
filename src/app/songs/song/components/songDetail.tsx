@@ -6,7 +6,6 @@ import { FC } from "react"
 import { ISong } from "@/interfaces/song.interface"
 import { IUser } from "@/interfaces/user.interface"
 import { songApi } from "@/store/api/api.song"
-import { BsCalendar2Check, BsChatRightHeartFill } from "react-icons/bs"
 import { BiSolidLike } from "react-icons/bi";
 import { Button } from "@/components/ui/button"
 import { Textarea } from "@/components/ui/textarea"

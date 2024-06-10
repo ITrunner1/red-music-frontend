@@ -1,4 +1,3 @@
-import { api } from "@/store/api/api";
 import { FC } from "react";
 import Subscriptions from "./components/subscriptions";
 

@@ -2,16 +2,13 @@
 
 import { FC } from "react";
 import { IArtist } from "@/interfaces/artist.interface";
-import { useAuth } from "@/hooks/UseAuth";
+import { motion } from "framer-motion";
 import ArtistInfoShort from "@/components/ui/artist-info-small";
 import SubscribeButton from "@/components/ui/subscribedButton";
 import Catalog from "@/components/catalog";
 import PlaylistsCatalog from "@/app/playlists/components/playlistsCatalog";
-import { motion } from "framer-motion";
 
 const ArtistMain: FC<IArtist> = ({ artist }) => {
-    const user = useAuth()
-
     return (
         <motion.div
             className="mt-10 flex flex-col gap-y-6"

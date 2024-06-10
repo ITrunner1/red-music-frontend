@@ -1,9 +1,9 @@
 `use client`
 
 import { FC } from "react";
-import CommentItem from "./commentItem";
 import { IComment } from "@/interfaces/comment.interface";
 import { useAuth } from "@/hooks/UseAuth";
+import CommentItem from "./commentItem";
 import AddCommentForm from "./addComment";
 
 const Comments: FC<{ comments: IComment[], songId: number }> = ({

@@ -1,5 +1,6 @@
 'use client';
 
+import RegistrationForm from "./registrationForm";
 import { FC, useState } from "react";
 import { FaUserCircle } from "react-icons/fa"
 import { Button } from "@/components/ui/button"
@@ -12,17 +13,14 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog"
 import { Input } from "@/components/ui/input"
-import { useAuth } from "@/hooks/UseAuth";
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod"
 import { z } from "zod"
-import { register } from "@/store/actions/user.actions";
 import { useAuthRedirect } from "./useAuthRedirect";
 import { useActions } from "@/hooks/useActions";
 import { Label } from "@/components/ui/label";
-import { IAuthData, IRegisterData } from "@/interfaces/auth.interface";
-import RegistrationForm from "./registrationForm";
+import { IAuthData } from "@/interfaces/auth.interface";
 
 const formSchemaAuth = z.object({
   email: z.string().email({
@@ -36,9 +34,7 @@ const formSchemaAuth = z.object({
 const authModal: FC = () => {
   useAuthRedirect()
 
-  const [type, setType] = useState('login')
-
-  const { isLoading } = useAuth()
+  const [type, setType] = useState('login')  
 
   const { login } = useActions()
 

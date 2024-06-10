@@ -1,23 +1,21 @@
 'use client'
-
+import Image from "next/image";
+import UploadField from "@/components/ui/uploadField";
 import UploadSongInformation from "@/components/header/uploadSong/uploadSongInformation";
+import Loader from "@/components/ui/loader";;
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import Loader from "@/components/ui/loader";;
 import { Switch } from "@/components/ui/switch";
 import { Textarea } from "@/components/ui/textarea";
-import { useAuth } from "@/hooks/UseAuth";
 import { IFileResponse } from "@/interfaces/file.interface";
-import { ISongDto } from "@/interfaces/song.interface";
-import { playlistApi } from "@/store/api/api.playlist";
+import { ISongDto } from "@/interfaces/song.interface";;
 import { songApi } from "@/store/api/api.song";
 import { useParams, useRouter } from "next/navigation";
 import { FC, useEffect } from "react";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import { Select, SelectItem } from "@nextui-org/react";
-import Image from "next/image";
-import UploadField from "@/components/ui/uploadField";
 import { api } from "@/store/api/api";
+import { useAuth } from "@/hooks/UseAuth";
 
 const SongEditMain: FC = () => {
   const auth = useAuth()

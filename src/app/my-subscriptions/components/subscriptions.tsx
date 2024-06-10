@@ -1,11 +1,10 @@
 'use client'
 
+import SubscriptionsItem from "./subscriptionsItem";
 import { motion } from "framer-motion";
 import { api } from "@/store/api/api";
-import { useAuth } from "@/hooks/UseAuth";
 import { FC } from "react";
-import SubscribeButton from "@/components/ui/subscribedButton";
-import SubscriptionsItem from "./subscriptionsItem";
+import { useAuth } from "@/hooks/UseAuth";
 
 const Subscriptions: FC = () => {
     const user = useAuth()
