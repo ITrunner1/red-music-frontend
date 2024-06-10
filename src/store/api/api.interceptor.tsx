@@ -5,7 +5,7 @@ import { AuthService } from "@/services/auth/auth.service";
 import { removeFromStorage } from "@/services/auth/auth.helper";
 
 export const instance = axios.create({
-    baseURL: "http://localhost:4200/api",
+    baseURL: process.env.SERVER_URL,
     headers: getContentType()
 })
 

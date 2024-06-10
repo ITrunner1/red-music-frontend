@@ -1,9 +1,7 @@
 'use client';
 
-import Image from "next/image";
 import { motion } from "framer-motion";
 import { FC } from "react";
-import { IUser } from "@/interfaces/user.interface";
 import { Avatar, Link } from "@nextui-org/react";
 import { IArtist } from "@/interfaces/artist.interface";
 

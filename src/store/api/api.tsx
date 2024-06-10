@@ -7,7 +7,7 @@ export const api = createApi({
     reducerPath: 'api',
     tagTypes: ['Song', 'Profile', 'Playlist'],
     baseQuery: fetchBaseQuery({
-        baseUrl: "http://localhost:4200/api/",
+        baseUrl: process.env.SERVER_URL,
         prepareHeaders: (headers) => {
             const token = Cookies.get('refreshToken')
 

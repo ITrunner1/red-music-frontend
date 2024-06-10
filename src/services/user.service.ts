@@ -12,7 +12,7 @@ export const UserService = {
     },
 
     async getUser(id:number){
-        return instance<IUser[]>({
+        return instance<IUser>({
             url: `${USERS}/by-id/${id}`,
             method: 'GET',
         }) 

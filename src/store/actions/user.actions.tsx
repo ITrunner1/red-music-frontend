@@ -5,7 +5,6 @@ import { AuthService } from '@/services/auth/auth.service'
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import { toastr } from 'react-redux-toastr'
 import { errorCatch } from '../api/api.helper'
-import { useRouter } from 'next/navigation'
 
 export const register = createAsyncThunk<IAuthResponse, IRegisterData>(
     'auth/register',

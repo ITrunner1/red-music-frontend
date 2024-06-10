@@ -12,11 +12,11 @@ async function generateStaticParams() {
     return paths
 }
 
-async function getUserSongs(params: TypeParamId) {
+async function getUser(params: TypeParamId) {
 
     const { data: artist } = await UserService.getUser(params.id)
 
     return { artist }
 }    
 
-export default getUserSongs
+export default getUser
