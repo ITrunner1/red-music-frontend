@@ -9,6 +9,7 @@ import { AiOutlineRise } from "react-icons/ai";
 import { PlaylistIcon } from '@vidstack/react/icons';
 import { FaUser } from "react-icons/fa";
 import { useAuth } from "@/hooks/useAuth";
+import { IoMdHeartDislike, IoIosHeart } from "react-icons/io";
 
 type Submenu = {
   href: string;
@@ -91,6 +92,11 @@ export function GetMenuList(pathname: string): Group[] {
               href: `/playlists/user/${user.user?.id}`,
               label: "Мои плейлисты",
               active: pathname === `/playlists/user/${user.user?.id}`
+            },
+            {
+              href: `/liked-playlists`,
+              label: "Избранные плейлисты",
+              active: pathname === `/liked-playlists`
             }
           ]
         },
@@ -107,7 +113,14 @@ export function GetMenuList(pathname: string): Group[] {
           active: pathname.includes("/my-subscriptions"),
           icon: MdSubscriptions,
           submenus: []
-        },       
+        }, 
+        {
+          href: "/liked-songs",
+          label: "Избранное",
+          active: pathname.includes("/liked-songs"),
+          icon: IoIosHeart,
+          submenus: []
+        },        
       ]
     },
     {

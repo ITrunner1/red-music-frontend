@@ -14,24 +14,28 @@ const SubscribeButton: FC<{
 
     const { data: profile } = api.useGetProfileQuery(null, {
         skip: !user
-    }) 
+    })
 
     const [subscribe, { isLoading, data }] = api.useSubscribeToArtistMutation()
 
-    if ( user?.id === artistIdForSubscribe) return null
+    if (user?.id === artistIdForSubscribe) return null
 
     const isSubscribed = profile?.subscriptions?.some(
-        sub => sub.toArtist.id === artistIdForSubscribe        
+        sub => sub.toArtist?.id === artistIdForSubscribe
     ) || !!data
 
     return (
         <Button
-            className={cn('bg-white text-black', {'text-white bg-primary': isSubscribed})}
+            className={cn('bg-white text-black', { 'text-white bg-primary': isSubscribed })}
             onClick={() => subscribe(artistIdForSubscribe).unwrap()}
-            disabled={ isLoading }
+            disabled={isLoading}
         >
-            <BsPersonPlusFill />
-                {isSubscribed ? 'Уже подписан' : 'Подписаться'}
+            <div className="flex gap-x-2 justify-between">
+                <BsPersonPlusFill size={26} />
+                <div className="pt-[2px]">
+                    {isSubscribed ? 'Уже подписан' : 'Подписаться'}
+                </div>
+            </div>
         </Button>
     )
 }

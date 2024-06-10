@@ -9,7 +9,7 @@ export const commentApi = api.injectEndpoints({
                 method: 'POST',
                 body
             }),
-            invalidatesTags: (result, error, { songId }) => [{type: 'Song', id: songId}]
+            invalidatesTags: (result, error, { songId }) => [{ type: 'Song', id: songId }]
         })
     })
 })

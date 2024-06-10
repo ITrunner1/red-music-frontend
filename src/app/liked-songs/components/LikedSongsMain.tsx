@@ -1,12 +1,15 @@
 'use client'
 
-import SubscriptionsItem from "./subscriptionsItem";
+import LikedSongsItem from "./LikedSongsItem";
+
 import { motion } from "framer-motion";
 import { api } from "@/store/api/api";
 import { FC } from "react";
 import { useAuth } from "@/hooks/useAuth";
+import useOnPlay from "@/hooks/useOnPlay";
 
-const Subscriptions: FC = () => {
+
+const LikedSongsMain: FC = () => {
     const user = useAuth()
 
     const { data } = api.useGetProfileQuery(null, {
@@ -20,14 +23,14 @@ const Subscriptions: FC = () => {
             animate={{ opacity: 1, x: 0 }}
         >
             <div className="text-3xl mb-4">
-                Мои подписки
+                Избранная музыка
             </div>
             <div className="flex flex-col gap-y-2 mt-4 px-3 overflow-hidden ">
-                {data?.subscriptions?.map((artist) => (
-                    <div className="flex items-center" key={artist.id}>
-                        <SubscriptionsItem
-                            key={artist.id}
-                            artist={artist.toArtist}
+                {data?.likedSongs?.map((song) => (
+                    <div className="flex items-center" key={song.likedSong?.id}>
+                        <LikedSongsItem
+                            key={song.likedSong?.id}
+                            likedSong={song.likedSong}
                         />
                     </div>
                 ))}
@@ -36,4 +39,4 @@ const Subscriptions: FC = () => {
     );
 };
 
-export default Subscriptions;
+export default LikedSongsMain;

@@ -6,9 +6,11 @@ export interface IPlaylist extends IBase {
     name: string,
     picturePath: string,
     description: string, 
+    likes: number,
+    listens: number,
     isPublic: boolean,  
-    user: IUser     
-    songs: ISong[],     
+    user: IUser,     
+    songs: ISong[],
 }
 
 export interface IPlaylistDto

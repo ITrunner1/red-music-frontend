@@ -6,5 +6,4 @@ export interface ISongItem {
     isOpen: boolean | undefined;
     isUpdateLink?: boolean
     isSmall?: boolean
-
 }

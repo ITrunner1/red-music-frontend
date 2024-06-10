@@ -3,7 +3,7 @@
 import PlaylistDetail from "./playlistDetail";
 import Catalog from "@/components/catalog";
 import NextImage from "next/image";
-import { FC } from "react";
+import { FC, useEffect } from "react";
 import { IPlaylist } from "@/interfaces/playlist.interface";
 import { playlistApi } from "@/store/api/api.playlist";
 import { useParams } from "next/navigation";
@@ -16,6 +16,12 @@ const PlaylistMain: FC = () => {
   const { data: playlist = {} as IPlaylist } = playlistApi.useGetPlaylistByIdQuery(Number(params.id), {
     skip: !params?.id
   })
+
+  const [updateListens] = playlistApi.useUpdateListensMutation()
+
+  useEffect(() => {
+    if (params.id) updateListens(Number(params.id))
+  }, [params.id])
 
   return (
     <div className="">

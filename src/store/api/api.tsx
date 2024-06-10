@@ -11,7 +11,7 @@ export const api = createApi({
         prepareHeaders: (headers) => {
             const token = Cookies.get('refreshToken')
 
-            if(token) headers.set('Authorization', `Bearer ${token}`)
+            if (token) headers.set('Authorization', `Bearer ${token}`)
 
             return headers
         }
@@ -31,14 +31,14 @@ export const api = createApi({
             invalidatesTags: (result, error, { id }) => [
                 { type: 'Profile' },
             ]
-           }),
+        }),
         subscribeToArtist: builder.mutation<boolean, number>({
             query: (artistId) => ({
                 url: `${USERS}/subscribe/${artistId}`,
                 method: 'PUT'
             }),
             invalidatesTags: () => [{ type: 'Profile' }]
-        })        
+        })
     })
 })
 

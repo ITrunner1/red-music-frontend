@@ -18,7 +18,16 @@ const nextConfig = {
             {
                 source: '/uploads/:path*',
                 destination: 'http://localhost:4200/uploads/:path*'
-            }
+            },            
+        ] 
+    },
+    async redirects() {
+        return [
+            {
+                source: "/",
+                destination: "/home",
+                permanent: true,
+            },
         ]
     }
 };
