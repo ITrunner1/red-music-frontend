@@ -72,14 +72,14 @@ const SongItem: FC<ISongItem> = ({ isSmall, isUpdateLink, removeHandler, item })
                         />
                     </div>
                     {/* <SongDuration duration={item.duration} /> */}
-                    <div className="mt-2 flex justify-between">
+                    <div className="mt-6 flex justify-between">
                         {isUpdateLink && (
                             <Button
                                 variant='link'
                                 className='bg-background z-10'
                                 onClick={() => push(`songs/edit/${item.id}`)}
                             >
-                                <FaEdit className='text-white hover:text-primary z-10' size={36} />
+                                <FaEdit className='text-white hover:text-green-500 z-10' size={36} />
                             </Button>
                         )}
                         {!!removeHandler && (

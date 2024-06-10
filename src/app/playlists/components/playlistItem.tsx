@@ -10,6 +10,7 @@ import { useRouter } from "next/navigation"
 import { motion } from "framer-motion";
 import { IPlaylist } from "@/interfaces/playlist.interface";
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from "../../../components/ui/alert-dialog";
+import SongStatistics from "@/components/songItem/songStatistics";
 
 export interface IPlaylistItem {
     item: IPlaylist,
@@ -25,7 +26,7 @@ const PlaylistItem: FC<IPlaylistItem> = ({ isSmall, isUpdateLink, removeHandler,
         <motion.div className="" whileHover={{ scale: 1.1 }}>
             <Card className="p-6 flex">
                 <Link href={`/playlists/${item.id}`}>
-                    <div>
+                    <div className="w-[230px] h-[240px]">
                         <Image
                             as={NextImage}
                             className="rounded-xl object-cover cursor-pointer"
@@ -39,13 +40,15 @@ const PlaylistItem: FC<IPlaylistItem> = ({ isSmall, isUpdateLink, removeHandler,
                         />
                     </div>
                     <motion.div
-                        className="absolute ml-[200px] mt-[235px]"
+                        className="absolute ml-[195px] mt-[8px]"
                         whileHover={{ scale: 1.2 }} whileTap={{ scale: 0.8 }}>
                         {item?.user?.avatarPath && (
-                            <Avatar src={item.user.avatarPath} alt={item.user.avatarPath}>
-                                <Link href={`/user/${item.user.id}`}>
-                                </Link>
-                            </Avatar>
+                            <Link href={`/user/${item.user.id}`}>
+                                <Avatar
+                                    src={item.user.avatarPath}
+                                    alt={item.user.avatarPath}>
+                                </Avatar>
+                            </Link>
                         )}
                     </motion.div>
                 </Link>
@@ -53,6 +56,10 @@ const PlaylistItem: FC<IPlaylistItem> = ({ isSmall, isUpdateLink, removeHandler,
                     <div className="">
                         {isSmall && <div>{item.user?.name}</div>}
                         <div>{item.name}</div>
+                        <SongStatistics
+                            listens={item.listens}
+                            createdAt={isSmall ? item.createdAt : ''}
+                        />
                     </div>
                     <div className="mt-2 flex justify-between">
                         {isUpdateLink && (
@@ -61,7 +68,7 @@ const PlaylistItem: FC<IPlaylistItem> = ({ isSmall, isUpdateLink, removeHandler,
                                 className='bg-background z-10'
                                 onClick={() => push(`playlists/edit/${item.id}`)}
                             >
-                                <MdEditNote className='text-white hover:text-primary z-10' size={36} />
+                                <MdEditNote className='text-white hover:text-green-500 z-10' size={36} />
                             </Button>
                         )}
                         {!!removeHandler && (
