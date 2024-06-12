@@ -4,8 +4,8 @@ import { PLAYLISTS } from "@/services/playlist.service";
 
 export const playlistApi = api.injectEndpoints({
     endpoints: builder => ({
-        getAllPlaylists: builder.query<IPlaylist[], number | undefined>({
-            query: id => ({ url: `/${PLAYLISTS}` })
+        getPlaylistsBySearchTerm: builder.query<IPlaylist[], string>({
+            query: searchTerm => ({ url: `/${PLAYLISTS}?searchTerm=${searchTerm}` })
         }),
 
         getPlaylistsbySearchTerm: builder.query<IPlaylist[], string>({
