@@ -4,6 +4,7 @@ import { Input } from "@/components/ui/input";
 import { useActions } from "@/hooks/useActions";
 import { IRegisterData } from "@/interfaces/auth.interface";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useRouter } from "next/navigation";
 import { FC, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { z } from "zod";
@@ -20,10 +21,10 @@ const formSchemaRegsiter = z.object({
     }),
 })
 
-
 const RegistrationForm: FC = () => {
-
-    const [type, setType] = useState('register')  
+    const router = useRouter()
+    
+    const [type, setType] = useState('register')
 
     const form = useForm<z.infer<typeof formSchemaRegsiter>>({
         resolver: zodResolver(formSchemaRegsiter),
@@ -36,8 +37,9 @@ const RegistrationForm: FC = () => {
 
     const { register } = useActions()
 
-    const onSubmitRegister: SubmitHandler<IRegisterData> = data => {              
+    const onSubmitRegister: SubmitHandler<IRegisterData> = data => {
         register(data)
+        router.refresh()
     }
 
     return (

@@ -17,10 +17,10 @@ import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, For
 import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod"
 import { z } from "zod"
-import { useAuthRedirect } from "./useAuthRedirect";
 import { useActions } from "@/hooks/useActions";
 import { Label } from "@/components/ui/label";
 import { IAuthData } from "@/interfaces/auth.interface";
+import { useRouter } from "next/navigation";
 
 const formSchemaAuth = z.object({
   email: z.string().email({
@@ -32,9 +32,9 @@ const formSchemaAuth = z.object({
 })
 
 const AuthModal: FC = () => {
-  useAuthRedirect()
-
-  const [type, setType] = useState('login')  
+  const router = useRouter()
+    
+  const [type, setType] = useState('login')
 
   const { login } = useActions()
 
@@ -48,6 +48,7 @@ const AuthModal: FC = () => {
 
   const onSubmitAuth: SubmitHandler<IAuthData> = data => {
     login(data)
+    router.refresh()
   }
 
   return (
@@ -104,7 +105,7 @@ const AuthModal: FC = () => {
                   className="w-full"
                   type="submit" variant="outline"
                 >
-                    Логин
+                  Логин
                 </Button>
               </div>
             </form>

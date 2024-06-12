@@ -19,10 +19,10 @@ const AuthProvider: React.FC<PropsWithChildren<unknown>> = ({
     const router = useRouter()
 
     const isProtectedRoute = protectedRoutes.some(route => pathname?.startsWith(route))
-    
-    useEffect(() =>{
+
+    useEffect(() => {
         const accessToken = getAccessToken()
-        if(accessToken) checkAuth()
+        if (accessToken) checkAuth()
     }, [])
 
     useEffect(() => {
@@ -30,11 +30,11 @@ const AuthProvider: React.FC<PropsWithChildren<unknown>> = ({
         if (!refreshToken && user) logout()
     }, [pathname])
 
-    if (!isProtectedRoute) return <>{children}</> 
+    if (!isProtectedRoute) return <>{children}</>
 
-    if (user && isProtectedRoute) return <>{children}</>     
+    if (user && isProtectedRoute) return <>{children}</>
 
-    if (!user && user) return <>{children}</>   
+    if (!user && user) return <>{children}</>
 
     pathname !== '/home' && router.replace('/home')
 
