@@ -4,10 +4,10 @@ import { FC } from "react";
 import { motion } from "framer-motion";
 import { IHome } from "@/interfaces/home.interfaces";
 import Discover from "@/components/discover";
-import Catalog from "@/components/catalog";
 import PlaylistsCatalog from "@/app/playlists/components/playlistsCatalog";
+import CatalogPagination from "@/components/catalogPagination";
 
-const Home: FC<IHome> = ({ randomSong, topSong, newSongs, newPlaylists }) => {
+const Home: FC<IHome> = ({ randomSong, topSong, songs, newPlaylists, length }) => {
 
   return (
     <motion.div
@@ -16,9 +16,9 @@ const Home: FC<IHome> = ({ randomSong, topSong, newSongs, newPlaylists }) => {
       animate={{ opacity: 1, x: 0 }}
     >
       <div className="text-5xl">Главная</div>
-      <Discover topSong={topSong} randomSong={randomSong} />
-      <Catalog newSongs={newSongs} />
-      <PlaylistsCatalog newPlaylists={newPlaylists} />
+      <Discover topSong={topSong || {}} randomSong={randomSong || {}}  />
+      <CatalogPagination data = {{ length, songs }} />
+      <PlaylistsCatalog newPlaylists={newPlaylists || {}} />
     </motion.div>
   )
 }

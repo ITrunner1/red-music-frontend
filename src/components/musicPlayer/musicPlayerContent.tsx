@@ -23,11 +23,11 @@ const MusicPlayerContent = () => {
   const player = useStore(usePlayerToggle, (state) => state);
 
   const onPlayNext = () => {
-    if (player?.ids.length === 0) {
+    if (player?.ids?.length === 0) {
       return;
     }
 
-    const currentIndex = player?.ids.findIndex((id) => id === player?.activeId);
+    const currentIndex = player?.ids?.findIndex((id) => id === player?.activeId);
     const nextSong = player?.ids[currentIndex! + 1];
 
     if (!nextSong) {
@@ -38,11 +38,11 @@ const MusicPlayerContent = () => {
   }
 
   const onPlayPrevious = () => {
-    if (player?.ids.length === 0) {
+    if (player?.ids?.length === 0) {
       return;
     }
 
-    const currentIndex = player?.ids.findIndex((id) => id === player?.activeId);
+    const currentIndex = player?.ids?.findIndex((id) => id === player?.activeId);
     const previousSong = player?.ids[currentIndex! - 1];
 
     if (!previousSong) {

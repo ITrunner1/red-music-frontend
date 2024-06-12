@@ -3,22 +3,33 @@ import { IComment } from "./comment.interface";
 import { IPlaylist } from "./playlist.interface";
 import { IUser } from "./user.interface";
 
-export interface ISong extends IBase {  
+export interface ISong extends IBase {
     name: string,
     thumbnailPath: string,
     audioPath: string,
-    lyrics: string, 
+    lyrics: string,
     likes: number,
     listens: number,
     duration: number,
-    isPublic?: boolean,  
-    user?: IUser     
-    comments?: IComment[],     
+    isPublic?: boolean,
+    user?: IUser
+    comments?: IComment[],
     playlist: IPlaylist,
 }
 
 export interface ISongDto
- extends Pick<
-    ISong,
-    'id' | 'thumbnailPath' | 'lyrics' | 'name' | 'audioPath' | 'isPublic' | 'playlist'
-> {}
+    extends Pick<
+        ISong,
+        'id' | 'thumbnailPath' | 'lyrics' | 'name' | 'audioPath' | 'isPublic' | 'playlist'
+    > { }
+
+export type TypeDataFilters = {
+    searchTerm?: string
+    page?: string | number
+    perPage?: string | number
+}
+
+export type TypePaginationSongs = {
+    length: number
+    songs: ISong[]    
+}

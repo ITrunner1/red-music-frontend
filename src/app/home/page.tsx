@@ -7,10 +7,12 @@ async function HomePage() {
   return (
     <main className="min-h-[calc(100vh-57px-97px)]">
       <Home
-        newSongs={data.newSongs}
+        songs={data.songs}
         randomSong={data.randomSong}
         topSong={data.topSong}
-        newPlaylists={data.newPlaylists} />
+        newPlaylists={data.newPlaylists} 
+        length={data.length}
+        />
     </main>
   )
 }
