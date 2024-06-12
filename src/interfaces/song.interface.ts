@@ -23,13 +23,3 @@ export interface ISongDto
         'id' | 'thumbnailPath' | 'lyrics' | 'name' | 'audioPath' | 'isPublic' | 'playlist'
     > { }
 
-export type TypeDataFilters = {
-    searchTerm?: string
-    page?: string | number
-    perPage?: string | number
-}
-
-export type TypePaginationSongs = {
-    length: number
-    songs: ISong[]    
-}

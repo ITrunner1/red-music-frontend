@@ -1,3 +1,3 @@
 export const protectedRoutes = [       
-    '/my-subscriptions', '/studio', `/user`, `/playlists`
+    '/my-subscriptions', '/liked-songs', '/studio', `/user`, `/playlists`
 ]

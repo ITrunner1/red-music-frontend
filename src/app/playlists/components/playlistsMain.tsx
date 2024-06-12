@@ -3,15 +3,20 @@
 import { FC } from "react";
 import { IPlaylist } from "@/interfaces/playlist.interface";
 import PlaylistsCatalog from "./playlistsCatalog";
+import CatalogPlaylistsPagination from "./catalogPlaylistPagination";
 
 interface IPlaylists {
-  newPlaylists: IPlaylist[]
+  length: number
+  playlists: IPlaylist[]
 }
 
-const PlaylistsMain: FC<IPlaylists> = ({ newPlaylists }) => {
+const PlaylistsMain: FC<IPlaylists> = ({ playlists }) => {
   return (
     <div className="">
-      <PlaylistsCatalog newPlaylists={newPlaylists} />
+      <CatalogPlaylistsPagination data={{
+        length,
+        playlists
+      }}  />
     </div>
   )
 }

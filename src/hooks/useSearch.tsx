@@ -3,6 +3,7 @@
 import { useDebounce } from 'use-debounce';
 import { ChangeEvent, FC, useState } from "react";
 import { songApi } from '@/store/api/api.song';
+import { playlistApi } from '@/store/api/api.playlist';
 
 export const useSearch = () => {
    const [ searchTerm, setSearchTerm ] = useState<string>('')
@@ -15,7 +16,7 @@ export const useSearch = () => {
    const { data, isSuccess } = songApi.useGetSongsBySearchTermQuery(debounceSearch, {
       skip: !debounceSearch,
       selectFromResult: ({ data, ...rest }) => ({
-         data: data?.slice(0, 4),
+         data: data?.songs.slice(0, 4),
          ...rest
       })
    })

@@ -1,14 +1,11 @@
+import { TypePaginationSongs } from "@/interfaces/pagination.type";
 import { api } from "./api";
 import { IPlaylist, IPlaylistDto } from "@/interfaces/playlist.interface";
 import { PLAYLISTS } from "@/services/playlist.service";
 
 export const playlistApi = api.injectEndpoints({
     endpoints: builder => ({
-        getPlaylistsBySearchTerm: builder.query<IPlaylist[], string>({
-            query: searchTerm => ({ url: `/${PLAYLISTS}?searchTerm=${searchTerm}` })
-        }),
-
-        getPlaylistsbySearchTerm: builder.query<IPlaylist[], string>({
+        getPlaylistsBySearchTerm: builder.query<TypePaginationSongs, string>({
             query: searchTerm => ({ url: `/${PLAYLISTS}?searchTerm=${searchTerm}` })
         }),
 

@@ -1,5 +1,5 @@
 import instance from "@/store/api/api.interceptor"
-import { ISong, TypeDataFilters, TypePaginationSongs } from "@/interfaces/song.interface"
+import { TypeDataFilters, TypePagination, TypePaginationSongs } from "@/interfaces/pagination.type"
 
 export const SONGS = 'songs'
 
@@ -14,11 +14,14 @@ export const SongService = {
         return data || []
     },
 
-    async getMostPopular() {        
-        return await instance<ISong[]>({
+    async getMostPopular(queryData = {} as TypePagination) {
+        const { data } = await instance<TypePaginationSongs>({
             url: `/${SONGS}/most-popular`,
             method: 'GET',
-        })        
+            params: queryData
+        })
+
+        return data || []
     },
 
 }

@@ -12,10 +12,10 @@ import SongItem from "@/components/songItem/songItem"
 import useOnPlay from "@/hooks/useOnPlay"
 import { useQuery } from "react-query"
 import { SongService } from "@/services/song.service"
-import { Button } from "./ui/button"
 import { TypePaginationSongs } from "@/interfaces/pagination.type"
+import { Button } from "@/components/ui/button"
 
-const Catalog: FC<{
+const CatalogPaginationTrands: FC<{
   data: TypePaginationSongs
   removeHadler?: (songId: number) => void
   isUpdateLink?: boolean
@@ -24,7 +24,7 @@ const Catalog: FC<{
   const [page, setPage] = useState(1)
 
   const { data: response, isLoading } = useQuery(
-    ['songs', page], () => SongService.getAll({
+    ['songs', page], () => SongService.getMostPopular({
       page,
       perPage: 6,
     }),
@@ -37,8 +37,8 @@ const Catalog: FC<{
 
   return (
     <div className="">
-      <div className="my-4 text-2xl">
-        {removeHadler ? 'Моя музыка' : 'Музыка'}
+      <div className="text-2xl">
+        Самая популярная музыка
       </div>
       {response?.length ? (
         <>
@@ -90,4 +90,4 @@ const Catalog: FC<{
   )
 }
 
-export default Catalog
+export default CatalogPaginationTrands

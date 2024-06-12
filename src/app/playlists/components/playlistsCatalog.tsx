@@ -9,7 +9,6 @@ import {
 } from "@/components/ui/carousel"
 import { FC } from "react"
 import { IPlaylist } from "@/interfaces/playlist.interface"
-import Heading from "@/components/heading"
 import PlaylistItem from "./playlistItem"
 
 const PlaylistsCatalog: FC<{
@@ -19,8 +18,8 @@ const PlaylistsCatalog: FC<{
 }> = ({ newPlaylists, removeHadler, isUpdateLink }) => {
   return (
     <div className="">
-      <div className="mb-4">
-        <Heading title={removeHadler ? 'Мои плейлисты' : 'Плейлисты'} />
+      <div className="mb-4 text-2xl">
+        {removeHadler ? 'Мои плейлисты' : 'Плейлисты'}
       </div>
       <Carousel
         opts={{

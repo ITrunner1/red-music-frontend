@@ -4,9 +4,12 @@ import PlaylistsMain from "./components/playlistsMain";
 
 async function getPlaylists() {
 
-  const { data: newPlaylists } = await PlaylistService.getAll()
+  const { playlists: playlists } = await PlaylistService.getAll({
+    page: 1,
+    perPage: 6, 
+})
 
-  return { newPlaylists }
+  return { playlists }
 }
 
 const PlaylistsPage: FC = async () => {
@@ -14,7 +17,7 @@ const PlaylistsPage: FC = async () => {
 
   return (
     <div className="mt-12">
-      <PlaylistsMain newPlaylists={data.newPlaylists} />
+      <PlaylistsMain playlists={data.playlists} length={0} />
     </div>
   )
 }

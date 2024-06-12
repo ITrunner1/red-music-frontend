@@ -5,12 +5,12 @@ async function HomePage() {
   const data = await getSongs()
 
   return (
-    <main className="min-h-[calc(100vh-57px-97px)]">
+    <main className="">
       <Home
         songs={data.songs}
         randomSong={data.randomSong}
         topSong={data.topSong}
-        newPlaylists={data.newPlaylists} 
+        playlists={data.playlists} 
         length={data.length}
         />
     </main>

@@ -1,10 +1,11 @@
+import { TypePaginationSongs } from "@/interfaces/pagination.type";
 import { api } from "./api";
 import { ISong, ISongDto } from "@/interfaces/song.interface";
 import { SONGS } from "@/services/song.service";
 
 export const songApi = api.injectEndpoints({
     endpoints: builder => ({
-        getSongsBySearchTerm: builder.query<ISong[], string>({
+        getSongsBySearchTerm: builder.query<TypePaginationSongs, string>({
             query: searchTerm => ({ url: `/${SONGS}?searchTerm=${searchTerm}` })
         }),
 

@@ -9,7 +9,6 @@ import {
 } from "@/components/ui/carousel"
 import { ISong } from "@/interfaces/song.interface"
 import { FC } from "react"
-import Heading from "./heading"
 import SongItem from "@/components/songItem/songItem"
 import useOnPlay from "@/hooks/useOnPlay"
 
@@ -21,8 +20,8 @@ const Catalog: FC<{
   const onPlay = useOnPlay(newSongs);
   return (
     <div className="">
-      <div>
-        <Heading title={removeHadler ? 'Моя музыка' : 'Музыка'} />
+      <div className="text-2xl">
+        {removeHadler ? 'Моя музыка' : 'Музыка'}
       </div>
       <Carousel
         opts={{
