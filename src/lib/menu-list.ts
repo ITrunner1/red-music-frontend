@@ -9,7 +9,7 @@ import { AiOutlineRise } from "react-icons/ai";
 import { PlaylistIcon } from '@vidstack/react/icons';
 import { FaUser } from "react-icons/fa";
 import { useAuth } from "@/hooks/useAuth";
-import { IoMdHeartDislike, IoIosHeart } from "react-icons/io";
+import { IoIosHeart } from "react-icons/io";
 
 type Submenu = {
   href: string;
