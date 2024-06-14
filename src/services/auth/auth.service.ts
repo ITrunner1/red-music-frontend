@@ -1,6 +1,6 @@
-import { getContentType } from "@/store/api/api.helper"
 import axios from "axios"
 import Cookies from "js-cookie"
+import { getContentType } from "@/store/api/api.helper"
 import { saveToStorage } from "./auth.helper"
 import { instance } from "@/store/api/api.interceptor"
 import { IAuthData, IAuthResponse, IRegisterData } from "@/interfaces/auth.interface"
@@ -47,4 +47,3 @@ export const AuthService = {
         return response
     }
 }
-

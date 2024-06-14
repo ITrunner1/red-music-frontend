@@ -76,7 +76,6 @@ const CreatePlaylistModal: FC = () => {
                         <div>
                             <CreatePlaylistInformation
                                 picturePath={file.picturePath}
-                                isUploaded={status.isUploaded}
                             />
                         </div>
                         <div className="mt-8">

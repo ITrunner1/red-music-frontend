@@ -3,13 +3,11 @@ import Link from "next/link"
 import { FC } from "react"
 
 interface IPlaylistInformation {
-    picturePath: string
-    isUploaded: boolean
+    picturePath: string    
 }
 
 const CreatePlaylistInformation: FC<IPlaylistInformation> = ({
-    picturePath,
-    isUploaded
+    picturePath,    
 }) => {
     return (
         <div>

@@ -62,6 +62,5 @@ export const playlistApi = api.injectEndpoints({
             }),
             invalidatesTags: (result, error, id) => [{ type: 'Playlist' }, { type: 'Profile' }]
         }),
-
     }),
 })

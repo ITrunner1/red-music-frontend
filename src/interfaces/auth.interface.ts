@@ -1,17 +1,8 @@
 import { IUser } from "@/interfaces/user.interface"
 
-export interface IAthData {
-    user: {
-        id: number
-        email: string
-    } | null
-    accesToken: string
-}
-
 export interface IUserState {
     id: number
     email: string
-    // isAdmin: boolean
 }
 
 export interface ITokens {

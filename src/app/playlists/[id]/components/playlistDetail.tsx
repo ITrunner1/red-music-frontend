@@ -6,17 +6,12 @@ import formatNumberToK from "@/lib/format-number-to-k"
 import { IPlaylist } from "@/interfaces/playlist.interface"
 import { IUser } from "@/interfaces/user.interface"
 import { FC } from "react"
-import { playlistApi } from "@/store/api/api.playlist"
-import { ToggleButton } from "@vidstack/react"
-import { IoIosHeart, IoMdHeartDislike } from "react-icons/io"
 import LikePlaylistButton from "@/components/ui/likePlaylistButton"
-
 
 const playlistDetail: FC<{ playlist: IPlaylist, artist: IUser }> = ({
     playlist,
     artist
-}) => {
-    const [updateLike, { isLoading: isLikeLoading }] = playlistApi.useUpdateLikesMutation()
+}) => { 
 
     return (
         <div className="flex flex-col space-y-6 pb-10 mt-2">
@@ -43,7 +38,6 @@ const playlistDetail: FC<{ playlist: IPlaylist, artist: IUser }> = ({
                 </div>
             </div>
         </div>
-
     )
 }
 

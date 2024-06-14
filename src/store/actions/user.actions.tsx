@@ -1,4 +1,3 @@
-
 import { IAuthData, IAuthResponse, IRegisterData } from '@/interfaces/auth.interface'
 import { removeFromStorage } from '@/services/auth/auth.helper'
 import { AuthService } from '@/services/auth/auth.service'
