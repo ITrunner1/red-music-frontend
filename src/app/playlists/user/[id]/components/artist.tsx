@@ -12,5 +12,4 @@ const ArtistMain: FC<IArtist> = ({ artist }) => {
     )
 }
 
-
 export default ArtistMain

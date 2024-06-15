@@ -129,7 +129,7 @@ export function GetMenuList(pathname: string): Group[] {
         {
           href: `/user/${user.user?.id}`,
           label: "Мой аккаунт",
-          active: pathname.includes(`/user/${user.user?.id}`),
+          active: pathname === `/user/${user.user?.id}`,
           icon: FaUser,
           submenus: []
         }
