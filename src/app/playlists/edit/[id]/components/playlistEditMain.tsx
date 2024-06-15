@@ -52,7 +52,6 @@ const PlaylistEditMain: FC = () => {
       .unwrap()
       .then(() => {
         toastr.success('Статус', 'Песня обновлена!',
-
         )
       })
   }

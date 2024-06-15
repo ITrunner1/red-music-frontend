@@ -2,7 +2,7 @@
 
 import { FC } from "react";
 import { IArtist } from "@/interfaces/artist.interface";
-import PlaylistsCatalog from "@/components/playlistItem/playlistsCatalog";
+import PlaylistsCatalog from "@/components/playlistsCatalog";
 
 const ArtistMain: FC<IArtist> = ({ artist }) => {
     return (
