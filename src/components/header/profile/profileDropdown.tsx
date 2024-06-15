@@ -9,7 +9,7 @@ import { useAuth } from "@/hooks/useAuth";
 import { useActions } from "@/hooks/useActions";
 import { Avatar } from "@nextui-org/react";
 
-const ProfileModal: FC = () => {
+const ProfileDropdownMenu: FC = () => {
    const { user } = useAuth()
 
    const { data, isLoading } = api.useGetProfileQuery(null, {
@@ -58,4 +58,4 @@ const ProfileModal: FC = () => {
    )
 }
 
-export default ProfileModal;
+export default ProfileDropdownMenu;

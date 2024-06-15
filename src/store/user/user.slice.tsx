@@ -15,11 +15,11 @@ export const userSlice = createSlice({
     initialState,
     reducers: {},
     extraReducers: builder => {
-        builder 
+        builder
             .addCase(register.pending, state => {
                 state.isLoading = true
             })
-            .addCase(register.fulfilled, (state, {payload}) => {
+            .addCase(register.fulfilled, (state, { payload }) => {
                 state.isLoading = false
                 state.user = payload.user
             })
@@ -30,7 +30,7 @@ export const userSlice = createSlice({
             .addCase(login.pending, state => {
                 state.isLoading = true
             })
-            .addCase(login.fulfilled, (state, {payload}) => {
+            .addCase(login.fulfilled, (state, { payload }) => {
                 state.isLoading = false
                 state.user = payload.user
             })
@@ -42,11 +42,10 @@ export const userSlice = createSlice({
                 state.isLoading = true
                 state.user = null
             })
-            .addCase(checkAuth.fulfilled, (state, {payload}) => {
+            .addCase(checkAuth.fulfilled, (state, { payload }) => {
                 {
                     state.user = payload.user
                 }
-            })         
-            
+            })
     }
 })

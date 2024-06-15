@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/carousel"
 import { FC } from "react"
 import { IPlaylist } from "@/interfaces/playlist.interface"
-import PlaylistItem from "./playlistItem"
+import PlaylistItem from "./playlistItem/playlistItem"
 
 const PlaylistsCatalog: FC<{
   newPlaylists?: IPlaylist[]

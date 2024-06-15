@@ -3,9 +3,9 @@
 import { cn } from "@/lib/utils";
 import { useSidebarToggle } from "@/hooks/use-sidebar-toggle";
 import { usePlayerToggle } from "@/hooks/usePlayer";
+import { Sidebar } from "./sidebar";
 import useStore  from "../../hooks/use-store";
 import Header from "../header/header";
-import { Sidebar } from "./sidebar";
 import MusicPlayer from "../musicPlayer/musicPlayerContent";
 
 export default function LayoutSidebar({

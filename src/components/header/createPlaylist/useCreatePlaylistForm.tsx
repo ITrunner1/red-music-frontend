@@ -16,7 +16,6 @@ const useCreatePlaylistForm = ({ playlistId }: IUseCreatePlaylistForm) => {
         control, 
         handleSubmit,
         watch,
-        setValue,
         reset
     } = useForm<IPlaylistDto>({
         mode: 'onChange'
@@ -34,12 +33,6 @@ const useCreatePlaylistForm = ({ playlistId }: IUseCreatePlaylistForm) => {
    
     const picturePath = watch('picturePath')
     const [ playlistFileName, setPlaylistFileName ] = useState('')
-
-    // const handleCreatePlaylist = ( value: IFileResponse ) => {
-    //   setValue('audioPath', value.url)
-    //   setValue('name', value.name)
-    //   setPlaylistFileName(value.name)
-    // }
 
     const [ isChosen, setIsChosen ] = useState(false)
 
@@ -61,7 +54,6 @@ const useCreatePlaylistForm = ({ playlistId }: IUseCreatePlaylistForm) => {
       file: {        
         picturePath,
         playlistFileName,
-        // handleCreatePlaylist
       },
       status: {
         isSuccess,

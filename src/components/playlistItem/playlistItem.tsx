@@ -9,8 +9,8 @@ import { Button } from "@/components/ui/button"
 import { useRouter } from "next/navigation"
 import { motion } from "framer-motion";
 import { IPlaylist } from "@/interfaces/playlist.interface";
-import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from "../../../components/ui/alert-dialog";
-import SongStatistics from "@/components/songItem/songStatistics";
+import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from "../ui/alert-dialog";
+import Statistics from "@/components/statistics";
 
 export interface IPlaylistItem {
     item: IPlaylist,
@@ -56,7 +56,7 @@ const PlaylistItem: FC<IPlaylistItem> = ({ isSmall, isUpdateLink, removeHandler,
                     <div className="">
                         {isSmall && <div>{item.user?.name}</div>}
                         <div>{item.name}</div>
-                        <SongStatistics
+                        <Statistics
                             listens={item.listens}
                             createdAt={isSmall ? item.createdAt : ''}
                         />

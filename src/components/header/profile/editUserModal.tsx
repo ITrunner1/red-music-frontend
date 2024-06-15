@@ -7,11 +7,11 @@ import { IFileResponse } from "@/interfaces/file.interface";
 import { Input } from "@/components/ui/input";
 import { api } from "@/store/api/api";
 import { useRouter } from "next/navigation";
-import { IUser, IUserDto } from "@/interfaces/user.interface";
+import { IUserDto } from "@/interfaces/user.interface";
 import { Dialog, DialogContent, DialogDescription, DialogHeader } from "@/components/ui/dialog";
 import { DialogTrigger } from "@radix-ui/react-dialog";
 import { useAuth } from "@/hooks/useAuth";
-import EditUserInformation from "./editUserInformation";
+import Image from "next/image"
 
 const EditUserModal: FC = () => {
     const user = useAuth()
@@ -97,12 +97,16 @@ const EditUserModal: FC = () => {
                                 required: ''
                             })}
                             placeholder="Описание"
-                        />                     
+                        />
                     </div>
                     <div className="w-1/3 flex flex-col gap-y-4">
                         <div>
-                            <EditUserInformation
-                                avatarPath={watch('avatarPath')}                                
+                            <Image
+                                src={watch('avatarPath')}
+                                alt={''}
+                                width={210}
+                                height={210}
+                                layout="responsive"
                             />
                         </div>
                         <div className="mt-8">
@@ -120,7 +124,7 @@ const EditUserModal: FC = () => {
                             />
                         </div>
                     </div>
-                    <Button>
+                    <Button className="mt-2">
                         {isUpdateLoading ? 'Ожидайте...' : 'Сохранить'}
                     </Button>
                 </form>

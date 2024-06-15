@@ -4,12 +4,12 @@ const nextConfig = {
     swcMinify: true,
     poweredByHeader: false,
     env: {
-        SERVER_URL: process.env.SERVER_URL,        
+        SERVER_URL: process.env.SERVER_URL,
     },
     images: {
-        domains: ['localhost']
+        remotePatterns: [{ hostname: 'localhost' },]
     },
-    async rewrites(){
+    async rewrites() {
         return [
             {
                 source: '/api/:path*',
@@ -18,8 +18,8 @@ const nextConfig = {
             {
                 source: '/uploads/:path*',
                 destination: 'http://localhost:4200/uploads/:path*'
-            },            
-        ] 
+            },
+        ]
     },
     async redirects() {
         return [

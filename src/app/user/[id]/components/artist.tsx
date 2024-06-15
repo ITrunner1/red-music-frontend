@@ -5,8 +5,8 @@ import { IArtist } from "@/interfaces/artist.interface";
 import { motion } from "framer-motion";
 import ArtistInfoShort from "@/components/ui/artist-info-small";
 import SubscribeButton from "@/components/ui/subscribedButton";
-import PlaylistsCatalog from "@/app/playlists/components/playlistsCatalog";
 import Catalog from "@/components/catalog";
+import PlaylistsCatalog from "@/components/playlistsCatalog";
 
 const ArtistMain: FC<IArtist> = ({ artist }) => {
     return (

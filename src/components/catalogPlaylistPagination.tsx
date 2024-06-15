@@ -12,7 +12,7 @@ import { useQuery } from "react-query"
 import { TypePaginationPlaylists } from "@/interfaces/pagination.type"
 import { Button } from "@/components/ui/button"
 import { PlaylistService } from "@/services/playlist.service"
-import PlaylistItem from "./playlistItem"
+import PlaylistItem from "./playlistItem/playlistItem"
 
 const CatalogPlaylistsPagination: FC<{
   data: TypePaginationPlaylists

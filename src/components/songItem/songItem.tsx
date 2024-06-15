@@ -1,8 +1,7 @@
 'use client'
 
-import SongDuration from "./songDuration"
 import Link from "next/link"
-import SongStatistics from "./songStatistics"
+import Statistics from "../statistics"
 import useStore from "@/hooks/use-store";
 import NextImage from "next/image";
 import { MdOpenInFull } from "react-icons/md";
@@ -66,12 +65,11 @@ const SongItem: FC<ISongItem> = ({ isSmall, isUpdateLink, removeHandler, item })
                     <div className="">
                         {isSmall && <div>{item.user?.name}</div>}
                         <div>{item.name}</div>
-                        <SongStatistics
+                        <Statistics
                             listens={item.listens}
                             createdAt={isSmall ? item.createdAt : ''}
                         />
                     </div>
-                    {/* <SongDuration duration={item.duration} /> */}
                     <div className="mt-6 flex justify-between">
                         {isUpdateLink && (
                             <Button

@@ -1,7 +1,7 @@
 'use client'
 
-import PlaylistsCatalog from "@/app/playlists/components/playlistsCatalog";
 import Catalog from "@/components/catalog";
+import PlaylistsCatalog from "@/components/playlistsCatalog";
 import Loader from "@/components/ui/loader";
 import { api } from "@/store/api/api";
 import { playlistApi } from "@/store/api/api.playlist";

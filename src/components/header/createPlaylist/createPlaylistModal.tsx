@@ -3,14 +3,13 @@ import { Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, Di
 import { playlistApi } from "@/store/api/api.playlist";
 import { FC, useState } from "react";
 import useUploadPlaylistForm from "./useCreatePlaylistForm";
-import FooterUploadPlaylist from "./footerCreatePlaylist";
 import { Controller } from "react-hook-form";
 import UploadField from "../../ui/uploadField";
 import { Switch } from "@/components/ui/switch";
 import { Textarea } from "@/components/ui/textarea";
 import { IFileResponse } from "@/interfaces/file.interface";
 import { Input } from "@/components/ui/input";
-import CreatePlaylistInformation from "./createPlaylistInformation";
+import Image from "next/image"
 import { AddPlaylistIcon } from "@vidstack/react/icons";
 
 const CreatePlaylistModal: FC = () => {
@@ -74,8 +73,12 @@ const CreatePlaylistModal: FC = () => {
                     </div>
                     <div className="w-1/3 flex flex-col gap-y-4">
                         <div>
-                            <CreatePlaylistInformation
-                                picturePath={file.picturePath}
+                            <Image
+                                src={file.picturePath}
+                                alt={''}
+                                width={210}
+                                height={210}
+                                layout="responsive"
                             />
                         </div>
                         <div className="mt-8">
@@ -94,7 +97,9 @@ const CreatePlaylistModal: FC = () => {
                         </div>
                     </div>
                     <DialogFooter className="w-full mt-8">
-                        <FooterUploadPlaylist percent={status.percent} isUploaded={status.isUploaded} />
+                        <Button>
+                            {isLoading ? 'Ожидайте...' : 'Создать'}
+                        </Button>
                         {status.isSuccess &&
                             <DialogClose>
                                 <div className="pl-2 pt-2">

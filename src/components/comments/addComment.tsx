@@ -1,5 +1,4 @@
 import { FC } from "react";
-import CommentItem from "./commentItem";
 import { ICommentDto } from "@/interfaces/comment.interface";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { commentApi } from "@/store/api/api.comment";

@@ -1,11 +1,11 @@
 'use client'
 
 import { FC } from "react";
-import ProfileModal from "./profile/profileDropdown";
 import AuthModal from "./authModal/authModal";
 import { useAuth } from "@/hooks/useAuth";
 import UploadSongModal from "./uploadSong/uploadSongModal";
 import CreatePlaylistModal from "./createPlaylist/createPlaylistModal";
+import ProfileDropdownMenu from "./profile/profileDropdown";
 
 const IconsRight: FC = () => {
    const { user } = useAuth()
@@ -16,7 +16,7 @@ const IconsRight: FC = () => {
             <>
                <CreatePlaylistModal />
                <UploadSongModal />
-               <ProfileModal />
+               <ProfileDropdownMenu />
             </>
          ) : (
             <AuthModal />

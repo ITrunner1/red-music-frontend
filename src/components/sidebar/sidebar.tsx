@@ -12,7 +12,7 @@ import { SiMusicbrainz } from "react-icons/si";
 export function Sidebar() {
   const sidebar = useStore(useSidebarToggle, (state) => state);
 
-  if(!sidebar) return null;
+  if (!sidebar) return null;
 
   return (
     <aside

@@ -5,16 +5,15 @@ import dayjs from 'dayjs'
 import relativeTime from 'dayjs/plugin/relativeTime'
 import formatNumberToK from "@/lib/format-number-to-k"
 
-interface ISongStatistics {
+interface IStatistics {
     listens: number,
     createdAt: string
 }
 
 dayjs.extend(relativeTime)
 
-const SongStatistics: FC<ISongStatistics> = ({ listens, createdAt }) => {
+const SongStatistics: FC<IStatistics> = ({ listens, createdAt }) => {
     const date = dayjs(new Date(createdAt))
-    const dateString: string = date.toString();
 
     return (
         <div className="">

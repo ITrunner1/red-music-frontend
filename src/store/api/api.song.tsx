@@ -63,6 +63,5 @@ export const songApi = api.injectEndpoints({
             }),
             invalidatesTags: (result, error, id) => [{ type: 'Song' }, { type: 'Profile' }]
         }),
-
     }),
 })

@@ -2,8 +2,8 @@
 
 import { FC } from "react";
 import { IPlaylist } from "@/interfaces/playlist.interface";
-import PlaylistsCatalog from "./playlistsCatalog";
-import CatalogPlaylistsPagination from "./catalogPlaylistPagination";
+import PlaylistsCatalog from "../../../components/playlistsCatalog";
+import CatalogPlaylistsPagination from "../../../components/catalogPlaylistPagination";
 
 interface IPlaylists {
   length: number

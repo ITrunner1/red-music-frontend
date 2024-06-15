@@ -3,9 +3,8 @@
 import { FC } from "react";
 import { motion } from "framer-motion";
 import { IHome } from "@/interfaces/home.interfaces";
-import PlaylistsCatalog from "@/app/playlists/components/playlistsCatalog";
 import CatalogPagination from "@/components/catalogPagination";
-import CatalogPlaylistsPagination from "@/app/playlists/components/catalogPlaylistPagination";
+import CatalogPlaylistsPagination from "@/components/catalogPlaylistPagination";
 
 const Home: FC<IHome> = ({ songs, playlists, length }) => {
 
@@ -21,6 +20,5 @@ const Home: FC<IHome> = ({ songs, playlists, length }) => {
     </motion.div>
   )
 }
-
 
 export default Home
