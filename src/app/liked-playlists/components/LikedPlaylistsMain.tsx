@@ -20,7 +20,7 @@ const LikedPlaylistsMain: FC = () => {
             animate={{ opacity: 1, x: 0 }}
         >
             <div className="text-3xl mb-4">
-                Избранная музыка
+                Избранные плейлисты
             </div>
             <div className="flex flex-col gap-y-2 mt-4 px-3 overflow-hidden ">
                 {data?.likedPlaylists?.map((playlist) => (
