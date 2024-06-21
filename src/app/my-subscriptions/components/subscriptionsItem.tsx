@@ -6,7 +6,6 @@ import { Avatar, Link } from "@nextui-org/react";
 import { IArtist } from "@/interfaces/artist.interface";
 
 const SubscriptionsItem: FC<IArtist> = ({ artist }) => {
-
     return (
         <motion.div
             whileHover={{ scale: 1.1 }}

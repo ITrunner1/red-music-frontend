@@ -46,11 +46,11 @@ const Catalog: FC<{
             opts={{
               align: "start",
             }}
-            className="w-full"
+            className="w-full "
           >
             <CarouselContent>
               {response.songs?.map(song => (
-                <CarouselItem key={song.id} onClick={() => onPlay(song.id)} className="lg:basis-1/6 md:basis-1/2">
+                <CarouselItem  key={song.id} onClick={() => onPlay(song.id)} className="lg:basis-1/4 md:basis-1/2">
                   <SongItem
                     item={song}
                     key={song.id}
@@ -60,8 +60,8 @@ const Catalog: FC<{
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <CarouselPrevious />
-            <CarouselNext />
+            <CarouselPrevious className="xl:hidden 2xl:hidden" />
+            <CarouselNext className="lg:hidden" />
           </Carousel>
           <div className="text-center mt-2">
             {Array.from({ length: response.length / 6 }).map((_, index) => {

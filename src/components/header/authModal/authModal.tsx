@@ -58,7 +58,7 @@ const AuthModal: FC = () => {
           <FaUserCircle fill='#FFFFFF' />
         </Button>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[425px]">
+      <DialogContent className="sm:min-w-[250px]">
         <DialogHeader>
           <DialogTitle>Логин</DialogTitle>
           <DialogDescription>
@@ -75,7 +75,7 @@ const AuthModal: FC = () => {
                   <FormItem>
                     <FormLabel>Email</FormLabel>
                     <FormControl>
-                      <Input placeholder="test@test.com" {...field} />
+                      <Input type="email" placeholder="test@test.com" {...field} />
                     </FormControl>
                     <FormDescription>
                       Введите ваш email
@@ -86,12 +86,12 @@ const AuthModal: FC = () => {
               />
               <FormField
                 control={form.control}
-                name="password"
+                name="password"                
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>Пароль</FormLabel>
                     <FormControl>
-                      <Input placeholder="password" {...field} />
+                      <Input type="password" placeholder="password" {...field} />
                     </FormControl>
                     <FormDescription>
                       Введите ваш пароль

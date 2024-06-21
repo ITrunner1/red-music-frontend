@@ -39,8 +39,7 @@ export default function LayoutSidebar({
       <div className={cn(
           "transition-[margin-left] z-1 ease-in-out duration-300",
           sidebar?.isOpen === false ? "lg:ml-[90px]" : "lg:ml-72"
-        )}>
-        
+        )}>        
       </div> 
       <MusicPlayer />  
     </>

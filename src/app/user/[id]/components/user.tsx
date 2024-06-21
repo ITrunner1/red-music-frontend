@@ -8,7 +8,7 @@ import SubscribeButton from "@/components/ui/subscribedButton";
 import Catalog from "@/components/catalog";
 import PlaylistsCatalog from "@/components/playlistsCatalog";
 
-const ArtistMain: FC<IArtist> = ({ artist }) => {
+const UserMain: FC<IArtist> = ({ artist }) => {
     return (
         <motion.div
             className="mt-10 flex flex-col gap-y-6"
@@ -43,4 +43,4 @@ const ArtistMain: FC<IArtist> = ({ artist }) => {
 }
 
 
-export default ArtistMain
+export default UserMain

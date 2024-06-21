@@ -18,7 +18,7 @@ export const usePlayerToggle = create(
     (set, get) => ({
       ids: [],
       activeId: undefined,
-      isOpen: true,
+      isOpen: false,
       setId: (id: number) => set({ activeId: id }),
       setIds: (ids: number[]) => set({ ids }),
       setIsOpen: () => {

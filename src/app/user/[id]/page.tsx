@@ -1,5 +1,5 @@
 import getUser from "@/components/getUser";
-import ArtistMain from "./components/artist";
+import UserMain from "./components/user";
 import { IPageIdParam, TypeParamId } from "@/interfaces/page-params";
 
 async function ArtistPage({params}: IPageIdParam) {
@@ -7,7 +7,7 @@ async function ArtistPage({params}: IPageIdParam) {
 
   return (    
     <div className="mt-10">
-      <ArtistMain artist={data.artist}/>      
+      <UserMain artist={data.artist}/>      
     </div>
   )    
 }
