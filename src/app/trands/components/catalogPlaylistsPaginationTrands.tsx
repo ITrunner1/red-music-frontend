@@ -13,12 +13,17 @@ import { PlaylistService } from "@/services/playlist.service"
 import { Button } from "@/components/ui/button"
 import { TypePaginationPlaylists } from "@/interfaces/pagination.type"
 import PlaylistItem from "@/components/playlistItem/playlistItem"
+import { cn } from "@/lib/utils"
+import useStore from "@/hooks/use-store"
+import { useSidebarToggle } from "@/hooks/use-sidebar-toggle"
 
 const CatalogPlaylistsPaginationTrands: FC<{
   data: TypePaginationPlaylists
   removeHadler?: (playlistId: number) => void
   isUpdateLink?: boolean
 }> = ({ data, removeHadler, isUpdateLink }) => {
+
+  const sidebar = useStore(useSidebarToggle, (state) => state);
 
   const [page, setPage] = useState(1)
 
@@ -31,7 +36,7 @@ const CatalogPlaylistsPaginationTrands: FC<{
       initialData: data
     }
   )
-  
+
   return (
     <div className="">
       <div className="text-2xl max-sm:text-xl">
@@ -39,21 +44,24 @@ const CatalogPlaylistsPaginationTrands: FC<{
       </div>
       {response?.length ? (
         <>
-          <Carousel opts={{ align: "start", }} className="w-full">
-            <CarouselContent>
+          <Carousel>
+            <CarouselContent className="max-sm:max-w-sm">
               {response.playlists?.map(playlist => (
-                <CarouselItem key={playlist.id} className="pt-6 pl-8 2xl:basis-1/6 xl:basis-1/4 lg:basis-1/3 md:basis-1/2">
+                <CarouselItem key={playlist.id}
+                  className={cn("pt-6 pl-12 max-sm:pl-24  xl:basis-1/4 lg:basis-1/3 md:basis-1/2 max-sm:justify-center ease-in-out duration-500",
+                    sidebar?.isOpen === false ? "2xl:basis-1/6" : "2xl:basis-1/5"
+                  )}>
                   <PlaylistItem
                     item={playlist}
                     key={playlist.id}
                     removeHandler={removeHadler}
                     isUpdateLink={isUpdateLink}
-                    />
+                  />
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <CarouselPrevious />
-            <CarouselNext />
+            <CarouselPrevious className={cn("max-sm:ml-12", sidebar?.isOpen === false ? "2xl:hidden" : "")} />
+            <CarouselNext className={cn("max-sm:ml-12", sidebar?.isOpen === false ? "2xl:hidden" : "")} />
           </Carousel>
           <div className="text-center mt-2">
             {Array.from({ length: response.length / 6 }).map((_, index) => {
@@ -76,8 +84,7 @@ const CatalogPlaylistsPaginationTrands: FC<{
         <div className="mb-6">
           <div className="my-4">Музыка не загружена!</div>
         </div>
-      )
-      }
+      )}
     </div>
   )
 }
