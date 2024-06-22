@@ -61,8 +61,8 @@ const PlaylistEditMain: FC = () => {
       {isLoading ? (
         <Loader />
       ) : (
-        <form onSubmit={handleSubmit(onSubmit)} className="flex flex-wrap gap-x-20">
-          <div className="flex flex-col gap-y-4 w-1/2">
+        <form onSubmit={handleSubmit(onSubmit)} className="flex flex-wrap gap-x-20 max-sm:justify-start">
+          <div className="flex flex-col gap-y-4 w-1/2 max-sm:w-full">
             <div className="">
               <Input
                 {...register('name', {
@@ -98,7 +98,7 @@ const PlaylistEditMain: FC = () => {
               </Button>
             </div>
           </div>
-          <div className="w-1/3 flex flex-col gap-y-4">
+          <div className="max-sm:w-full max-sm:py-4 w-1/3 flex flex-col gap-y-4">
             <div className="">
               <CreatePlaylistInformation
                 playlistId={playlistId}

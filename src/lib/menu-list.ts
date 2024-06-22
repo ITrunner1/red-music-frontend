@@ -1,13 +1,13 @@
 'use client'
 
-import { 
+import {
   MdLibraryMusic,
   MdMusicNote,
   MdSubscriptions,
 } from "react-icons/md";
 import { AiOutlineRise } from "react-icons/ai";
 import { PlaylistIcon } from '@vidstack/react/icons';
-import { FaUser } from "react-icons/fa";
+import { FaUser, FaInfo } from "react-icons/fa";
 import { useAuth } from "@/hooks/useAuth";
 import { IoIosHeart } from "react-icons/io";
 
@@ -31,9 +31,9 @@ type Group = {
 };
 
 export function GetMenuList(pathname: string): Group[] {
-  const user = useAuth()  
- 
-  if(!user) return [
+  const user = useAuth()
+
+  if (!user) return [
     {
       groupLabel: "",
       menus: [
@@ -64,7 +64,7 @@ export function GetMenuList(pathname: string): Group[] {
           active: pathname.includes("/home"),
           icon: MdLibraryMusic,
           submenus: []
-        },        
+        },
         {
           href: "/trands",
           label: "Популярное",
@@ -113,27 +113,39 @@ export function GetMenuList(pathname: string): Group[] {
           active: pathname.includes("/my-subscriptions"),
           icon: MdSubscriptions,
           submenus: []
-        }, 
+        },
         {
           href: "/liked-songs",
           label: "Избранное",
           active: pathname.includes("/liked-songs"),
           icon: IoIosHeart,
           submenus: []
-        },        
+        },
       ]
     },
     {
       groupLabel: "Настройки",
-      menus: [        
+      menus: [
         {
           href: `/user/${user.user?.id}`,
           label: "Мой аккаунт",
           active: pathname === `/user/${user.user?.id}`,
           icon: FaUser,
           submenus: []
-        }
+        },
       ]
-    }
+    },
+    {
+      groupLabel: "О компании",
+      menus: [
+        {
+          href: `/about-us`,
+          label: "О нас",
+          active: pathname === `/about-us`,
+          icon: FaInfo,
+          submenus: []
+        },
+      ]
+    },
   ];
 }

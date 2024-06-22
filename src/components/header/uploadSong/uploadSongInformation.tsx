@@ -11,7 +11,7 @@ const UploadSongInformation: FC<ISongInformation> = ({
     isUploaded
 }) => {
     return (
-        <div>
+        <div className="">
             {!thumbnailPath ? (
                 <div>
                     {!isUploaded

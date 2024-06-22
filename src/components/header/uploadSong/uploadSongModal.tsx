@@ -22,9 +22,10 @@ const UploadSongModal: FC = () => {
         <Dialog>
             <DialogTrigger asChild>
                 <Button
-                    size='icon'
+                    size='sm'
                     variant="ghost"
                     disabled={isLoading}
+                    className="max-sm:p-0"
                     onClick={() => {
                         !createSong().unwrap().then(id => {
                             setSongId(+id)
@@ -35,7 +36,7 @@ const UploadSongModal: FC = () => {
                 </Button>
             </DialogTrigger>
             {status.isChosen ? (
-                <DialogContent className="max-w-[700px]">
+                <DialogContent className="max-w-[700px] max-sm:w-[300px]">
                     <DialogHeader>
                         Ввод данных
                     </DialogHeader>
@@ -46,7 +47,7 @@ const UploadSongModal: FC = () => {
                         onSubmit={form.handleSubmit(form.onSubmit)}
                         className="flex flex-wrap gap-x-20"
                     >
-                        <div className="flex flex-col gap-y-4 w-1/2">
+                        <div className="flex flex-col gap-y-4 w-1/2  max-sm:w-full">
                             <Input
                                 {...form.register('name', {
                                     required: 'Название обязательно!'
@@ -59,7 +60,7 @@ const UploadSongModal: FC = () => {
                                 })}
                                 placeholder="Слова"
                             />
-                            <div className="flex mt-4">
+                            <div className="flex my-4">
                                 <div className="">Видео публичное?</div>
                                 <Controller
                                     control={form.control}
@@ -73,7 +74,7 @@ const UploadSongModal: FC = () => {
                                 />
                             </div>
                         </div>
-                        <div className="w-1/3 flex flex-col gap-y-4">
+                        <div className="w-1/3 flex flex-col gap-y-4 max-sm:w-full">
                             <div>
                                 <UploadSongInformation
                                     thumbnailPath={file.thumbnailPath}

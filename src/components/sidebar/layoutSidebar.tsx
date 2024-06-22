@@ -22,15 +22,15 @@ export default function LayoutSidebar({
     <>
       <Sidebar />  
       <div className={cn(
-          "h-12 pt-5 transition-[margin-left] ease-in-out duration-300",
+          "h-12 pt-4 transition-[margin-left] ease-in-out duration-300",
           sidebar?.isOpen === false ? "lg:ml-[90px]" : "lg:ml-72"
         )}>  
           <Header />        
       </div>               
       <main
         className={cn(
-          "transition-[margin-left] mt-12 px-16 ease-in-out duration-300",
-          sidebar?.isOpen === false ? "lg:ml-[90px]" : "lg:ml-72",
+          "transition-[margin-left] mt-12 px-16 max-sm:px-4 ease-in-out duration-300",
+          sidebar?.isOpen === false ? "lg:ml-[90px] " : "lg:ml-72 ml-[2px]",
           player?.isOpen === false ? "lg:mb-[90px]" : "lg:mb-12"
         )}
       >

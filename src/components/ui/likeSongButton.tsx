@@ -34,7 +34,7 @@ const LikeSongButton: FC<{
             disabled={isLoading}
         >
             <div className="flex gap-x-2 justify-between">
-                <div className="pt-[2px]">
+                <div className="">
                     {isLiked ? <IoIosHeart size={36} /> : <IoIosHeartDislike size={36} />}                    
                 </div>               
             </div>

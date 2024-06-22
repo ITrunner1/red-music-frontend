@@ -1,24 +1,23 @@
 'use client'
 
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel"
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel"
 import { FC, useState } from "react"
 import { useQuery } from "react-query"
 import { TypePaginationPlaylists } from "@/interfaces/pagination.type"
 import { Button } from "@/components/ui/button"
 import { PlaylistService } from "@/services/playlist.service"
 import PlaylistItem from "./playlistItem/playlistItem"
+import { cn } from "@/lib/utils"
+import useStore from "@/hooks/use-store"
+import { useSidebarToggle } from "@/hooks/use-sidebar-toggle"
 
 const CatalogPlaylistsPagination: FC<{
   data: TypePaginationPlaylists
   removeHadler?: (playlistId: number) => void
   isUpdateLink?: boolean
 }> = ({ data, removeHadler, isUpdateLink }) => {
+
+  const sidebar = useStore(useSidebarToggle, (state) => state);
 
   const [page, setPage] = useState(1)
 
@@ -34,7 +33,7 @@ const CatalogPlaylistsPagination: FC<{
 
   return (
     <div className="">
-      <div className="mb-4 text-2xl">
+      <div className="mb-4 text-2xl max-sm:text-xl">
         {removeHadler ? 'Мои плейлисты' : 'Плейлисты'}
       </div>
       {response?.length ? (
@@ -45,9 +44,12 @@ const CatalogPlaylistsPagination: FC<{
             }}
             className="w-full"
           >
-            <CarouselContent>
+            <CarouselContent className="max-sm:max-w-sm">
               {response.playlists?.map(playlist => (
-                <CarouselItem key={playlist.id} className="lg:basis-1/6 md:basis-1/2">
+                <CarouselItem key={playlist.id}
+                  className={cn("pt-6 pl-12 max-sm:pl-24  xl:basis-1/4 lg:basis-1/3 md:basis-1/2 max-sm:justify-center ease-in-out duration-500",
+                    sidebar?.isOpen === false ? "2xl:basis-1/6" : "2xl:basis-1/5"
+                  )}>
                   <PlaylistItem
                     item={playlist}
                     key={playlist.id}
@@ -57,8 +59,8 @@ const CatalogPlaylistsPagination: FC<{
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <CarouselPrevious />
-            <CarouselNext />
+            <CarouselPrevious className={cn("max-sm:ml-12", sidebar?.isOpen === false ? "2xl:hidden" : "")} />
+            <CarouselNext className={cn("max-sm:ml-12", sidebar?.isOpen === false ? "2xl:hidden" : "")} />
           </Carousel>
           <div className="text-center mt-2">
             {Array.from({ length: response.length / 3 }).map((_, index) => {
@@ -81,7 +83,7 @@ const CatalogPlaylistsPagination: FC<{
         <div className="mb-6">
           <div className="my-4">Музыка не загружена!</div>
         </div>
-        )
+      )
       }
     </div>
   )

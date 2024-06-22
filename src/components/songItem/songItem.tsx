@@ -15,6 +15,7 @@ import { usePlayerToggle } from "@/hooks/usePlayer";
 import { MdDelete } from "react-icons/md";
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from "../ui/alert-dialog";
 import { FaEdit } from "react-icons/fa";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "../ui/tooltip";
 
 const SongItem: FC<ISongItem> = ({ isSmall, isUpdateLink, removeHandler, item }) => {
     const { push } = useRouter()
@@ -24,9 +25,9 @@ const SongItem: FC<ISongItem> = ({ isSmall, isUpdateLink, removeHandler, item })
     if (!player) return null;
 
     return (
-        <motion.div className="" whileHover={{ scale: 1.1 }}>
-            <Card className="p-6 flex">
-                <div className="w-[230px] h-[240px]">
+        <motion.div className="z-5" whileHover={{ scale: 1.1 }}>
+            <Card className="flex max-sm:text-sm max-sm:w-[170px]">
+                <div className="max-sm:w-[160px] max-sm:h-[160px] w-[240px] h-[240px]">
                     <Image
                         onClick={() => player.setIsOpen()}
                         as={NextImage}
@@ -42,24 +43,19 @@ const SongItem: FC<ISongItem> = ({ isSmall, isUpdateLink, removeHandler, item })
                     />
                 </div>
                 <motion.div
-                    className="absolute ml-[195px] mt-[250px]"
-                    whileHover={{ scale: 1.2 }} whileTap={{ scale: 0.8 }}>
+                    className="mt-4 w-[200px]"
+                    whileTap={{ scale: 0.9 }}>
                     {item?.user?.avatarPath && (
                         <Link href={`/user/${item.user.id}`}>
-                            <Avatar
-                                src={item.user.avatarPath}
-                                alt={item.user.avatarPath}>
-                            </Avatar>
+                            <div className="flex items-center gap-2">
+                                <Avatar className=""
+                                    src={item.user.avatarPath}
+                                    alt={item.user.avatarPath}>
+                                </Avatar>
+                                <span>{item.user.name}</span>
+                            </div>
                         </Link>
                     )}
-                </motion.div>
-                <motion.div
-                    className="absolute ml-[200px] mt-[310px]"
-                    whileHover={{ scale: 1.2 }} whileTap={{ scale: 0.8 }}
-                >
-                    <Link href={`/songs/song/${item.id}`}>
-                        <MdOpenInFull className="" size={26} />
-                    </Link>
                 </motion.div>
                 <div className="my-4">
                     <div className="">
@@ -69,6 +65,11 @@ const SongItem: FC<ISongItem> = ({ isSmall, isUpdateLink, removeHandler, item })
                             listens={item.listens}
                             createdAt={isSmall ? item.createdAt : ''}
                         />
+                    </div>
+                    <div className="flex justify-end pr-4">
+                        <Link className="flex items-center" href={`/songs/song/${item.id}`}>
+                            <MdOpenInFull className="inline" size={26} />
+                        </Link>
                     </div>
                     <div className="mt-6 flex justify-between">
                         {isUpdateLink && (

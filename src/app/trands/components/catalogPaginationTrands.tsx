@@ -37,20 +37,15 @@ const CatalogPaginationTrands: FC<{
 
   return (
     <div className="">
-      <div className="text-2xl">
+      <div className="text-2xl max-sm:text-xl">
         Самая популярная музыка
       </div>
       {response?.length ? (
         <>
-          <Carousel
-            opts={{
-              align: "start",
-            }}
-            className="w-full"
-          >
+          <Carousel opts={{ align: "start", }} className="w-full">
             <CarouselContent>
               {response.songs?.map(song => (
-                <CarouselItem key={song.id} onClick={() => onPlay(song.id)} className="lg:basis-1/6 md:basis-1/2">
+                <CarouselItem key={song.id} onClick={() => onPlay(song.id)} className="pt-6 pl-8 2xl:basis-1/6 xl:basis-1/4 lg:basis-1/3 md:basis-1/2">
                   <SongItem
                     item={song}
                     key={song.id}

@@ -62,7 +62,7 @@ const EditUserModal: FC = () => {
                     Изменить данные о себе
                 </Button>
             </DialogTrigger>
-            <DialogContent className="max-w-[700px]">
+            <DialogContent className="max-w-[700px] max-sm:w-[300px]">
                 <DialogHeader>
                     Ввод данных
                 </DialogHeader>
@@ -73,7 +73,7 @@ const EditUserModal: FC = () => {
                     onSubmit={handleSubmit(onSubmit)}
                     className="flex flex-wrap gap-x-20"
                 >
-                    <div className="flex flex-col gap-y-4 w-1/2">
+                    <div className="flex flex-col gap-y-4 w-1/2 my-4 max-sm:w-full">
                         <Input
                             {...register('name', {
                                 required: ''
@@ -99,7 +99,7 @@ const EditUserModal: FC = () => {
                             placeholder="Описание"
                         />
                     </div>
-                    <div className="w-1/3 flex flex-col gap-y-4">
+                    <div className="w-1/3 flex flex-col gap-y-4 max-sm:w-full">
                         <div>
                             <Image
                                 src={watch('avatarPath')}

@@ -24,9 +24,9 @@ const PlaylistItem: FC<IPlaylistItem> = ({ isSmall, isUpdateLink, removeHandler,
 
     return (
         <motion.div className="" whileHover={{ scale: 1.1 }}>
-            <Card className="p-6 flex">
+            <Card className="flex max-sm:text-sm max-sm:w-[170px]">
                 <Link href={`/playlists/${item.id}`}>
-                    <div className="w-[230px] h-[240px]">
+                    <div className="max-sm:w-[160px] max-sm:h-[160px] w-[230px] h-[240px]">
                         <Image
                             as={NextImage}
                             className="rounded-xl object-cover cursor-pointer"
@@ -39,18 +39,19 @@ const PlaylistItem: FC<IPlaylistItem> = ({ isSmall, isUpdateLink, removeHandler,
                             isBlurred
                         />
                     </div>
-                    <motion.div
-                        className="absolute ml-[195px] mt-[8px]"
-                        whileHover={{ scale: 1.2 }} whileTap={{ scale: 0.8 }}>
-                        {item?.user?.avatarPath && (
+                    {item?.user?.avatarPath && (
+                        <motion.div className="mt-4 w-[200px]" whileTap={{ scale: 0.9 }}>
                             <Link href={`/user/${item.user.id}`}>
-                                <Avatar
-                                    src={item.user.avatarPath}
-                                    alt={item.user.avatarPath}>
-                                </Avatar>
+                                <div className="flex items-center gap-2">
+                                    <Avatar
+                                        src={item.user.avatarPath}
+                                        alt={item.user.avatarPath}>
+                                    </Avatar>
+                                    <span>{item.user.name}</span>
+                                </div>
                             </Link>
-                        )}
-                    </motion.div>
+                        </motion.div>
+                    )}
                 </Link>
                 <div className="my-4">
                     <div className="">

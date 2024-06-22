@@ -64,12 +64,12 @@ const MusicPlayerContent = () => {
 
   return (
     <MediaPlayer
-      className={cn("fixed flex justify-between gap-8 h-[100px] px-10 z-20 bottom-0 bg-background overflow-y-auto dark:shadow-zinc-100 shadow-md transition-[width] ease-in-out duration-300",
+      className={cn("max-sm:gap-2 max-sm:p-2 max-sm:h-[80px] max-sm: fixed flex justify-between gap-8 h-[100px] px-10 z-20 bottom-0 bg-background overflow-y-auto dark:shadow-zinc-100 shadow-md transition-[width] ease-in-out duration-300",
         player?.isOpen === true ? "w-full" : "hidden")}
       src={{ src: song!?.audioPath, type: 'audio/flac' }}>
       <MediaProvider />
 
-      <PlayButton className="group ring-primary relative inline-flex h-4 w-4 cursor-pointer items-center justify-center rounded-md outline-none ring-inset hover:bg-white/20 data-[focus]:ring-4">
+      <PlayButton className="group ring-primary relative inline-flex max-sm:h-3 max-sm:w-3 h-4 w-4 cursor-pointer items-center justify-center rounded-md outline-none ring-inset hover:bg-white/20 data-[focus]:ring-4">
         <FaPlay className="w-8 h-8 hidden group-data-[paused]:block" />
         <FaPause className="w-8 h-8 group-data-[paused]:hidden" />
       </PlayButton>
@@ -77,7 +77,7 @@ const MusicPlayerContent = () => {
       <Button
         variant='link'
         size='icon'
-        className=""
+        className="max-sm:h-6 max-sm:w-6"
         onClick={onPlayPrevious}
       >
         <PreviousIcon
@@ -86,7 +86,7 @@ const MusicPlayerContent = () => {
         />
       </Button>
 
-      <Time className="vds-time" />
+      <Time className="vds-time text-sm" />
       <TimeSlider.Root className="relative inline-flex h-10 w-full cursor-pointer touch-none select-none items-center outline-none aria-hidden:hidden">
         <TimeSlider.Track className="relative ring-primary z-0 h-[5px] w-full rounded-sm bg-white/10 group-data-[focus]:ring-[3px]">
           <TimeSlider.TrackFill className="bg-red-700 absolute h-full w-[var(--slider-fill)] rounded-sm will-change-[width]" />
@@ -100,12 +100,12 @@ const MusicPlayerContent = () => {
         </TimeSlider.Preview>
         <TimeSlider.Thumb className="absolute left-[var(--slider-fill)] top-1/2 z-20 h-[15px] w-[15px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-[#cacaca] bg-white opacity-0 ring-white/40 transition-opacity group-data-[active]:opacity-100 group-data-[dragging]:ring-4 will-change-[left]" />
       </TimeSlider.Root>
-      <Time type="duration" />
+      <Time type="duration" className="text-sm" />
 
       <Button
         variant='link'
         size='icon'
-        className=""
+        className="max-sm:h-6 max-sm:w-6"
         onClick={onPlayNext}
       >
         <NextIcon
@@ -114,7 +114,7 @@ const MusicPlayerContent = () => {
         />
       </Button>
 
-      <MuteButton className="group ring-sky-400 relative inline-flex h-10 w-10 cursor-pointer items-center justify-center rounded-md outline-none ring-inset hover:bg-white/20 data-[focus]:ring-4">
+      <MuteButton className="group max-sm:h-6 max-sm:w-6 ring-sky-400 relative inline-flex h-10 w-10 cursor-pointer items-center justify-center rounded-md outline-none ring-inset hover:bg-white/20 data-[focus]:ring-4">
         <MuteIcon className="w-8 h-8 hidden group-data-[state='muted']:block" />
         <VolumeLowIcon className="w-8 h-8 hidden group-data-[state='low']:block" />
         <VolumeHighIcon className="w-8 h-8 hidden group-data-[state='high']:block" />

@@ -14,7 +14,7 @@ const Home: FC<IHome> = ({ songs, playlists, length }) => {
       initial={{ opacity: 0, x: -100 }}
       animate={{ opacity: 1, x: 0 }}
     >
-      <div className="text-5xl">Главная</div>     
+      <div className="text-5xl max-sm:text-3xl">Главная</div>     
       <CatalogPagination data={{ length, songs } || {}} />
       <CatalogPlaylistsPagination data={{ length, playlists } || {}} />
     </motion.div>

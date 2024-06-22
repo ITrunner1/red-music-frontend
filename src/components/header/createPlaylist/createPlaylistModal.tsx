@@ -21,8 +21,9 @@ const CreatePlaylistModal: FC = () => {
         <Dialog>
             <DialogTrigger asChild>
                 <Button
-                    size='icon'
+                    size='sm'
                     variant="ghost"
+                    className="max-sm:p-0"
                     disabled={isLoading}
                     onClick={() => {
                         !createPlaylist().unwrap().then(id => {
@@ -33,7 +34,7 @@ const CreatePlaylistModal: FC = () => {
                     <AddPlaylistIcon size={28} />
                 </Button>
             </DialogTrigger>
-            <DialogContent className="max-w-[700px]">
+            <DialogContent className="max-w-[700px] max-sm:w-[300px]">
                 <DialogHeader>
                     Ввод данных
                 </DialogHeader>
@@ -42,9 +43,9 @@ const CreatePlaylistModal: FC = () => {
                 </DialogDescription>
                 <form
                     onSubmit={form.handleSubmit(form.onSubmit)}
-                    className="flex flex-wrap gap-x-20"
+                    className="flex flex-wrap gap-x-20 max-sm:justify-start"
                 >
-                    <div className="flex flex-col gap-y-4 w-1/2">
+                    <div className="flex flex-col gap-y-4 w-1/2  max-sm:w-full">
                         <Input
                             {...form.register('name', {
                                 required: 'Название обязательно!'
@@ -57,7 +58,7 @@ const CreatePlaylistModal: FC = () => {
                             })}
                             placeholder="Слова"
                         />
-                        <div className="flex mt-4">
+                        <div className="flex my-4">
                             <div className="">Плейлист публичный?</div>
                             <Controller
                                 control={form.control}
@@ -71,8 +72,8 @@ const CreatePlaylistModal: FC = () => {
                             />
                         </div>
                     </div>
-                    <div className="w-1/3 flex flex-col gap-y-4">
-                        <div>
+                    <div className="w-1/3 flex flex-col gap-y-4 max-sm:w-full">
+                        <div className="">
                             <Image
                                 src={file.picturePath}
                                 alt={''}
@@ -81,7 +82,7 @@ const CreatePlaylistModal: FC = () => {
                                 layout="responsive"
                             />
                         </div>
-                        <div className="mt-8">
+                        <div className="mt-8 max-sm:w-full">
                             <Controller
                                 control={form.control}
                                 name='picturePath'

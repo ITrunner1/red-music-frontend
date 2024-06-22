@@ -22,11 +22,11 @@ const SongMain: FC = () => {
   }, [params.id])
 
   return (
-    <div className="flex flex-wrap gap-x-12 justify-center">
-      <div className="w-1/2">
+    <div className="my-4 flex flex-wrap gap-x-12 justify-center max-sm:justify-start max-sm:flex-col max-sm:gap-y-4 max-md:flex-col max-md:gap-y-4">
+      <div className="w-1/2 max-sm:w-full max-md:w-full">
         <SongDetail song={song} artist={song.user || ({} as IUser)} />
       </div>
-      <div className="w-1/3">
+      <div className="w-1/3 max-sm:w-full max-md:w-full">
         <Comments comments={song.comments || []} songId={song.id} />
       </div>
     </div>

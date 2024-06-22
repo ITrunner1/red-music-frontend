@@ -22,7 +22,7 @@ async function Trands() {
 
   return (
     <main className="">
-      <div className="text-5xl">Популярное</div>
+      <div className="text-5xl max-sm:text-3xl">Популярное</div>
       <TrandsMain length={0} songs={data.topSongs} playlists={data.topPlaylists} />
     </main>
   )

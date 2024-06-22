@@ -62,12 +62,12 @@ const SongEditMain: FC = () => {
   }
 
   return (
-    <div className="flex justify-center shadow-block">
+    <div className="flex justify-center shadow-block w-full">
       {isLoading ? (
         <Loader />
       ) : (
-        <form onSubmit={handleSubmit(onSubmit)} className="flex flex-wrap gap-x-20">
-          <div className="flex flex-col gap-y-4 w-1/2">
+        <form onSubmit={handleSubmit(onSubmit)} className="flex flex-wrap gap-x-20 gap-y-4 max-sm:justify-start">
+          <div className="flex flex-col gap-y-4 w-1/2 max-sm:w-full">
             <Input
               {...register('name', {
                 required: 'Название обязательно!'
@@ -139,7 +139,7 @@ const SongEditMain: FC = () => {
               </Button>
             </div>
           </div>
-          <div className="w-1/3 flex flex-col gap-y-4">
+          <div className="w-1/3 max-sm:w-full flex flex-col gap-y-4">
             <div className="">
               <UploadSongInformation
                 thumbnailPath={watch('thumbnailPath')}
