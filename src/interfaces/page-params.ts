@@ -1,5 +1,5 @@
 export type TypeParamId = {
-    id?: number
+    id: number
 } 
 
 export interface IPageIdParam {

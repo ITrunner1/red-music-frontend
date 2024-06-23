@@ -21,7 +21,7 @@ const CatalogGenres: FC = () => {
             {data?.length ? (
                 <div className="2xl:flex 2xl:gap-4 max-sm:flex max-sm:flex-wrap max-sm:gap-4 md:flex md:flex-wrap md:gap-4">
                     {data.map(genre => (
-                        <Link className="border border-white rounded-sm text-white p-2 text-xl" href={`genre/${genre.slug}`}>
+                        <Link key={genre.id} className="border border-white rounded-sm text-white p-2 text-xl" href={`genre/${genre.slug}`}>
                             {genre.name}
                         </Link>
                     ))}
