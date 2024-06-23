@@ -6,7 +6,6 @@ import useStore from "@/hooks/use-store";
 import NextImage from "next/image";
 import { MdOpenInFull } from "react-icons/md";
 import { Button } from "@/components/ui/button"
-import { ISongItem } from "@/interfaces/songItem.interface"
 import { Avatar, Card, Image } from "@nextui-org/react";
 import { useRouter } from "next/navigation"
 import { FC } from "react"
@@ -15,7 +14,7 @@ import { usePlayerToggle } from "@/hooks/usePlayer";
 import { MdDelete } from "react-icons/md";
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from "../ui/alert-dialog";
 import { FaEdit } from "react-icons/fa";
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "../ui/tooltip";
+import { ISongItem } from "@/interfaces/song.interface";
 
 const SongItem: FC<ISongItem> = ({ isSmall, isUpdateLink, removeHandler, item }) => {
     const { push } = useRouter()
@@ -25,9 +24,9 @@ const SongItem: FC<ISongItem> = ({ isSmall, isUpdateLink, removeHandler, item })
     if (!player) return null;
 
     return (
-        <motion.div className="z-5" whileHover={{ scale: 1.1 }}>
-            <Card className="flex max-sm:text-sm max-sm:w-[170px]">
-                <div className="max-sm:w-[160px] max-sm:h-[160px] w-[240px] h-[240px]">
+        <motion.div className="" whileHover={{ scale: 1.1 }}>
+            <Card className="flex">
+                <div className="sm:w-[210px] sm:h-[210px] lg:w-[240px] lg:h-[240px]">
                     <Image
                         onClick={() => player.setIsOpen()}
                         as={NextImage}
@@ -61,12 +60,13 @@ const SongItem: FC<ISongItem> = ({ isSmall, isUpdateLink, removeHandler, item })
                     <div className="">
                         {isSmall && <div>{item.user?.name}</div>}
                         <div>{item.name}</div>
+                        <div>Жанр: {item.genre}</div>
                         <Statistics
                             listens={item.listens}
                             createdAt={isSmall ? item.createdAt : ''}
                         />
                     </div>
-                    <div className="flex justify-end pr-4">
+                    <div className="flex justify-end w-[240px]">
                         <Link className="flex items-center" href={`/songs/song/${item.id}`}>
                             <MdOpenInFull className="inline" size={26} />
                         </Link>

@@ -10,6 +10,7 @@ import { PlaylistIcon } from '@vidstack/react/icons';
 import { FaUser, FaInfo } from "react-icons/fa";
 import { useAuth } from "@/hooks/useAuth";
 import { IoIosHeart } from "react-icons/io";
+import { RiAdminFill } from "react-icons/ri";
 
 type Submenu = {
   href: string;
@@ -30,12 +31,22 @@ type Group = {
   menus: Menu[];
 };
 
-export function GetMenuList(pathname: string): Group[] {
-  const user = useAuth()
-
-  if (!user) return [
+export function GetMenuAdminList(pathname: string): Group[] {
+  return [
     {
-      groupLabel: "",
+      groupLabel: "Админ панель",
+      menus: [
+        {
+          href: "/admin",
+          label: "Музыка",
+          active: pathname.includes("/home"),
+          icon: MdLibraryMusic,
+          submenus: []
+        },
+      ]
+    },
+    {
+      groupLabel: "Главное",
       menus: [
         {
           href: "/home",
@@ -48,12 +59,51 @@ export function GetMenuList(pathname: string): Group[] {
           href: "/trands",
           label: "Популярное",
           active: pathname.includes("/trands"),
-          icon: MdLibraryMusic,
+          icon: AiOutlineRise,
           submenus: []
         },
       ]
-    }
+    },
   ]
+}
+
+export function GetMenuList(pathname: string): Group[] {
+  const user = useAuth()
+
+  if (!user.user)
+    return [
+      {
+        groupLabel: "",
+        menus: [
+          {
+            href: "/home",
+            label: "Музыка",
+            active: pathname.includes("/home"),
+            icon: MdLibraryMusic,
+            submenus: []
+          },
+          {
+            href: "/trands",
+            label: "Популярное",
+            active: pathname.includes("/trands"),
+            icon: AiOutlineRise,
+            submenus: []
+          },
+        ]
+      },
+      {
+        groupLabel: "О компании",
+        menus: [
+          {
+            href: `/about-us`,
+            label: "О нас",
+            active: pathname === `/about-us`,
+            icon: FaInfo,
+            submenus: []
+          },
+        ]
+      },
+    ];
   else return [
     {
       groupLabel: "",

@@ -21,7 +21,7 @@ export const userSlice = createSlice({
             })
             .addCase(register.fulfilled, (state, { payload }) => {
                 state.isLoading = false
-                state.user = payload.user
+                state.user = payload.user                
             })
             .addCase(register.rejected, state => {
                 state.isLoading = false

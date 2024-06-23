@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 import ArtistInfoShort from "@/components/ui/artist-info-small";
 import SubscribeButton from "@/components/ui/subscribedButton";
 import Catalog from "@/components/catalog";
-import PlaylistsCatalog from "@/components/playlistsCatalog";
+import CatalogPlaylists from "@/components/catalogPlaylists";
 
 const UserMain: FC<IArtist> = ({ artist }) => {
     return (
@@ -36,8 +36,8 @@ const UserMain: FC<IArtist> = ({ artist }) => {
                     </article>
                 </div>
             </div>
-            <Catalog newSongs={artist.songs} />
-            <PlaylistsCatalog newPlaylists={artist.playlists} />
+            <Catalog songs={artist.songs} />
+            <CatalogPlaylists playlists={artist.playlists} />
         </motion.div>
     )
 }

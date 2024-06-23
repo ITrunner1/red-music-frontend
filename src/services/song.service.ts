@@ -1,12 +1,13 @@
 import instance from "@/store/api/api.interceptor"
-import { TypeDataFilters, TypePagination, TypePaginationSongs } from "@/interfaces/pagination.type"
+import { TypeDataFilters, TypeGenreSongs, TypePagination, TypePaginationSongs } from "@/interfaces/pagination.type"
+import { ISong } from "@/interfaces/song.interface"
 
 export const SONGS = 'songs'
 
 export const SongService = {
     async getAll(queryData = {} as TypeDataFilters) {
         const { data } = await instance<TypePaginationSongs>({
-            url: `/${SONGS}`,
+            url: `/${SONGS}/all`,
             method: 'GET',
             params: queryData
         })
@@ -22,6 +23,13 @@ export const SongService = {
         })
 
         return data || []
+    },
+
+    async getByGenre(genreSlug: string) {
+         return instance<TypePaginationSongs>({
+            url: `/${SONGS}/by-genre/${genreSlug}`,
+            method: 'GET',                  
+        })
     },
 }
 

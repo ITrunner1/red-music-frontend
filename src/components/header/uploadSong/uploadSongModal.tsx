@@ -12,11 +12,19 @@ import { Switch } from "@/components/ui/switch";
 import { Textarea } from "@/components/ui/textarea";
 import { IFileResponse } from "@/interfaces/file.interface";
 import { Input } from "@/components/ui/input";
+import { useQuery } from "react-query";
+import { GenreService } from "@/services/genre.service.";
+import { Select, SelectItem } from "@nextui-org/select";
 
 const UploadSongModal: FC = () => {
     const [songId, setSongId] = useState<number>(0)
     const [createSong, { isLoading }] = songApi.useCreateSongMutation()
     const { form, status, file } = useUploadSongForm({ songId })
+    const { data: genres } = useQuery(
+        ['get genres'],
+        () => GenreService.getAll(),
+        { select: ({ data }) => data }
+    )
 
     return (
         <Dialog>
@@ -73,7 +81,10 @@ const UploadSongModal: FC = () => {
                                     )}
                                 />
                             </div>
+
                         </div>
+
+
                         <div className="w-1/3 flex flex-col gap-y-4 max-sm:w-full">
                             <div>
                                 <UploadSongInformation

@@ -3,12 +3,14 @@ import { userSlice } from "./user/user.slice"
 import { api } from "./api/api"
 import { rtkQueryErrorLogger } from "./middleware"
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
+import { filtersSlice } from './filters/filters.slice'
 
 const isClient = typeof window !== 'undefined'
 
 const combinedReducers = combineReducers({   
     [api.reducerPath]: api.reducer, 
     user: userSlice.reducer,
+    filters: filtersSlice.reducer,
 })
 
 let mainReducer = combinedReducers
@@ -20,7 +22,7 @@ if(isClient) {
     const persistConfig = {
         key: 'red-music',
         storage,
-        whitelist: ['user']
+        whitelist: ['user', 'filters']
     }
 
    mainReducer = persistReducer(persistConfig, combinedReducers)

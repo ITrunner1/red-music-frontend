@@ -2,7 +2,7 @@
 
 import { FC } from "react";
 import { IPlaylist } from "@/interfaces/playlist.interface";
-import CatalogPlaylistsPagination from "../../../components/catalogPlaylistPagination";
+import CatalogPlaylistsPagination from "../../../components/catalogPlaylists";
 
 interface IPlaylists {
   length: number
@@ -11,7 +11,7 @@ interface IPlaylists {
 
 const PlaylistsMain: FC<IPlaylists> = ({ playlists }) => {
   return (
-    <CatalogPlaylistsPagination data={{ length, playlists }} />
+    <CatalogPlaylistsPagination playlists={playlists || {}} />
   )
 }
 

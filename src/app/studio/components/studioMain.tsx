@@ -1,7 +1,7 @@
 'use client'
 
 import Catalog from "@/components/catalog";
-import PlaylistsCatalog from "@/components/playlistsCatalog";
+import CatalogPlaylists from "@/components/catalogPlaylists";
 import Loader from "@/components/ui/loader";
 import { api } from "@/store/api/api";
 import { playlistApi } from "@/store/api/api.playlist";
@@ -14,8 +14,8 @@ const StudioMain: FC = () => {
   const [removeSong] = songApi.useDeleteSongMutation()
   const [removePlaylist] = playlistApi.useDeletePlaylistMutation()
 
-  const songs = data?.songs
-  const playlists = data?.playlists
+  const songs = data!?.songs
+  const playlists = data!?.playlists
 
   return (
     <motion.div
@@ -27,11 +27,11 @@ const StudioMain: FC = () => {
         <Loader />
       ) : songs?.length ? (
         <>
-          <Catalog newSongs={songs}
+          <Catalog songs={songs}
             removeHadler={removeSong}
             isUpdateLink
           />
-          <PlaylistsCatalog newPlaylists={playlists}
+          <CatalogPlaylists playlists={playlists}
             removeHadler={removePlaylist}
             isUpdateLink
           />

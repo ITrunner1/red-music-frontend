@@ -24,9 +24,9 @@ const PlaylistItem: FC<IPlaylistItem> = ({ isSmall, isUpdateLink, removeHandler,
 
     return (
         <motion.div className="" whileHover={{ scale: 1.1 }}>
-            <Card className="flex max-sm:text-sm max-sm:w-[170px]">
+            <Card className="flex">
                 <Link href={`/playlists/${item.id}`}>
-                    <div className="max-sm:w-[160px] max-sm:h-[160px] w-[230px] h-[240px]">
+                    <div className="max-sm:w-[210px] max-sm:h-[210px] w-[230px] h-[240px]">
                         <Image
                             as={NextImage}
                             className="rounded-xl object-cover cursor-pointer"

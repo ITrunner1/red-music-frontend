@@ -41,18 +41,18 @@ const CatalogPaginationTrands: FC<{
   const onPlay = useOnPlay(data.songs);
 
   return (
-    <div className="">
+    <div className="max-sm:w-[280px]">
       <div className="text-2xl max-sm:text-xl">
         Самая популярная музыка
       </div>
       {response?.length ? (
         <>
           <Carousel>
-            <CarouselContent className="max-sm:max-w-sm">
+            <CarouselContent className="p-2 md:p-4 max-sm:pl-6 max-sm:pt-6 ease-in-out">
               {response.songs?.map(song => (
                 <CarouselItem key={song.id} onClick={() => onPlay(song.id)}
-                  className={cn("pt-6 pl-12 max-sm:pl-24  xl:basis-1/4 lg:basis-1/3 md:basis-1/2 max-sm:justify-center ease-in-out duration-500",
-                    sidebar?.isOpen === false ? "2xl:basis-1/6" : "2xl:basis-1/5"
+                  className={cn("sm:p-5 max-sm:basis-full xl:basis-1/3 lg:basis-1/2 md:basis-1/2 ease-in-out duration-500",
+                    sidebar?.isOpen === false ? "2xl:basis-1/6" : "2xl:basis-1/5 xl:basis-1/3 lg:basis-1/2"
                   )}>
                   <SongItem
                     item={song}
@@ -63,8 +63,8 @@ const CatalogPaginationTrands: FC<{
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <CarouselPrevious className={cn("max-sm:ml-12", sidebar?.isOpen === false ? "2xl:hidden" : "")} />
-            <CarouselNext className={cn("max-sm:ml-12", sidebar?.isOpen === false ? "2xl:hidden" : "")} />
+            <CarouselPrevious className={cn("max-sm:hidden ease-in-out", sidebar?.isOpen === false ? "2xl:hidden" : "")} />
+            <CarouselNext className={cn("max-sm:hidden ease-in-out", sidebar?.isOpen === false ? "2xl:hidden" : "")} />
           </Carousel>
           <div className="text-center mt-2">
             {Array.from({ length: response.length / 6 }).map((_, index) => {

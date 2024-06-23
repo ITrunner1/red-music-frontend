@@ -13,15 +13,15 @@ const Header: FC = () => {
    if (!sidebar) return null;
 
    return (
-      <header className="max-sm:px-2 w-full sticky top-0 px-8 border-b-stone-500 bg-background/95 shadow backdrop-blur supports-[backdrop-filter]:bg-background/60 dark:shadow-secondary z-10">
-         <div className="flex h-14 justify-between">
-            <div className="max-sm:mr-2">
+      <header className="max-sm:px-2 h-20 w-full sticky px-8 border-b-stone-500 bg-background/95 shadow backdrop-blur supports-[backdrop-filter]:bg-background/60 dark:shadow-secondary z-10">
+         <div className="flex pt-5 items-center justify-between">
+            <div className="">
                <SheetMenu />
             </div>
             <div>
                <Search />
             </div>
-            <div className="max-sm:p-0">
+            <div className="">
                <IconsRight />
             </div>
          </div>

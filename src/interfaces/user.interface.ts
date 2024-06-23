@@ -19,6 +19,7 @@ export interface IUser extends IBase {
     avatarPath: string,
     subscribersCount: number,
     isVerified: boolean,
+    isAdmin: boolean,
     songs: ISong[],
     subscriptions: ISubscription[],
     playlists: IPlaylist[],

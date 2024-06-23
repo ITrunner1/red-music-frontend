@@ -16,6 +16,8 @@ import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import { Select, SelectItem } from "@nextui-org/react";
 import { api } from "@/store/api/api";
 import { useAuth } from "@/hooks/useAuth";
+import { GenreService } from "@/services/genre.service.";
+import { useQuery } from "react-query";
 
 const SongEditMain: FC = () => {
   const auth = useAuth()
@@ -26,6 +28,12 @@ const SongEditMain: FC = () => {
   const { data, isLoading } = songApi.useGetSongByIdQuery(Number(params.id), {
     skip: !params?.id
   })
+
+  const { data: genres } = useQuery(
+    ['get genres'],
+    () => GenreService.getAll(),
+    { select: ({ data }) => data }
+  )
 
   const { data: curUser } = api.useGetProfileQuery(auth.user?.id)
 
@@ -48,6 +56,7 @@ const SongEditMain: FC = () => {
       setValue('thumbnailPath', data.thumbnailPath)
       setValue('isPublic', data.isPublic)
       setValue('playlist', data.playlist)
+      setValue('genre', data.genre)
     }
   }, [data])
 
@@ -93,26 +102,22 @@ const SongEditMain: FC = () => {
                 />
               )}
             />
-            <span>Плейлист</span>
+            <span>Жанр</span>
             <Controller
               control={control}
-              name='playlist'
+              name='genre'            
               render={({ field: { onChange } }) => (
                 <Select
-                  className="bg-bbackground border rounded-md"
+                  className="bg-background border rounded-md"                  
+                  items={genres}
                   onChange={onChange}
-                  items={curUser?.playlists}
-                  placeholder="Выберите плейлист"
+                  placeholder="Выберите жанр"
                 >
-                  {(playlist) => (
-                    <SelectItem className="bg-background border rounded-md" key={playlist.id} textValue={playlist.name}>
+                  {genre => (
+                    <SelectItem className="bg-background border rounded-md" key={genre.name} textValue={genre.name} itemProp={genre.name} itemType={genre.name}>
                       <div className="flex gap-2 items-center">
-                        <div className="flex flex-col justify-center">
-                          <Image priority className="rounded-sm" src={playlist.picturePath} alt={playlist.name} width={40} height={40} />
-                        </div>
                         <div className="flex flex-col">
-                          <span className="">{playlist.name}</span>
-                          <span className="text-sm text-gray-500">{playlist.description}</span>
+                          <span className="">{genre.name}</span>
                         </div>
                       </div>
                     </SelectItem>
@@ -120,6 +125,37 @@ const SongEditMain: FC = () => {
                 </Select>
               )}
             />
+            {curUser?.playlists!?.length > 0 ? (
+              <>
+                <span>Плейлист</span>
+                <Controller
+                  control={control}
+                  name='playlist'
+                  render={({ field: { onChange } }) => (
+                    <Select
+                      className="bg-background border rounded-md"
+                      onChange={onChange}
+                      items={curUser?.playlists}
+                      placeholder="Выберите плейлист"
+                    >
+                      {playlist => (
+                        <SelectItem className="bg-background border rounded-md" key={playlist?.id} textValue={playlist?.name} itemProp={playlist.name} itemType={playlist.name}>
+                          <div className="flex gap-2 items-center">
+                            <div className="flex flex-col justify-center">
+                              <Image priority className="rounded-sm" src={playlist?.picturePath} alt={playlist?.name} width={40} height={40} />
+                            </div>
+                            <div className="flex flex-col">
+                              <span className="">{playlist?.name}</span>
+                              <span className="text-sm text-gray-500">{playlist?.description}</span>
+                            </div>
+                          </div>
+                        </SelectItem>
+                      )}
+                    </Select>
+                  )}
+                />
+              </>
+            ) : ('')}
             <div className="flex mt-4">
               <div className="">Видео публичное?</div>
               <Controller

@@ -7,6 +7,7 @@ import { PropsWithChildren, useEffect } from "react";
 import { protectedRoutes } from "@/interfaces/protected-routes.data";
 import { getAccessToken } from "@/services/auth/auth.helper";
 import { useActions } from "@/hooks/useActions";
+import NotFound from "@/app/not-found/page";
 
 const AuthProvider: React.FC<PropsWithChildren<unknown>> = ({
     children
@@ -30,11 +31,17 @@ const AuthProvider: React.FC<PropsWithChildren<unknown>> = ({
         if (!refreshToken && user) logout()
     }, [pathname])
 
-    if (!isProtectedRoute) return <>{children}</>
+    const isAdminRoute = pathname?.startsWith('/admin')
+
+    if (!isProtectedRoute && !isAdminRoute) return <>{children}</>
+
+    if (user?.isAdmin) return <>{children}</>    
 
     if (user && isProtectedRoute) return <>{children}</>
 
     if (!user && user) return <>{children}</>
+
+    if (user && isAdminRoute) return <NotFound />
 
     pathname !== '/home' && router.replace('/home')
 

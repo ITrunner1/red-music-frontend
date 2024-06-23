@@ -11,7 +11,7 @@ import { Textarea } from "@/components/ui/textarea"
 const SongDetail: FC<{ song: ISong, artist: IUser }> = ({
     song,
     artist
-}) => { 
+}) => {
     return (
         <div className="rounded-lg border py-8 max-sm:relative max-md:relative" >
             <div className="px-8">
