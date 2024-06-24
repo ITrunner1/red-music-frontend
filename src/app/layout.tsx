@@ -20,7 +20,7 @@ const ubuntuFont = Ubuntu({
 export const metadata: Metadata = {
   title: "Red Music",
   description: "Red Music",
-  verification: { yandex: "yandex-verification", "me": "6c86d3be8a510b12" }     
+  verification: { yandex: "6c86d3be8a510b12" }     
 
 };
 
