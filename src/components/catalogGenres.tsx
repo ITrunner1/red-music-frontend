@@ -1,4 +1,5 @@
 'use client'
+
 import { FC } from "react"
 import { useSidebarToggle } from "@/hooks/use-sidebar-toggle"
 import { useQuery } from "react-query"

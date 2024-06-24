@@ -6,17 +6,17 @@ import { PlaylistService } from "@/services/playlist.service";
 
 export const revalidate = 60;
 
-export async function generateStaticParams() {
-    const genres = await GenreService.getAll()
+// export async function generateStaticParams() {
+//     const genres = await GenreService.getAll()
 
-    const paths = genres.data.map(genre => {
-        return {
-            params: { slug: genre.slug }
-        }
-    })
+//     const paths = genres.data.map(genre => {
+//         return {
+//             params: { slug: genre.slug }
+//         }
+//     })
 
-    return paths
-}
+//     return paths
+// }
 
 async function getSongs(params: TypeParamSlug) {
     const { data: songs } = await SongService.getByGenre(
