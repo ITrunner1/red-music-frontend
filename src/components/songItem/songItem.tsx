@@ -71,16 +71,29 @@ const SongItem: FC<ISongItem> = ({ isSmall, isUpdateLink, removeHandler, item })
                             <MdOpenInFull className="inline" size={26} />
                         </Link>
                     </div>
+                    {isUpdateLink && (
+                        <div className="mt-6 text-red-600">
+                            <div className="text-red-600">
+                                <span className="text-white mr-2">Статус:</span>
+                                {item.status}
+                            </div>
+                            <span className="text-white mr-2">Ответ:</span>
+                            {item.rejectionReason}
+                        </div>
+                    )}
                     <div className="mt-6 flex justify-between">
                         {isUpdateLink && (
-                            <Button
-                                variant='link'
-                                className='bg-background z-10'
-                                onClick={() => push(`songs/edit/${item.id}`)}
-                            >
-                                <FaEdit className='text-white hover:text-green-500 z-10' size={36} />
-                            </Button>
+                            <div>
+                                <Button
+                                    variant='link'
+                                    className='bg-background z-10'
+                                    onClick={() => push(`songs/edit/${item.id}`)}
+                                >
+                                    <FaEdit className='text-white hover:text-green-500 z-10' size={36} />
+                                </Button>
+                            </div>
                         )}
+
                         {!!removeHandler && (
                             <AlertDialog>
                                 <AlertDialogTrigger>
@@ -100,7 +113,7 @@ const SongItem: FC<ISongItem> = ({ isSmall, isUpdateLink, removeHandler, item })
                                     </AlertDialogHeader>
                                     <AlertDialogFooter>
                                         <AlertDialogCancel>Отмена</AlertDialogCancel>
-                                        <AlertDialogAction onClick={() => removeHandler(item.id)}>                                      Удалить
+                                        <AlertDialogAction onClick={() => removeHandler(item.id)}>Удалить
                                         </AlertDialogAction>
                                     </AlertDialogFooter>
                                 </AlertDialogContent>

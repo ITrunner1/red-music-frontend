@@ -9,6 +9,9 @@ export interface IPlaylist extends IBase {
     likes: number,
     listens: number,
     isPublic: boolean,  
+    genre: string,
+    status: string,
+    rejectionReason?: string,
     user: IUser,     
     songs: ISong[],
 }
@@ -16,5 +19,5 @@ export interface IPlaylist extends IBase {
 export interface IPlaylistDto
  extends Pick<
     IPlaylist,
-    'id' | 'picturePath' | 'description' | 'name' | 'isPublic'
+    'id' | 'picturePath' | 'description' | 'name' | 'isPublic' | 'genre' | 'status'
 > {}

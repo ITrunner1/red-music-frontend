@@ -57,6 +57,7 @@ const SongEditMain: FC = () => {
       setValue('isPublic', data.isPublic)
       setValue('playlist', data.playlist)
       setValue('genre', data.genre)
+      setValue('status', data.status)
     }
   }, [data])
 
@@ -105,19 +106,19 @@ const SongEditMain: FC = () => {
             <span>Жанр</span>
             <Controller
               control={control}
-              name='genre'            
+              name='genre'
               render={({ field: { onChange } }) => (
                 <Select
-                  className="bg-background border rounded-md"                  
+                  className="bg-background border rounded-md"
                   items={genres}
                   onChange={onChange}
                   placeholder="Выберите жанр"
                 >
                   {genre => (
-                    <SelectItem className="bg-background border rounded-md" key={genre.name} textValue={genre.name} itemProp={genre.name} itemType={genre.name}>
+                    <SelectItem className="bg-background border rounded-md" key={genre.slug} textValue={genre.slug} itemProp={genre.slug} itemType={genre.slug}>
                       <div className="flex gap-2 items-center">
                         <div className="flex flex-col">
-                          <span className="">{genre.name}</span>
+                          <span className="">{genre.slug}</span>
                         </div>
                       </div>
                     </SelectItem>
@@ -170,10 +171,17 @@ const SongEditMain: FC = () => {
               />
             </div>
             <div className="mt-2">
-              <Button>
-                {isUpdateLoading ? 'Ожидайте...' : 'Сохранить'}
-              </Button>
+              <Input
+                {...register('status', {required: 'Статус обязателен!'})}
+                readOnly               
+                defaultValue='New'
+                value='New'
+                placeholder="New"
+              />
             </div>
+            <Button>
+              {isUpdateLoading ? 'Ожидайте...' : 'Сохранить'}
+            </Button>
           </div>
           <div className="w-1/3 max-sm:w-full flex flex-col gap-y-4">
             <div className="">

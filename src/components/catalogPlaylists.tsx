@@ -48,7 +48,7 @@ const CatalogPlaylists: FC<{
         </>
       ) : (
         <div className="mb-6">
-          <div className="my-4">Музыка не загружена!</div>
+          <div className="my-4">Плейлисты не загружены!</div>
         </div>
       )
       }

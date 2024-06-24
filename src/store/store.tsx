@@ -7,15 +7,15 @@ import { filtersSlice } from './filters/filters.slice'
 
 const isClient = typeof window !== 'undefined'
 
-const combinedReducers = combineReducers({   
-    [api.reducerPath]: api.reducer, 
+const combinedReducers = combineReducers({
+    [api.reducerPath]: api.reducer,
     user: userSlice.reducer,
     filters: filtersSlice.reducer,
 })
 
 let mainReducer = combinedReducers
 
-if(isClient) {
+if (isClient) {
     const { persistReducer } = require('redux-persist')
     const storage = require("redux-persist/lib/storage").default
 
@@ -25,12 +25,12 @@ if(isClient) {
         whitelist: ['user', 'filters']
     }
 
-   mainReducer = persistReducer(persistConfig, combinedReducers)
+    mainReducer = persistReducer(persistConfig, combinedReducers)
 }
 
 export const store = configureStore({
     reducer: mainReducer,
-    middleware: getDefaultMiddleware => 
+    middleware: getDefaultMiddleware =>
         getDefaultMiddleware({
             serializableCheck: {
                 ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER]

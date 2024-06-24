@@ -26,8 +26,8 @@ const PlaylistMain: FC = () => {
 
   return (
     <div className="">
-      <div className="flex justify-center">
-        <div className="w-1/2 f;e">
+      <div className="flex justify-center max-md:flex max-md:flex-wrap max-md:justify-start">
+        <div className="w-1/2 max-md:w-full max-md:flex max-md:justify-center">        
           <Image
             as={NextImage}
             className="pb-10"
@@ -38,7 +38,7 @@ const PlaylistMain: FC = () => {
             priority
           />
         </div>
-        <div className="w-1/2">
+        <div className="w-1/2 max-md:w-full">
           <PlaylistDetail playlist={playlist} artist={playlist.user || ({} as IUser)} />
         </div>
       </div>

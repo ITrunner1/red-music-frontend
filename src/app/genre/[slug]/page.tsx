@@ -2,6 +2,7 @@ import { IPageSlugParam, TypeParamSlug } from "@/interfaces/page-params"
 import { GenreService } from "@/services/genre.service."
 import { SongService } from "@/services/song.service"
 import GenreMain from "./genrePage";
+import { PlaylistService } from "@/services/playlist.service";
 
 export const revalidate = 60;
 
@@ -22,14 +23,18 @@ async function getSongs(params: TypeParamSlug) {
         params.slug as string
     )
 
-    return { songs } || []
+    const { data: playlists } = await PlaylistService.getByGenre(
+        params.slug as string
+    )
+
+    return { songs, playlists } || []
 }
 
 export default async function GenrePage({ params }: IPageSlugParam) {
     const data = await getSongs(params)
 
     return (
-        <GenreMain songs={data.songs.songs} />
+        <GenreMain songs={data.songs.songs} playlists={data.playlists.playlists} />
     )
 }
 

@@ -57,11 +57,22 @@ const PlaylistItem: FC<IPlaylistItem> = ({ isSmall, isUpdateLink, removeHandler,
                     <div className="">
                         {isSmall && <div>{item.user?.name}</div>}
                         <div>{item.name}</div>
+                        <div>Жанр: {item.genre}</div>
                         <Statistics
                             listens={item.listens}
                             createdAt={isSmall ? item.createdAt : ''}
                         />
                     </div>
+                    {isUpdateLink && (
+                        <div className="mt-6 text-red-600">
+                            <div className="text-red-600">
+                                <span className="text-white mr-2">Статус:</span>
+                                {item.status}
+                            </div>
+                            <span className="text-white mr-2">Ответ:</span>
+                            {item.rejectionReason}
+                        </div>
+                    )}
                     <div className="mt-2 flex justify-between">
                         {isUpdateLink && (
                             <Button

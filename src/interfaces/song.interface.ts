@@ -13,6 +13,7 @@ export interface ISong extends IBase {
     duration: number,
     genre: string,
     status: string,
+    rejectionReason: string,
     isPublic?: boolean,
     user?: IUser
     comments?: IComment[],
@@ -36,6 +37,8 @@ export type TypeSongDataFilters = {
 export interface ISongDto
     extends Pick<
         ISong,
-        'id' | 'thumbnailPath' | 'lyrics' | 'name' | 'audioPath' | 'isPublic' | 'playlist' | 'genre'
+        'id' | 'thumbnailPath' | 'lyrics' | 'name' | 'audioPath' | 'isPublic' | 'playlist' | 'genre' | 'status'
     > { }
+
+    
 
