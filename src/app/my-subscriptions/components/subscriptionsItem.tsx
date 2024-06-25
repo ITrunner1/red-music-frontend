@@ -12,7 +12,7 @@ const SubscriptionsItem: FC<IArtist> = ({ artist }) => {
             style={{ originX: 0 }}
             whileTap={{ scale: 1 }}
             className="flex gap-x-3 cursor-pointer p-2 outline-none">
-            <Link className="text-white" href={`/user/${artist?.id}`}>
+            {/* <Link className="text-white" href={`/user/${artist?.id}`}> */}
                 <div className="relative min-h-[48px] min-w-[48px]">
                     {artist &&
                         <Avatar
@@ -31,7 +31,7 @@ const SubscriptionsItem: FC<IArtist> = ({ artist }) => {
                         {artist?.subscribersCount} слушателей
                     </p>
                 </div>
-            </Link>
+            {/* </Link> */}
         </motion.div>
     );
 };

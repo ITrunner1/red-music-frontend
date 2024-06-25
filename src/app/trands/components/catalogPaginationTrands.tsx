@@ -1,12 +1,6 @@
 'use client'
 
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel"
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious, } from "@/components/ui/carousel"
 import { FC, useState } from "react"
 import SongItem from "@/components/songItem/songItem"
 import useOnPlay from "@/hooks/useOnPlay"

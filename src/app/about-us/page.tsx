@@ -1,4 +1,3 @@
-
 async function AboutUsPage() {
   return (
     <div className="flex flex-col items-center my-10">
@@ -32,6 +31,9 @@ async function AboutUsPage() {
       </div>
       <div className="text-2xl max-sm:text-sm mb-4 text-center">
         Мы работаем для того, чтобы люди в России жили лучше и богаче, слушая любимую музыку.
+      </div>
+      <div className="text-4xl max-sm:text-xl my-4 text-center">
+        Техническая поддержка: +7-(800)-555-35-35
       </div>
       <div className="text-4xl mb-4 max-sm:text-xl">
         Где мы находимся
