@@ -19,7 +19,7 @@ const ubuntuFont = Ubuntu({
 
 export const metadata: Metadata = {
   title: "Red Music",
-  description: "Red Music",
+  description: "Добро пожаловать в Red Music, платформу для потоковой передачи музыки. С Red Music просматривать, исследовать и управлять своей музыкой невероятно легко. Наш интуитивно понятный интерфейс обеспечивает беспрепятственное прослушивание и простоту навигации.",
   verification: { yandex: "6c86d3be8a510b12", google: "it_h5C0oCPsebsxRJtY4nHgSaVU6lV1_gqTg0rkfmFE"}, 
   keywords: "red music, red-music, red_music, Red Music, Red-Music, Red_Music, Ред Музыка, ред музыка, ред-музыка, музыка, Музыка, музыкальный стриминговый сервис",
   creator: "Matvey",
