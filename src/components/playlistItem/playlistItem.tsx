@@ -39,7 +39,7 @@ const PlaylistItem: FC<IPlaylistItem> = ({ isSmall, isUpdateLink, removeHandler,
                             isBlurred
                         />
                     </div>
-                    {item?.user?.avatarPath && (
+                    {/* {item?.user?.avatarPath && (
                         <motion.div className="mt-4 w-[200px]" whileTap={{ scale: 0.9 }}>
                             <Link href={`/user/${item.user.id}`}>
                                 <div className="flex items-center gap-2">
@@ -51,7 +51,7 @@ const PlaylistItem: FC<IPlaylistItem> = ({ isSmall, isUpdateLink, removeHandler,
                                 </div>
                             </Link>
                         </motion.div>
-                    )}
+                    )} */}
                 </Link>
                 <div className="my-4">
                     <div className="">

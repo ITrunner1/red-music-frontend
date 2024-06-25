@@ -50,8 +50,7 @@ const Catalog: FC<{
         <div className="mb-6">
           <div className="my-4">Музыка не загружена!</div>
         </div>
-      )
-      }
+      )}
     </div>
   )
 }

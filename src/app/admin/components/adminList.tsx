@@ -8,13 +8,12 @@ import AdminListItem from "./adminListItem"
 interface IAdminList {
     listItems?: IListItem[]
     isLoading: boolean
-
     removeHandler?: (id: number) => void
 }
 
 const AdminList: FC<IAdminList> = ({ isLoading, removeHandler, listItems = [] }) => {
     return (
-        <div className="my-2">           
+        <div className="my-2">
             {isLoading ? (<Loader />) : listItems.length ? (
                 listItems.map(listItem => (
                     <AdminListItem

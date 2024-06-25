@@ -13,7 +13,7 @@ const ArtistInfoShort: FC<{ artist: IUser; message?: string }> = ({
             <div className="inline-flex items-center">
                 <div>
                     {artist.avatarPath &&
-                        <Link href={`/user/${artist.id}`}>
+                        // <Link href={`/user/${artist.id}`}>
                             <Avatar
                                 color="primary"
                                 isBordered
@@ -22,7 +22,7 @@ const ArtistInfoShort: FC<{ artist: IUser; message?: string }> = ({
                                 alt={artist.avatarPath}
                                 className="cursor-pointer">
                             </Avatar>
-                        </Link>
+                        // </Link>
                     }
                 </div>
                 <div className="ml-4 border-b-2 border-white">

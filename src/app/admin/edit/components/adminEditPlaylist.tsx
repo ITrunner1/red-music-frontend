@@ -63,8 +63,9 @@ const AdminPlaylistEdit: FC = () => {
                 <Loader />
             ) : (
                 <form onSubmit={handleSubmit(onSubmit)} className="flex flex-wrap gap-x-20 gap-y-4 max-sm:justify-start">
-                    <div className="flex flex-col gap-y-4 w-1/2 max-sm:w-full">                      
-                        <span>Жанр: {data?.genre} </span>                        
+                    <div className="flex flex-col gap-y-4 w-1/2 max-sm:w-full">
+                        <span>Название: {data?.name}</span>
+                        <span>Жанр: {data?.genre} </span>
                         <span>Введите основание отказа</span>
                         <Textarea
                             {...register('rejectionReason', {})}

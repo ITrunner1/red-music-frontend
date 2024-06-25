@@ -51,7 +51,7 @@ const AdminSongEdit: FC = () => {
         updateSong({ ...data, id: songId })
             .unwrap()
             .then(() => {
-                router.push('/home')
+                router.push('/admin')
             })
     }
 
@@ -62,7 +62,8 @@ const AdminSongEdit: FC = () => {
             ) : (
                 <form onSubmit={handleSubmit(onSubmit)} className="flex flex-wrap gap-x-20 gap-y-4 max-sm:justify-start">
                     <div className="flex flex-col gap-y-4 w-1/2 max-sm:w-full">
-                        <span>Аудио файл</span>
+                        <span>Название: {data?.name}</span>
+                        <span>Путь до аудио файла</span>
                         {data?.audioPath}
                         <span>Жанр: {data?.genre} </span>                 
                         <span>Введите основание отказа</span>

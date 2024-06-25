@@ -2,13 +2,15 @@
 
 import { FC } from "react";
 import { motion } from "framer-motion";
-import useAdminSongs from "./useAdminSongs";
 import AdminList from "./adminList";
 import useAdminPlaylists from "./useAdminPlaylists";
+import useAdminAllNewSongs from "./useAdminAllNewSongs";
+import useAdminAllSongs from "./useAdminAllSongs";
 
 const Home: FC = () => {
-  const { data: songs, isFetching, removeSong } = useAdminSongs()
-  const { data: playlists, isFetching: playistFetching, removePlaylist } = useAdminPlaylists()
+  const { data: songs, isFetching, removeSong } = useAdminAllNewSongs()
+  const { data: allSongs, isFetching: allSongsIsFetching, removeSong: removeAllSong } = useAdminAllSongs()
+  const { data: playlists, isFetching: playlistFetching, removePlaylist } = useAdminPlaylists()
 
   return (
     <motion.div
@@ -26,7 +28,12 @@ const Home: FC = () => {
       <AdminList
         removeHandler={removePlaylist}
         listItems={playlists}
-        isLoading={playistFetching} />
+        isLoading={playlistFetching} />
+      <div className="text-2xl mt-4">Все песни</div>
+      <AdminList
+        removeHandler={removeAllSong}
+        listItems={allSongs}
+        isLoading={allSongsIsFetching} />
     </motion.div>
   )
 }

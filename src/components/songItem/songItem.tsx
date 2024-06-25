@@ -41,7 +41,7 @@ const SongItem: FC<ISongItem> = ({ isSmall, isUpdateLink, removeHandler, item })
                         isBlurred
                     />
                 </div>
-                <motion.div
+                {/* <motion.div
                     className="mt-4 w-[200px]"
                     whileTap={{ scale: 0.9 }}>
                     {item?.user?.avatarPath && (
@@ -55,7 +55,7 @@ const SongItem: FC<ISongItem> = ({ isSmall, isUpdateLink, removeHandler, item })
                             </div>
                         </Link>
                     )}
-                </motion.div>
+                </motion.div> */}
                 <div className="my-4">
                     <div className="">
                         {isSmall && <div>{item.user?.name}</div>}

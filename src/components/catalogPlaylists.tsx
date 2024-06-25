@@ -2,7 +2,6 @@
 
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel"
 import { FC, useState } from "react"
-import { Button } from "@/components/ui/button"
 import PlaylistItem from "./playlistItem/playlistItem"
 import { cn } from "@/lib/utils"
 import useStore from "@/hooks/use-store"
@@ -16,8 +15,6 @@ const CatalogPlaylists: FC<{
 }> = ({ playlists, removeHadler, isUpdateLink }) => {
 
   const sidebar = useStore(useSidebarToggle, (state) => state);
-
-  const [page, setPage] = useState(1)
 
   return (
     <div className="max-sm:w-[250px]">

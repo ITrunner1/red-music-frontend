@@ -9,15 +9,7 @@ import { usePlayerToggle } from "@/hooks/usePlayer";
 import { cn } from "@/lib/utils";
 import { NextIcon } from '@vidstack/react/icons';
 import { Button } from "../ui/button";
-import {
-  MediaPlayer,
-  MediaProvider,
-  PlayButton,
-  Time,
-  TimeSlider,
-  VolumeSlider,
-  MuteButton,
-} from '@vidstack/react';
+import { MediaPlayer, MediaProvider, PlayButton, Time, TimeSlider, VolumeSlider, MuteButton,} from '@vidstack/react';
 
 const MusicPlayerContent = () => {
   const player = useStore(usePlayerToggle, (state) => state);

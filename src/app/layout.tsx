@@ -20,8 +20,7 @@ const ubuntuFont = Ubuntu({
 export const metadata: Metadata = {
   title: "Red Music",
   description: "Red Music",
-  verification: { yandex: "6c86d3be8a510b12" }     
-
+  verification: { yandex: "6c86d3be8a510b12", google: "it_h5C0oCPsebsxRJtY4nHgSaVU6lV1_gqTg0rkfmFE"}
 };
 
 export default function RootLayout({

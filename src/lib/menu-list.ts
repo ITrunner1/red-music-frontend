@@ -7,7 +7,8 @@ import {
 } from "react-icons/md";
 import { AiOutlineRise } from "react-icons/ai";
 import { PlaylistIcon } from '@vidstack/react/icons';
-import { FaUser, FaInfo } from "react-icons/fa";
+import { FaMessage } from "react-icons/fa6";
+import { FaUser, FaInfo, } from "react-icons/fa";
 import { useAuth } from "@/hooks/useAuth";
 import { IoIosHeart } from "react-icons/io";
 import { RiAdminFill } from "react-icons/ri";
@@ -59,12 +60,19 @@ export function GetMenuList(pathname: string): Group[] {
         groupLabel: "О компании",
         menus: [
           {
+            href: `/write-to-us`,
+            label: "Напишите нам",
+            active: pathname === `/write-to-us`,
+            icon: FaMessage,
+            submenus: []
+          },
+          {
             href: `/about-us`,
             label: "О нас",
             active: pathname === `/about-us`,
             icon: FaInfo,
             submenus: []
-          },
+          },          
         ]
       },
     ];
@@ -166,15 +174,22 @@ export function GetMenuList(pathname: string): Group[] {
         groupLabel: "О компании",
         menus: [
           {
+            href: `/write-to-us`,
+            label: "Напишите нам",
+            active: pathname === `/write-to-us`,
+            icon: FaMessage,
+            submenus: []
+          },
+          {
             href: `/about-us`,
             label: "О нас",
             active: pathname === `/about-us`,
             icon: FaInfo,
             submenus: []
-          },
+          },          
         ]
       },
-    ];    
+    ];
   else return [
     {
       groupLabel: "",
@@ -260,13 +275,21 @@ export function GetMenuList(pathname: string): Group[] {
       groupLabel: "О компании",
       menus: [
         {
+          href: `/write-to-us`,
+          label: "Напишите нам",
+          active: pathname === `/write-to-us`,
+          icon: FaMessage,
+          submenus: []
+        },
+        {
           href: `/about-us`,
           label: "О нас",
           active: pathname === `/about-us`,
           icon: FaInfo,
           submenus: []
         },
-      ]
+      ],
+
     },
   ];
 }

@@ -19,7 +19,7 @@ const Search: FC = () => {
       <div className="">
          <Input
             className={cn("focus-visible:outline-0 focus-visible:ring-0 focus-visible:ring-ring focus-visible:ring-offset-0 ease-in-out",
-               sidebar?.isOpen === false ? "sm:w-[400px] md:w-[400px] lg:w-[610px] xl:w-[1050px] 2xl:w-[1340px]" : "md:w-[400px] lg:w-[460px] xl:w-[900px] 2xl:w-[1340px]"
+               sidebar?.isOpen === false ? "sm:w-[400px] md:w-[400px] lg:w-[610px] xl:w-[1050px] 2xl:w-[1420px]" : "md:w-[400px] lg:w-[460px] xl:w-[900px] 2xl:w-[1260px]"
             )}
             type="text"
             placeholder='Поиск...'
