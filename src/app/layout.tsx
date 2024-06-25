@@ -20,7 +20,11 @@ const ubuntuFont = Ubuntu({
 export const metadata: Metadata = {
   title: "Red Music",
   description: "Red Music",
-  verification: { yandex: "6c86d3be8a510b12", google: "it_h5C0oCPsebsxRJtY4nHgSaVU6lV1_gqTg0rkfmFE"}
+  verification: { yandex: "6c86d3be8a510b12", google: "it_h5C0oCPsebsxRJtY4nHgSaVU6lV1_gqTg0rkfmFE"}, 
+  keywords: "red music, red-music, red_music, Red Music, Red-Music, Red_Music, Ред Музыка, ред музыка, ред-музыка, музыка, Музыка, музыкальный стриминговый сервис",
+  creator: "Matvey",
+  publisher: "Matvey",
+  robots: "index, follow"  
 };
 
 export default function RootLayout({
