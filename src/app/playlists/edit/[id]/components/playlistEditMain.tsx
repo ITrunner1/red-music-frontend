@@ -61,7 +61,7 @@ const PlaylistEditMain: FC = () => {
     updatePlaylist({ ...data, id: playlistId })
       .unwrap()
       .then(() => {
-        router.push('/admin')
+        router.push('/home')
       })
   }
 
