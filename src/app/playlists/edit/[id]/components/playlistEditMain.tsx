@@ -19,6 +19,7 @@ import { useQuery } from "react-query";
 import { GenreService } from "@/services/genre.service.";
 
 const PlaylistEditMain: FC = () => {
+  const router = useRouter()
   const params = useParams()
   const playlistId = Number(params.id)
 
@@ -60,8 +61,7 @@ const PlaylistEditMain: FC = () => {
     updatePlaylist({ ...data, id: playlistId })
       .unwrap()
       .then(() => {
-        toastr.success('Статус', 'Песня обновлена!',
-        )
+        router.push('/admin')
       })
   }
 

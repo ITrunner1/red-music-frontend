@@ -1,23 +1,18 @@
 'use client'
 
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import Loader from "@/components/ui/loader";
-import { Switch } from "@/components/ui/switch";
 import { Textarea } from "@/components/ui/textarea";
-import { IFileResponse } from "@/interfaces/file.interface";
-import { IPlaylistDto } from "@/interfaces/playlist.interface";
 import { playlistApi } from "@/store/api/api.playlist";
 import { useParams, useRouter } from "next/navigation";
 import { FC, useEffect } from "react";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
-import { toastr } from "react-redux-toastr";
-import UploadField from "@/components/ui/uploadField";
 import { Select, SelectItem } from "@nextui-org/select";
 import { IAdminPlaylistDto } from "@/interfaces/admin.interface";
 import UploadPlaylistInformation from "@/app/playlists/edit/[id]/components/createPlaylistInformation";
 
 const AdminPlaylistEdit: FC = () => {
+    const router = useRouter()
     const params = useParams()
     const playlistId = Number(params.id)
 
@@ -53,7 +48,7 @@ const AdminPlaylistEdit: FC = () => {
         updatePlaylist({ ...data, id: playlistId })
             .unwrap()
             .then(() => {
-                toastr.success('Статус', 'Песня обновлена!',)
+                router.push('/admin')
             })
     }
 
